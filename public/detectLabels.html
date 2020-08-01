@@ -17,6 +17,7 @@ PDX-License-Identifier: MIT-0 (For details, see https://github.com/awsdocs/amazo
   <H1>Detect labels</H1>
   <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
   <p id="opResult"></p>
+  <p id="bin"></p>
 </body>
 <script>
 
@@ -85,6 +86,13 @@ PDX-License-Identifier: MIT-0 (For details, see https://github.com/awsdocs/amazo
         console.log(data);
         for (let label of data.Labels) {
           document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
+          if (label.Name === 'Glass' || label.Name === 'Cardboard') {
+            document.getElementById("bin").innerHTML += 'This item should go to the recycling bin.';
+          } else if (label.Name === 'Plastic') {
+            document.getElementById("bin").innerHTML += 'This item should go to the garbage bin.';
+          } else if (label.Name === 'Plant') {
+            document.getElementById("bin").innerHTML += 'This item should go to the organic bin.';
+          }
         };
       }
     });

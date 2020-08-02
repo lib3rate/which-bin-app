@@ -6,6 +6,7 @@ export default function Form() {
 
   return (
     <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+      <label>Email</label>
       <input
         name="email"
         value={email}
@@ -13,6 +14,7 @@ export default function Form() {
         placeholder="Please enter your email"
         onChange={event => setEmail(event.target.value)}
       />
+      <label>Password</label>
       <input
         name="password"
         value={password}

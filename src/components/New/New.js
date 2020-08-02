@@ -2,7 +2,7 @@ import React from 'react';
 import AWS from 'aws-sdk';
 
 import Input from "../Input";
-import Button from "../Button";
+// import Button from "../Button";
 import MyButton from "../Button";
 
 export default function New() {

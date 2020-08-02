@@ -7,11 +7,11 @@ import {
 
 import './App.css';
 
-import Register from "./components/Register";
-import Login from "./components/Login";
-import New from "./components/New";
-import Forest from "./components/Forest";
-import User from "./components/User";
+import Register from "./components/Register/Register";
+import Login from "./components/Login/Login";
+import New from "./components/New/New";
+import Forest from "./components/Forest/Forest";
+import User from "./components/User/User";
 import Navigation from './components/Navigation';
 
 export default function App() {

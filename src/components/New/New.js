@@ -3,6 +3,7 @@ import AWS from 'aws-sdk';
 
 import Input from "../Input";
 import Button from "../Button";
+import MyButton from "../Button";
 
 export default function New() {
   return (
@@ -13,7 +14,7 @@ export default function New() {
       />
       <p id="opResult"></p>
       <h3 id="bin"></h3>
-      <Button
+      <MyButton
         onClick={() => console.log("Trashed!")}
         children="Trashed!"
       />

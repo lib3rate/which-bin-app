@@ -6,7 +6,11 @@ export default function User() {
 
   return (
     <>
-      <h2>Requested user ID: {id}</h2>
+      <h2>[For testing: Requested user ID: {id}]</h2>
+      <img alt="Tree"></img>
+      <h3>
+        Your score: [number]
+      </h3>
       <table>
         <th>Your waste in numbers</th>
         <tr>

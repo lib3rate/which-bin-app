@@ -10,6 +10,7 @@ export default function Login() {
       <h2>Sign in</h2>
       <Form/>
       <Button
+        onClick={() => console.log("Submitted")}
         children="Sign in"
       />
       <Link to="/register">Sign up</Link>

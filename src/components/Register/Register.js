@@ -10,6 +10,7 @@ export default function Register() {
       <h2>Register</h2>
       <Form/>
       <Button
+        onClick={() => console.log("Submitted")}
         children="Sign up"
       />
       <Link to="/register">Sign in</Link>

@@ -1,27 +1,6 @@
-import React from 'react';
-import AWS from 'aws-sdk';
-
-import Input from "../Input";
-
-export default function New() {
-  return (
-    <>
-      <h2>Capture a photo</h2>
-      <Input
-        onChange={(event) => ProcessImage()}
-      />
-      <p id="opResult"></p>
-      <p id="bin"></p>
-      <h3>
-        This item should go to [category].
-      </h3>
-    </>
-  )
-}
-
-// document.getElementById("fileToUpload").addEventListener("change", function (event) {
-//   ProcessImage();
-// }, false);
+document.getElementById("fileToUpload").addEventListener("change", function (event) {
+  ProcessImage();
+}, false);
 
 //Calls DetectLabels API and shows the labels of detected items
 function DetectLabels(imageData) {

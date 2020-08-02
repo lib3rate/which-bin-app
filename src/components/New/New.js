@@ -11,10 +11,7 @@ export default function New() {
         onChange={(event) => ProcessImage()}
       />
       <p id="opResult"></p>
-      <p id="bin"></p>
-      <h3>
-        This item should go to [category].
-      </h3>
+      <h3 id="bin"></h3>
     </>
   )
 }
@@ -44,6 +41,7 @@ function DetectLabels(imageData) {
     else     console.log(data);           // successful response
   });
 }
+
 //Loads selected image and unencodes image bytes for Rekognition DetectFaces API
 function ProcessImage() {
   AnonLog();
@@ -71,11 +69,11 @@ function ProcessImage() {
       for (let label of data.Labels) {
         document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
         if (label.Name === 'Glass' || label.Name === 'Cardboard') {
-          document.getElementById("bin").innerHTML += 'This item should go to the recycling bin.';
+          document.getElementById("bin").innerHTML = 'This item should go to the recycling bin.';
         } else if (label.Name === 'Plastic') {
-          document.getElementById("bin").innerHTML += 'This item should go to the garbage bin.';
+          document.getElementById("bin").innerHTML = 'This item should go to the garbage bin.';
         } else if (label.Name === 'Plant') {
-          document.getElementById("bin").innerHTML += 'This item should go to the organic bin.';
+          document.getElementById("bin").innerHTML = 'This item should go to the organic bin.';
         }
       };
     }
@@ -85,6 +83,7 @@ function ProcessImage() {
   })(file);
   reader.readAsArrayBuffer(file);
 }
+
 //Provides anonymous log on to AWS services
 function AnonLog() {
   

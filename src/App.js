@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import './App.css';
 
+import Register from "./components/Register";
+
 export default function App() {
   return (
     <Router>
@@ -27,7 +29,7 @@ export default function App() {
             <Link to="/forest">Forest</Link>
           </li>
           <li>
-            <Link to="/users">Your userpage</Link>
+            <Link to="/users/:slug">Your userpage</Link>
           </li>
         </ul>
 
@@ -41,8 +43,8 @@ export default function App() {
           <Route path="/new">
             <New />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route exact path="/users/:slug">
+            <User />
           </Route>
           <Route path="/forest">
             <Forest />
@@ -51,10 +53,6 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function Register() {
-  return <h2>Register</h2>;
 }
 
 function Login() {
@@ -69,7 +67,7 @@ function Forest() {
   return <h2>This is your Forest</h2>;
 }
 
-function Users() {
+function User() {
   let match = useRouteMatch();
 
   return (

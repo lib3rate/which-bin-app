@@ -11,7 +11,7 @@ export default function Form() {
         name="email"
         value={email}
         type="text"
-        placeholder="Please enter your email"
+        placeholder="Please enter your email..."
         onChange={event => setEmail(event.target.value)}
       />
       <label>Password</label>
@@ -19,7 +19,7 @@ export default function Form() {
         name="password"
         value={password}
         type="text"
-        placeholder="Please enter your password"
+        placeholder="Please enter your password..."
         onChange={event => setPassword(event.target.value)}
       />
     </form>

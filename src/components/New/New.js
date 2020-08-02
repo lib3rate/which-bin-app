@@ -4,6 +4,9 @@ export default function New() {
   return (
     <>
       <h2>Capture a photo</h2>
+      <h3>
+        This item should go to [category].
+      </h3>
     </>
   )
 }

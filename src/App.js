@@ -12,12 +12,18 @@ import Login from "./components/Login";
 import New from "./components/New";
 import Forest from "./components/Forest";
 import User from "./components/User";
+import Navigation from './components/Navigation';
 
 export default function App() {
   return (
     <Router>
       <div>
+        <Navigation/>
         <Switch>
+          {/* We can make the default page Login without the nav bar */}
+          {/* <Route path="/">
+            <Login />
+          </Route> */}
           <Route path="/register">
             <Register />
           </Route>

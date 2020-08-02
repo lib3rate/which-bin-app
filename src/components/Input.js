@@ -8,6 +8,7 @@ export default function Input(props) {
         name="fileToUpload"
         id="fileToUpload"
         accept="image/*"
+        // capture="environment"
         onChange={props.onChange}
       >
       </input>

@@ -2,6 +2,7 @@ import React from 'react';
 import AWS from 'aws-sdk';
 
 import Input from "../Input";
+import Button from "../Button";
 
 export default function New() {
   return (
@@ -12,6 +13,10 @@ export default function New() {
       />
       <p id="opResult"></p>
       <h3 id="bin"></h3>
+      <Button
+        onClick={() => console.log("Trashed!")}
+        children="Trashed!"
+      />
     </>
   )
 }
@@ -65,7 +70,7 @@ function ProcessImage() {
   rekognition.detectLabels(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
     else {
-      console.log(data);
+      // console.log(data);
       for (let label of data.Labels) {
         document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
         if (label.Name === 'Glass' || label.Name === 'Cardboard') {

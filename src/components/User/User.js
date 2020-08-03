@@ -9,6 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import MyButton from "../Button";
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -30,6 +32,7 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
+    maxWidth: 1500
   },
 });
 
@@ -78,8 +81,12 @@ export default function User() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Link to="/new">Add new</Link>
-      <Link to="/forest">Leaderboard</Link>
+      <MyButton
+        children={<Link to="/new">Add new</Link>}
+      />
+      <MyButton
+        children={<Link to="/forest" /* style={{text-decoration: none}} */>Leaderboard</Link>}
+      />
     </>
   )
 }

@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MyButton from "../Button";
 import Upload from "./Upload";
 import Analyzing from "./Analyzing";
+import Result from "./Result";
 
 const UPLOAD = "UPLOAD";
 const ANALYZING = "ANALYZING";
@@ -31,11 +32,10 @@ export default function New() {
   return (
     <div className={classes.root}>
       <Upload/>
-      <p id="opResult"></p>
-      <h3 id="bin"></h3>
       <Analyzing
         text="Analyzing"
       />
+      <Result/>
       <MyButton
         onClick={() => console.log("Trashed!")}
         children="Trashed!"

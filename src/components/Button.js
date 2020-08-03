@@ -16,17 +16,11 @@ const MyButton = styled(Button)({
 });
 
 export default function StyledComponents(props) {
-  return <MyButton onClick={props.onClick}>{props.children}</MyButton>;
+  return (
+    <MyButton
+      onClick={props.onClick}
+    >
+      {props.children}
+    </MyButton>
+  )
 }
-
-// export default function Button(props) {
-//   return (
-//     <>
-//       <button
-//         onClick={props.onClick}
-//       >
-//         {props.children}
-//       </button>
-//     </>
-//   )
-// }

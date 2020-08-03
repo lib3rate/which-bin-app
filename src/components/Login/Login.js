@@ -17,19 +17,6 @@ import Container from '@material-ui/core/Container';
 // import Form from "../Form";
 import MyButton from "../Button";
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
 // const login = () => {
 //   axios(get request);
 // };
@@ -128,23 +115,6 @@ export default function SignIn() {
           {/* </Grid> */}
         </form>
       </div>
-      {/* <Box mt={8}>
-        <Copyright />
-      </Box> */}
     </Container>
   );
 }
-
-// export default function Login() {
-//   return (
-//     <>
-//       <h2>Sign in</h2>
-//       <Form/>
-//       <Button
-//         onClick={() => console.log("Submitted")}
-//         children="Sign in"
-//       />
-//       <Link to="/register">Sign up</Link>
-//     </>
-//   )
-// }

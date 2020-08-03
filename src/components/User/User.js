@@ -36,6 +36,11 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   table: {
     minWidth: 700,
     maxWidth: 1500
@@ -59,9 +64,14 @@ export default function User() {
   return (
     <>
       <h2>[For testing: Requested user ID: {id}]</h2>
+
+      <MyButton
+        children={<Link to="/new">Add new</Link>}
+      />
+
       <img alt="Tree"></img>
 
-      <TableContainer component={Paper}>
+      <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -87,9 +97,7 @@ export default function User() {
           </TableBody>
         </Table>
       </TableContainer>
-      <MyButton
-        children={<Link to="/new">Add new</Link>}
-      />
+      
       <MyButton
         children={<Link to="/forest" /* style={{text-decoration: none}} */>Leaderboard</Link>}
       />

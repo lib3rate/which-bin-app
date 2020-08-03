@@ -27,6 +27,11 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   table: {
     minWidth: 700,
     maxWidth: 1500
@@ -54,7 +59,7 @@ export default function Forest() {
       <h2>This is the Forest</h2>
       <img alt="Forest"/>
 
-      <TableContainer component={Paper}>
+      <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>

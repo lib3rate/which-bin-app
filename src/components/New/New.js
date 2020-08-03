@@ -9,13 +9,14 @@ import { ProcessImage } from "../../helpers/helpers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     border: 1,
   },
 }));
 
-export default function New() { 
+export default function New() {
   const classes = useStyles();
 
   return (

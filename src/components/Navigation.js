@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
   // image: {
   //   maxHeight: 100
   // },
+  username: {
+    flexGrow: 1,
+    marginLeft: 20,
+  },
   title: {
     fontSize: 36,
     flexGrow: 1,
@@ -35,6 +39,9 @@ export default function Navigation() {
           <Typography variant="h6" className={classes.title}>
             Which bin app
           </Typography>
+          {/* <Typography variant="h6" className={classes.username}>
+            Username
+          </Typography> */}
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
@@ -51,10 +58,10 @@ export default function Navigation() {
           <Link to="/new">Capture a photo</Link>
         </li>
         <li>
-          <Link to="/forest">Forest</Link>
+          <Link to="/users/1">Your userpage</Link>
         </li>
         <li>
-          <Link to="/users/1">Your userpage</Link>
+          <Link to="/forest">Forest</Link>
         </li>
       </ul>
     </div>

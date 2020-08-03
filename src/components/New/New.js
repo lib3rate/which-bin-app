@@ -1,14 +1,23 @@
 import React from 'react';
 import AWS from 'aws-sdk';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Input from "../Input";
 // import Button from "../Button";
 import MyButton from "../Button";
 import Status from "./Status";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    borderWidth: 1,
+  },
+}));
+
 export default function New() {
+  const classes = useStyles();
+
   return (
-    <>
+    <div className={classes.root}>
       <h2>Submit a photo</h2>
       <Input
         onChange={(event) => ProcessImage()}
@@ -22,7 +31,7 @@ export default function New() {
         onClick={() => console.log("Trashed!")}
         children="Trashed!"
       />
-    </>
+    </div>
   )
 }
 

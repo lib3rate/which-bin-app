@@ -11,7 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    minWidth: 700
+    minWidth: 1000
   },
   // image: {
   //   maxHeight: 100
@@ -27,7 +27,7 @@ export default function Navigation() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{background: 'linear-gradient(45deg, #760078 30%, #b100c4 90%)'}}>
         <Toolbar>
           <img src="images/tree1.jpg" alt="Logo" style={{height: 120}}/>
           <Typography variant="h6" className={classes.title}>

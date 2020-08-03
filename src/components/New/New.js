@@ -13,6 +13,8 @@ const ANALYZING = "ANALYZING";
 const RESULT = "RESULT";
 const ERROR = "ERROR";
 
+// Showing the Upload mode by default
+
 // const { mode, transition } = useVisualMode(UPLOAD);
 
 const useStyles = makeStyles((theme) => ({

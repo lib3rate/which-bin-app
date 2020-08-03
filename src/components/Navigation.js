@@ -13,9 +13,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     minWidth: 1000
   },
-  // image: {
-  //   maxHeight: 100
-  // },
+  image: {
+    maxHeight: 100
+  },
   title: {
     flexGrow: 1,
     marginLeft: 20,
@@ -29,7 +29,7 @@ export default function Navigation() {
     <div className={classes.root}>
       <AppBar position="static" style={{background: 'linear-gradient(45deg, #760078 30%, #b100c4 90%)'}}>
         <Toolbar>
-          <img src="images/tree1.jpg" alt="Logo" style={{height: 120}}/>
+          <img src="images/tree1.jpg" alt="Logo" style={{height: 100, margin: 10}}/>
           <Typography variant="h6" className={classes.title}>
             Which bin app
           </Typography>

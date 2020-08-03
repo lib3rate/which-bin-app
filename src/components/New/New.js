@@ -9,7 +9,7 @@ import Status from "./Status";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    borderWidth: 1,
+    border: 1,
   },
 }));
 

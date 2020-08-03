@@ -13,7 +13,7 @@ export default function Register() {
         onClick={() => console.log("Submitted")}
         children="Sign up"
       />
-      <Link to="/register">Sign in</Link>
+      <Link to="/login">Sign in</Link>
     </>
   )
 }

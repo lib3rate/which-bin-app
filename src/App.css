@@ -11,8 +11,11 @@ body {
 #root {
   display: flex;
   justify-content: center;
-  /* border: groove; */
 }
+
+/* #root > div {
+  border: groove;
+} */
 
 .analyze-status-image {
   margin-right: 2rem;

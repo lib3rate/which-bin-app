@@ -4,16 +4,20 @@ import AWS from 'aws-sdk';
 import Input from "../Input";
 // import Button from "../Button";
 import MyButton from "../Button";
+import Status from "./Status";
 
 export default function New() {
   return (
     <>
-      <h2>Capture a photo</h2>
+      <h2>Submit a photo</h2>
       <Input
         onChange={(event) => ProcessImage()}
       />
       <p id="opResult"></p>
       <h3 id="bin"></h3>
+      <Status
+        text="Analyzing"
+      />
       <MyButton
         onClick={() => console.log("Trashed!")}
         children="Trashed!"

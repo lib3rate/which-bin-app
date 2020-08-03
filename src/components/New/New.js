@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-// import useVisualMode from '../../helpers/useVisualMode';
+import useVisualMode from '../../helpers/useVisualMode';
 import { ProcessImage } from "../../helpers/helpers";
 
 import Input from "../Input";
@@ -13,7 +13,7 @@ const ANALYZING = "ANALYZING";
 const RESULT = "RESULT";
 const ERROR = "ERROR";
 
-// const { mode, transition } = useVisualMode(UPLOAD);
+const { mode, transition } = useVisualMode(UPLOAD);
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -16,20 +16,9 @@ export default function useVisualMode(initial) {
     // return;
   }
 
-  // Returning to the previous visual mode when running the image recognition algorithm
-
-  // function back() {
-  //   if (history.length > 1) {
-  //     history.pop();
-  //     setMode(history[history.length - 1]);
-  //   }
-  //   return;
-  // };
-
   return {
     mode,
     history,
-    transition,
-    // back
+    transition
   };
 };

@@ -30,6 +30,10 @@ import MyButton from "../Button";
 //   );
 // }
 
+// const login = () => {
+//   axios(get request);
+// };
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -94,6 +98,7 @@ export default function SignIn() {
             label="Remember me"
           /> */}
           <MyButton
+            // onClick={() => login()}
             type="submit"
             fullWidth
             variant="contained"

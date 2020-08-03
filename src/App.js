@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+// import axios from "axios";
 
 import './App.css';
 
@@ -15,6 +16,16 @@ import User from "./components/User/User";
 import Navigation from './components/Navigation';
 
 export default function App() {
+  // useEffect(() => {
+  //   Promise.all([
+  //     axios.get("/api/days"),
+  //     axios.get("/api/appointments"),
+  //     axios.get("/api/interviewers")
+  //   ]).then(all => {
+  //     setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
+  //   });
+  // }, []);
+
   return (
     <Router>
       <div>

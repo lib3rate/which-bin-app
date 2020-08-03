@@ -17,19 +17,6 @@ import Container from '@material-ui/core/Container';
 // import Form from "../Form";
 import MyButton from "../Button";
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -100,10 +87,6 @@ export default function SignIn() {
             id="password"
             // autoComplete="current-password"
           />
-          {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          /> */}
           <MyButton
             type="submit"
             fullWidth
@@ -134,24 +117,6 @@ export default function SignIn() {
           {/* </Grid> */}
         </form>
       </div>
-      {/* <Box mt={8}>
-        <Copyright />
-      </Box> */}
     </Container>
   );
 }
-
-
-// export default function Register() {
-//   return (
-//     <>
-//       <h2>Register</h2>
-//       <Form/>
-//       <Button
-//         onClick={() => console.log("Submitted")}
-//         children="Sign up"
-//       />
-//       <Link to="/login">Sign in</Link>
-//     </>
-//   )
-// }

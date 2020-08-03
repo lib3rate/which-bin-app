@@ -69,10 +69,21 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
+            id="username"
+            label="Username"
+            name="username"
+            // autoComplete="username"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
             id="email"
             label="Email Address"
             name="email"
-            autoComplete="email"
+            // autoComplete="email"
             autoFocus
           />
           <TextField
@@ -84,7 +95,7 @@ export default function SignIn() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            // autoComplete="current-password"
           />
           {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

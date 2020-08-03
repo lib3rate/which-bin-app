@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Status(props) {
+export default function Analyzing(props) {
   const classes = useStyles();
 
   return (

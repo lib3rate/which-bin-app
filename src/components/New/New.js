@@ -1,11 +1,19 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
+// import useVisualMode from '../../helpers/useVisualMode';
+import { ProcessImage } from "../../helpers/helpers";
+
 import Input from "../Input";
 import MyButton from "../Button";
-import Status from "./Status";
+import Analyzing from "./Analyzing";
 
-import { ProcessImage } from "../../helpers/helpers";
+const UPLOAD = "UPLOAD";
+const ANALYZING = "ANALYZING";
+const RESULT = "RESULT";
+const ERROR = "ERROR";
+
+// const { mode, transition } = useVisualMode(UPLOAD);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +35,7 @@ export default function New() {
       />
       <p id="opResult"></p>
       <h3 id="bin"></h3>
-      <Status
+      <Analyzing
         text="Analyzing"
       />
       <MyButton

@@ -20,7 +20,7 @@ export default function App() {
       <div>
         <Navigation/>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Login />
           </Route>
           <Route path="/register">

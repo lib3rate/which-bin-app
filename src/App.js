@@ -20,10 +20,9 @@ export default function App() {
       <div>
         <Navigation/>
         <Switch>
-          {/* We can make the default page Login without the nav bar */}
-          {/* <Route path="/">
+          <Route path="/">
             <Login />
-          </Route> */}
+          </Route>
           <Route path="/register">
             <Register />
           </Route>

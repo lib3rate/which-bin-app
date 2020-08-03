@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Navigation() {
   return (
     <>
-      <img alt="Logo"/>
+      <img src="images/tree1.jpg" alt="Logo"/>
       <ul>
         <li>
           <Link to="/register">Register</Link>

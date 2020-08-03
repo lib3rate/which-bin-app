@@ -41,7 +41,6 @@ const rows = [
   createData('Recycling', 159),
   createData('Garbage', 237),
   createData('Organic', 262),
-  createData('Your total score', 658),
 ];
 
 export default function User() {
@@ -63,13 +62,19 @@ export default function User() {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <StyledTableRow key={row.name}>
+              <StyledTableRow key={row.category}>
                 <StyledTableCell component="th" scope="row">
                   {row.category}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.score}</StyledTableCell>
               </StyledTableRow>
             ))}
+              <StyledTableRow key="Total">
+                <StyledTableCell component="th" scope="row">
+                  <strong>Your total score</strong>
+                </StyledTableCell>
+                <StyledTableCell align="right"><strong>658</strong></StyledTableCell>
+              </StyledTableRow>
           </TableBody>
         </Table>
       </TableContainer>

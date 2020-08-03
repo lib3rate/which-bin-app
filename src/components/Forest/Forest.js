@@ -1,29 +1,78 @@
 import React from 'react';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+
+const useStyles = makeStyles({
+  table: {
+    minWidth: 700,
+  },
+});
+
+function createData(name, score) {
+  return { name, score };
+}
+
+const rows = [
+  createData('Name 1', 758),
+  createData('Name 2', 725),
+  createData('Name 3', 701),
+  createData('Name 4', 695),
+  createData('Name 5', 679),
+  createData('Name 6', 670),
+];
 
 export default function Forest() {
+  const classes = useStyles()
+
   return (
     <>
       <h2>This is the Forest</h2>
       <img alt="Forest"/>
-      <table>
-        <th>Leaderboard</th>
-        <tr>
-          <td>Name 1</td>
-          <td>[Score 1]</td>
-        </tr>
-        <tr>
-          <td>Name 2</td>
-          <td>[Score 2]</td>
-        </tr>
-        <tr>
-          <td>Name 3</td>
-          <td>[Score 3]</td>
-        </tr>
-        <tr>
-          <td>Name 4</td>
-          <td>[Score 4]</td>
-        </tr>
-      </table>
+
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Leaderboard</StyledTableCell>
+              <StyledTableCell align="right"></StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <StyledTableRow key={row.name}>
+                <StyledTableCell component="th" scope="row">
+                  {row.name}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.score}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   )
 }

@@ -13,9 +13,12 @@ body {
   justify-content: center;
 }
 
-/* #root > div {
-  border: groove;
-} */
+#root > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: groove; */
+}
 
 .analyze-status-image {
   margin-right: 2rem;

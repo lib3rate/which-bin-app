@@ -1,4 +1,5 @@
-/* @import "./animations.scss"; */
+@import "~normalize.css/normalize.css";
+@import "./animations.scss";
 
 * {
   box-sizing: border-box;
@@ -8,26 +9,22 @@ body {
   margin: 1rem;
 }
 
-#root {
+.layout {
   display: flex;
-  justify-content: center;
+  min-height: 100vh;
 }
-
-/* #root > div {
-  border: groove;
-} */
 
 .analyze-status-image {
   margin-right: 2rem;
   animation: rotate 1s linear infinite;
 }
 
-@keyframes rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+// @keyframes rotate {
+//   100% {
+//     -webkit-transform: rotate(360deg);
+//     transform: rotate(360deg);
+//   }
+// }
 
 @media only screen and (max-width: 960px) {
   html {

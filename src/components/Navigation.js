@@ -49,6 +49,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     marginLeft: 20,
   },
+  link: {
+    textDecoration: 'none',
+    fontSize: 20,
+    fontWeight: 700
+  },
   appBarShift: {
     marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
@@ -151,13 +156,13 @@ export default function PersistentDrawerLeft() {
         <List>
           {['register', 'login', 'new', 'users/1', 'forest'].map((text, index) => (
             <MenuItem button key={text}>
-            <Link 
-              to={`/${text}`} 
-            // href={`/${text}`}
-            >
-              {`/${text}`}
+              <Link
+                to={`/${text}`} 
+                className={classes.link}
+              >
+                {text}
               </Link> 
-              <ListItemText primary={text} />
+              {/* <ListItemText primary={text} /> */}
             </MenuItem>
           ))}
         </List>

@@ -45,6 +45,11 @@ const useStyles = makeStyles({
     minWidth: 700,
     maxWidth: 1500
   },
+  // tableHead: {
+  //   background: 'linear-gradient(45deg, #000000 30%, #303030 90%)',
+  //   minWidth: 700,
+  //   maxWidth: 1500
+  // },
   link: {
     textDecoration: 'none',
     color: 'white'
@@ -85,7 +90,7 @@ export default function User() {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Your waste in numbers</StyledTableCell>
+              <StyledTableCell /* className={classes.tableHead} */>Your waste in numbers</StyledTableCell>
               <StyledTableCell align="right"></StyledTableCell>
             </TableRow>
           </TableHead>

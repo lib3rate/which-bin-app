@@ -49,7 +49,7 @@ export function ProcessImage() {
           else {
             setTimeout(() => {
               for (let label of data.Labels) {
-                // setState(data)
+                // setRecognition(data)
                 document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
                 if (label.Name === 'Glass' || label.Name === 'Cardboard') {
                   document.getElementById("bin").innerHTML = 'This item should go to the recycling bin.';
@@ -63,7 +63,7 @@ export function ProcessImage() {
             }, 1000)
             // console.log(data);
             // for (let label of data.Labels) {
-            //   // setRecognition(data)
+              // setRecognition(data)
             //   document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
             //   if (label.Name === 'Glass' || label.Name === 'Cardboard') {
             //     document.getElementById("bin").innerHTML = 'This item should go to the recycling bin.';

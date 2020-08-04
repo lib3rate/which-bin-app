@@ -47,19 +47,33 @@ export function ProcessImage() {
         rekognition.detectLabels(params, function (err, data) {
           if (err) console.log(err, err.stack); // an error occurred
           else {
-            // console.log(data);
-            for (let label of data.Labels) {
-              // setState(data)
-              document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
-              if (label.Name === 'Glass' || label.Name === 'Cardboard') {
-                document.getElementById("bin").innerHTML = 'This item should go to the recycling bin.';
-              } else if (label.Name === 'Plastic') {
-                document.getElementById("bin").innerHTML = 'This item should go to the garbage bin.';
-              } else if (label.Name === 'Plant') {
-                document.getElementById("bin").innerHTML = 'This item should go to the organic bin.';
+            setTimeout(() => {
+              for (let label of data.Labels) {
+                // setState(data)
+                document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
+                if (label.Name === 'Glass' || label.Name === 'Cardboard') {
+                  document.getElementById("bin").innerHTML = 'This item should go to the recycling bin.';
+                } else if (label.Name === 'Plastic') {
+                  document.getElementById("bin").innerHTML = 'This item should go to the garbage bin.';
+                } else if (label.Name === 'Plant') {
+                  document.getElementById("bin").innerHTML = 'This item should go to the organic bin.';
+                }
               }
-            }
-            resolve()
+              resolve()
+            }, 1000)
+            // console.log(data);
+            // for (let label of data.Labels) {
+            //   // setState(data)
+            //   document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
+            //   if (label.Name === 'Glass' || label.Name === 'Cardboard') {
+            //     document.getElementById("bin").innerHTML = 'This item should go to the recycling bin.';
+            //   } else if (label.Name === 'Plastic') {
+            //     document.getElementById("bin").innerHTML = 'This item should go to the garbage bin.';
+            //   } else if (label.Name === 'Plant') {
+            //     document.getElementById("bin").innerHTML = 'This item should go to the organic bin.';
+            //   }
+            // }
+            // resolve()
           }
         });
       };

@@ -8,7 +8,7 @@ import axios from "axios";
 
 import './App.css';
 
-import { convertToArray } from "./helpers/helpers";
+import { convertToArray, convertToObject } from "./helpers/helpers";
 
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -19,7 +19,7 @@ import Navigation from './components/Navigation';
 
 export default function App() {
   const [state, setState] = useState({
-    users: {},
+    user: {},
     bins: {},
     userBins: []
   });
@@ -30,8 +30,12 @@ export default function App() {
       axios.get("/api/bins"),
       axios.get("/api/user_bins")
     ]).then(all => {
+      // console.log(all[0].data);
       const userBins = convertToArray(all[2].data);
-      setState(prev => ({ ...prev, users: all[0].data, bins: all[1].data, userBins }));
+      const user = convertToObject(all[0].data);
+      setState(prev => ({ ...prev, user, bins: all[1].data, userBins }));
+      // setState(prev => ({ ...prev, user: all[0].data, bins: all[1].data, userBins }));
+      // console.log(state.user);
     });
   }, []);
 
@@ -54,7 +58,7 @@ export default function App() {
           </Route>
           <Route path="/users/:id">
             <User
-              userBins={state.userBins}
+              user={state.user}
             />
           </Route>
           <Route path="/forest">

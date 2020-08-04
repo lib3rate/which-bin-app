@@ -45,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+  },
 }));
 
 export default function SignIn() {
@@ -91,7 +95,7 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            <Link to="/users/1" className={classes.link}>Sign in</Link>
           </MyButton>
           {/* <Button
             type="submit"

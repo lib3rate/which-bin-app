@@ -73,8 +73,8 @@ const rows = [
   createData('Organic', 262),
 ];
 
-export default function User() {
-  let { id } = useParams();
+export default function User(props) {
+  // let { id } = useParams();
   const classes = useStyles()
 
   return (
@@ -115,7 +115,7 @@ export default function User() {
                 <StyledTableCell component="th" scope="row">
                   <strong>Your total score</strong>
                 </StyledTableCell>
-                <StyledTableCell align="right"><strong>658</strong></StyledTableCell>
+            <StyledTableCell align="right"><strong>{props.user.score}</strong></StyledTableCell>
               </StyledTableRow>
           </TableBody>
         </Table>

@@ -8,6 +8,8 @@ import axios from "axios";
 
 import './App.css';
 
+import { convertToArray } from "./helpers/helpers";
+
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import New from "./components/New/New";
@@ -28,8 +30,10 @@ export default function App() {
       axios.get("/api/bins"),
       axios.get("/api/user_bins")
     ]).then(all => {
-      // console.log(all);
-      setState(prev => ({ ...prev, users: all[0].data, bins: all[1].data, userBins: all[2].data }));
+      const userBins = convertToArray(all[2].data);
+      // const userBins = all[2].data;
+      console.log(all);
+      setState(prev => ({ ...prev, users: all[0].data, bins: all[1].data, userBins }));
     });
   }, []);
 

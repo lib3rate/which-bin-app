@@ -78,17 +78,17 @@ export default function Forest(props) {
               <StyledTableCell align="right"></StyledTableCell>
             </TableRow>
           </TableHead>
-          {/* <TableBody>
+          <TableBody>
             {props.userBins.map((userBin) => (
               <StyledTableRow key={userBin.user_id}>
                 <StyledTableCell component="th" scope="row">
-                  {userBin.user_id}
+                  {userBin.username}
                 </StyledTableCell>
                 <StyledTableCell align="right">{userBin.score}</StyledTableCell>
               </StyledTableRow>
             ))}
-          </TableBody> */}
-          <TableBody>
+          </TableBody>
+          {/* <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.name}>
                 <StyledTableCell component="th" scope="row">
@@ -97,7 +97,7 @@ export default function Forest(props) {
                 <StyledTableCell align="right">{row.score}</StyledTableCell>
               </StyledTableRow>
             ))}
-          </TableBody>
+          </TableBody> */}
         </Table>
       </TableContainer>
     </div>

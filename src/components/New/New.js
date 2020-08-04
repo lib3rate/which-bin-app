@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import useVisualMode from '../../helpers/useVisualMode';
-import { ProcessImage } from "../../helpers/helpers";
+import { ProcessImage } from "../../helpers/processImage";
 
 import Upload from "./Upload";
 import Analyzing from "./Analyzing";

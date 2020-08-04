@@ -11,12 +11,6 @@ import Paper from '@material-ui/core/Paper';
 
 import MyButton from "../Button";
 
-// const StyledTableContainer = withStyles((theme) => ({
-//   root: {
-//     margin: 10
-//   },
-// }))(TableContainer);
-
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -99,7 +93,7 @@ export default function User() {
       </TableContainer>
       
       <MyButton
-        children={<Link to="/forest" /* style={{text-decoration: none}} */>Leaderboard</Link>}
+        children={<Link to="/forest" /* style={{textDecoration: 'none'}} */>Leaderboard</Link>}
       />
     </>
   )

@@ -1,16 +1,15 @@
-import React from "react";
-
-import { ProcessImage } from "../../helpers/helpers";
-
-import Input from "../Input";
+import React from 'react';
 
 export default function Upload(props) {
   return (
-    <>
-      <h2>Submit a photo</h2>
-      <Input
-        onChange={(event) => ProcessImage()}
-      />
-    </>
-  );
+    <input
+      type="file"
+      name="fileToUpload"
+      id="fileToUpload"
+      accept="image/*"
+      // capture="environment"
+      onChange={props.onChange}
+    >
+    </input>
+  )
 }

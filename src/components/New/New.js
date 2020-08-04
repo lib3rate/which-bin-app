@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-// import useVisualMode from '../../helpers/useVisualMode';
+import useVisualMode from '../../helpers/useVisualMode';
+import { ProcessImage } from "../../helpers/helpers";
 
 import MyButton from "../Button";
 import Upload from "./Upload";
@@ -11,11 +12,7 @@ import Result from "./Result";
 const UPLOAD = "UPLOAD";
 const ANALYZING = "ANALYZING";
 const RESULT = "RESULT";
-const ERROR = "ERROR";
-
-// Showing the Upload mode by default
-
-// const { mode, transition } = useVisualMode(UPLOAD);
+// const ERROR = "ERROR";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,13 +26,33 @@ const useStyles = makeStyles((theme) => ({
 export default function New() {
   const classes = useStyles();
 
+  // Showing the Upload mode by default
+
+  const { mode, transition } = useVisualMode(UPLOAD);
+
+  const recognize = () => {
+    transition(ANALYZING);
+    ProcessImage()
+      .then(() => {
+        transition(RESULT);
+      })
+      // .catch(error => {
+      //   transition(ERROR, true)
+      // });
+  };
+
   return (
     <div className={classes.root}>
-      <Upload/>
+      <h2>Submit a photo</h2>
+      <p id="opResult"></p>
+      <h3 id="bin"></h3>
+
+      {mode === UPLOAD && <Upload onChange={(event) => recognize()} />}
+      {/* <Upload onChange={(event) => ProcessImage()}/>
       <Analyzing
         text="Analyzing"
       />
-      <Result/>
+      <Result/> */}
       <MyButton
         onClick={() => console.log("Trashed!")}
         children="Trashed!"

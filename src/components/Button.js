@@ -19,6 +19,7 @@ const MyButton = styled(Button)({
 export default function StyledComponents(props) {
   return (
     <MyButton
+      style={{marginRight: props.marginRight}}
       onClick={props.onClick}
     >
       {props.children}

@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 20,
   },
   submit: {
-    marginRight: 20
+    margin: '0 20px 0 0'
   },
   link: {
     textDecoration: 'none',
@@ -147,15 +147,16 @@ export default function PersistentDrawerLeft() {
           </Typography>
         </Toolbar>
         <MyButton
-            onClick={() => console.log('Logging out')}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Out
-          </MyButton>
+          onClick={() => console.log('Logging out')}
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+          marginRight='20px'
+        >
+          Sign Out
+        </MyButton>
       </AppBar>
       <Drawer
         className={classes.drawer}

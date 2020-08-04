@@ -13,13 +13,6 @@ body {
   justify-content: center;
 }
 
-#root > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* border: groove; */
-}
-
 .analyze-status-image {
   margin-right: 2rem;
   animation: rotate 1s linear infinite;

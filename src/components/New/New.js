@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import useVisualMode from '../../helpers/useVisualMode';
-import { ProcessImage } from "../../helpers/helpers";
+import { ProcessImage } from "../../helpers/processImage";
 
 import Upload from "./Upload";
 import Analyzing from "./Analyzing";
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     border: 1,
-    marginTop: 100,
+    marginTop: 200,
   },
 }));
 
@@ -46,7 +46,7 @@ export default function New() {
       <h2>Submit a photo</h2>
       
       <p id="opResult"></p>
-      <h3 id="bin"></h3>
+      <h2 id="bin"></h2>
 
       {mode === UPLOAD && <Upload onChange={(event) => recognize()} />}
       {mode === ANALYZING && <Analyzing text="Analyzing" />}

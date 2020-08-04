@@ -30,15 +30,35 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const useStyles = makeStyles({
+  page: {
+    marginTop: 150,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  tree: {
+    height: 300,
+    margin: 15
+  },
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    margin: 20
   },
   table: {
     minWidth: 700,
     maxWidth: 1500
   },
+  // tableHead: {
+  //   background: 'linear-gradient(45deg, #000000 30%, #303030 90%)',
+  //   minWidth: 700,
+  //   maxWidth: 1500
+  // },
+  link: {
+    textDecoration: 'none',
+    color: 'white'
+  }
 });
 
 function createData(category, score) {
@@ -56,20 +76,26 @@ export default function User() {
   const classes = useStyles()
 
   return (
-    <>
-      <h2>[For testing: Requested user ID: {id}]</h2>
+    <div className={classes.page}>
+      {/* <h2>[For testing: Requested user ID: {id}]</h2> */}
 
       <MyButton
-        children={<Link to="/new">Add new</Link>}
+        children={
+          <Link
+            to="/new"
+            className={classes.link}
+          >Upload
+          </Link>
+        }
       />
 
-      <img alt="Tree"></img>
+      <img src="images/forest.jpg" alt="Tree" className={classes.tree}/>
 
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Your waste in numbers</StyledTableCell>
+              <StyledTableCell /* className={classes.tableHead} */>Your waste in numbers</StyledTableCell>
               <StyledTableCell align="right"></StyledTableCell>
             </TableRow>
           </TableHead>
@@ -91,10 +117,10 @@ export default function User() {
           </TableBody>
         </Table>
       </TableContainer>
-      
+{/*       
       <MyButton
-        children={<Link to="/forest" /* style={{textDecoration: 'none'}} */>Leaderboard</Link>}
-      />
-    </>
+        children={<Link to="/forest">Leaderboard</Link>}
+      /> */}
+    </div>
   )
 }

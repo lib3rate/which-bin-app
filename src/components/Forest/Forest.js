@@ -62,7 +62,7 @@ const rows = [
   createData('Name 6', 670),
 ];
 
-export default function Forest() {
+export default function Forest(props) {
   const classes = useStyles()
 
   return (
@@ -78,6 +78,16 @@ export default function Forest() {
               <StyledTableCell align="right"></StyledTableCell>
             </TableRow>
           </TableHead>
+          {/* <TableBody>
+            {props.userBins.map((userBin) => (
+              <StyledTableRow key={userBin.user_id}>
+                <StyledTableCell component="th" scope="row">
+                  {userBin.user_id}
+                </StyledTableCell>
+                <StyledTableCell align="right">{userBin.score}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody> */}
           <TableBody>
             {rows.map((row) => (
               <StyledTableRow key={row.name}>

@@ -46,7 +46,7 @@ export default function New() {
       <h2>Submit a photo</h2>
       
       <p id="opResult"></p>
-      <h3 id="bin"></h3>
+      <h2 id="bin"></h2>
 
       {mode === UPLOAD && <Upload onChange={(event) => recognize()} />}
       {mode === ANALYZING && <Analyzing text="Analyzing" />}

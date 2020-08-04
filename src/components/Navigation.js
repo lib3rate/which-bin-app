@@ -15,8 +15,10 @@ import Drawer from '@material-ui/core/Drawer';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import clsx from 'clsx';
 import ListItemText from '@material-ui/core/ListItemText';
+import clsx from 'clsx';
+
+import MyButton from "./Button";
 
 const drawerWidth = 240;
 
@@ -25,9 +27,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '100%'
   },
-  // image: {
-  //   maxHeight: 100
-  // },
   // username: {
   //   flexGrow: 1,
   //   marginLeft: 20,
@@ -140,6 +139,16 @@ export default function PersistentDrawerLeft() {
             Which Bin
           </Typography>
         </Toolbar>
+        {/* <MyButton
+            // onClick={() => logout()}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign Out
+          </MyButton> */}
       </AppBar>
       <Drawer
         className={classes.drawer}

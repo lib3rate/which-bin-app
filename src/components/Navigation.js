@@ -63,6 +63,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     fontWeight: 700
   },
+  buttonLink: {
+    textDecoration: 'none',
+    color: 'white',
+  },
   appBarShift: {
     marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
@@ -155,7 +159,7 @@ export default function PersistentDrawerLeft() {
           className={classes.submit}
           marginRight='20px'
         >
-          Sign Out
+          <Link to="/login" className={classes.buttonLink}>Sign out</Link>
         </MyButton>
       </AppBar>
       <Drawer
@@ -174,12 +178,6 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          <MenuItem button key={'login'}>
-            <Link to="/login" className={classes.link}>Sign In</Link>
-          </MenuItem>
-          <MenuItem button key={'register'}>
-            <Link to="/register" className={classes.link}>Sign Up</Link>
-          </MenuItem>
           <MenuItem button key={'new'}>
             <Link to="/new" className={classes.link}>Capture a photo</Link>
           </MenuItem>
@@ -189,6 +187,9 @@ export default function PersistentDrawerLeft() {
           <MenuItem button key={'forest'}>
             <Link to="/forest" className={classes.link}>The Forest</Link>
           </MenuItem>
+          {/* <MenuItem button key={'about'}>
+            <Link to="/about" className={classes.link}>About</Link>
+          </MenuItem> */}
         </List>
         <Divider />
       </Drawer>

@@ -22,6 +22,9 @@ import MyButton from "../Button";
 // };
 
 const useStyles = makeStyles((theme) => ({
+  page: {
+    marginTop: 200,
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -48,7 +51,7 @@ export default function SignIn() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className={classes.page}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

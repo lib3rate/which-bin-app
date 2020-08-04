@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     border: 1,
-    marginTop: 100,
+    marginTop: 200,
   },
 }));
 

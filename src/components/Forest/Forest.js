@@ -27,6 +27,12 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const useStyles = makeStyles({
+  page: {
+    marginTop: 150,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -55,7 +61,7 @@ export default function Forest() {
   const classes = useStyles()
 
   return (
-    <>
+    <div className={classes.page}>
       <h2>This is the Forest</h2>
       <img alt="Forest"/>
 
@@ -79,6 +85,6 @@ export default function Forest() {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </div>
   )
 }

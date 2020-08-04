@@ -30,6 +30,12 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const useStyles = makeStyles({
+  page: {
+    marginTop: 150,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -56,7 +62,7 @@ export default function User() {
   const classes = useStyles()
 
   return (
-    <>
+    <div className={classes.page}>
       <h2>[For testing: Requested user ID: {id}]</h2>
 
       <MyButton
@@ -95,6 +101,6 @@ export default function User() {
       <MyButton
         children={<Link to="/forest" /* style={{textDecoration: 'none'}} */>Leaderboard</Link>}
       />
-    </>
+    </div>
   )
 }

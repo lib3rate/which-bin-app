@@ -35,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: 'black',
     // background: 'linear-gradient(45deg, #008c1c 30%, #67e64e 90%)',
     background: 'linear-gradient(45deg, #000000 30%, #303030 90%)',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginBottom: 300,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
@@ -49,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 32,
     flexGrow: 1,
     marginLeft: 20,
+  },
+  submit: {
+    marginRight: 20
   },
   link: {
     textDecoration: 'none',
@@ -139,7 +146,7 @@ export default function PersistentDrawerLeft() {
             Which Bin
           </Typography>
         </Toolbar>
-        {/* <MyButton
+        <MyButton
             // onClick={() => logout()}
             type="submit"
             fullWidth
@@ -148,7 +155,7 @@ export default function PersistentDrawerLeft() {
             className={classes.submit}
           >
             Sign Out
-          </MyButton> */}
+          </MyButton>
       </AppBar>
       <Drawer
         className={classes.drawer}

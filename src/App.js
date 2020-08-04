@@ -30,7 +30,6 @@ export default function App() {
     ]).then(all => {
       // console.log(all);
       setState(prev => ({ ...prev, users: all[0].data, bins: all[1].data, userBins: all[2].data }));
-      // setState({users: all[0].data, bins: all[1].data, userBins: all[2].data });
     });
   }, []);
 

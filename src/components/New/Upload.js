@@ -1,8 +1,10 @@
 import React from 'react';
+import Input from '@material-ui/core/Input';
 
 export default function Upload(props) {
   return (
-    <input
+    // <input
+    <Input
       type="file"
       name="fileToUpload"
       id="fileToUpload"
@@ -10,6 +12,7 @@ export default function Upload(props) {
       // capture="environment"
       onChange={props.onChange}
     >
-    </input>
+    </Input>
+    // </input>
   )
 }

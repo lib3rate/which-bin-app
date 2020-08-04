@@ -21,7 +21,7 @@ export default function App() {
   const [state, setState] = useState({
     users: {},
     bins: {},
-    userBins: {}
+    userBins: []
   });
 
   useEffect(() => {

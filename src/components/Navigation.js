@@ -54,9 +54,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     marginLeft: 20,
   },
-  submit: {
-    margin: '0 20px 0 0'
-  },
+  // submit: {
+  //   margin: '0 20px 0 0'
+  // },
   link: {
     textDecoration: 'none',
     color: 'black',
@@ -141,7 +141,7 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <img src="images/tree2.jpg" alt="Logo" className={classes.logo}/>
+          <img src="/images/tree2.jpg" alt="Logo" className={classes.logo}/>
           <Typography variant="h6" noWrap className={classes.title}>
             Which Bin
           </Typography>

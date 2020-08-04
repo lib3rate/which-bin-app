@@ -89,7 +89,7 @@ export default function User() {
         }
       />
 
-      <img src="images/forest.jpg" alt="Tree" className={classes.tree}/>
+      <img src="/images/tree1.jpg" alt="Tree" className={classes.tree}/>
 
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">

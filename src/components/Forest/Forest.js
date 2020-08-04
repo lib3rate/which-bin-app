@@ -55,7 +55,7 @@ export default function Forest(props) {
   return (
     <div className={classes.page}>
       <h2>This is the Forest</h2>
-      <img src="images/forest.jpg" alt="Forest" className={classes.forest}/>
+      <img src="/images/forest.jpg" alt="Forest" className={classes.forest}/>
 
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">

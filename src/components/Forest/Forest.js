@@ -33,10 +33,15 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center'
   },
+  forest: {
+    height: 300,
+    margin: 15
+  },
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    margin: 20
   },
   table: {
     minWidth: 700,
@@ -63,7 +68,7 @@ export default function Forest() {
   return (
     <div className={classes.page}>
       <h2>This is the Forest</h2>
-      <img alt="Forest"/>
+      <img src="images/forest.jpg" alt="Forest" className={classes.forest}/>
 
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">

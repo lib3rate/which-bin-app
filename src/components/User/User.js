@@ -36,10 +36,15 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center'
   },
+  tree: {
+    height: 300,
+    margin: 15
+  },
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    margin: 20
   },
   table: {
     minWidth: 700,
@@ -72,7 +77,7 @@ export default function User() {
 
   return (
     <div className={classes.page}>
-      <h2>[For testing: Requested user ID: {id}]</h2>
+      {/* <h2>[For testing: Requested user ID: {id}]</h2> */}
 
       <MyButton
         children={
@@ -84,7 +89,7 @@ export default function User() {
         }
       />
 
-      <img alt="Tree"></img>
+      <img src="images/forest.jpg" alt="Tree" className={classes.tree}/>
 
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">

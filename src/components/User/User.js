@@ -8,6 +8,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+// import logo from '../../logo.svg'
+import Tree from '../Tree/Tree'
 
 import MyButton from "../Button";
 
@@ -88,8 +90,9 @@ export default function User() {
           </Link>
         }
       />
-
-      <img src="/images/tree1.jpg" alt="Tree" className={classes.tree}/>
+       {/* <img {logo} className="App-logo" alt="logo" /> */}
+       <Tree />
+      {/* <img src="/images/tree1.jpg" alt="Tree" className={classes.tree}/> */}
 
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">

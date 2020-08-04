@@ -54,9 +54,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     marginLeft: 20,
   },
-  submit: {
-    marginRight: 20
-  },
+  // submit: {
+  //   margin: '0 20px 0 0'
+  // },
   link: {
     textDecoration: 'none',
     color: 'black',
@@ -141,21 +141,22 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <img src="images/tree2.jpg" alt="Logo" className={classes.logo}/>
+          <img src="/images/tree2.jpg" alt="Logo" className={classes.logo}/>
           <Typography variant="h6" noWrap className={classes.title}>
             Which Bin
           </Typography>
         </Toolbar>
         <MyButton
-            // onClick={() => logout()}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Out
-          </MyButton>
+          onClick={() => console.log('Logging out')}
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+          marginRight='20px'
+        >
+          Sign Out
+        </MyButton>
       </AppBar>
       <Drawer
         className={classes.drawer}
@@ -173,39 +174,22 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {['register', 'login', 'new', 'users/1', 'forest'].map((text, index) => (
-            <MenuItem button key={text}>
-              <Link
-                to={`/${text}`} 
-                className={classes.link}
-              >
-                {text}
-              </Link> 
-              {/* <ListItemText primary={text} /> */}
-            </MenuItem>
-          ))}
+          <MenuItem button key={'login'}>
+            <Link to="/login" className={classes.link}>Sign In</Link>
+          </MenuItem>
+          <MenuItem button key={'register'}>
+            <Link to="/register" className={classes.link}>Sign Up</Link>
+          </MenuItem>
+          <MenuItem button key={'new'}>
+            <Link to="/new" className={classes.link}>Capture a photo</Link>
+          </MenuItem>
+          <MenuItem button key={'users/1'}>
+            <Link to="/users/1" className={classes.link}>Your userpage</Link>
+          </MenuItem>
+          <MenuItem button key={'forest'}>
+            <Link to="/forest" className={classes.link}>The Forest</Link>
+          </MenuItem>
         </List>
-        {/* <List>
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <MenuItem>
-                 <Link to="/register">Register</Link>
-               </MenuItem>
-               <MenuItem>
-                 <Link to="/login">Login</Link>
-               </MenuItem>
-               <MenuItem>
-                 <Link to="/new">Capture a photo</Link>
-               </MenuItem>
-               <MenuItem>
-                 <Link to="/users/1">Your userpage</Link>
-               </MenuItem>
-               <MenuItem>
-                 <Link to="/forest">Forest</Link>
-               </MenuItem>
-              <ListItemText primary={text} />
-            </ListItem>
-        </List> */}
         <Divider />
       </Drawer>
     </div>

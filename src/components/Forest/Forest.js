@@ -49,26 +49,13 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, score) {
-  return { name, score };
-}
-
-const rows = [
-  createData('Name 1', 758),
-  createData('Name 2', 725),
-  createData('Name 3', 701),
-  createData('Name 4', 695),
-  createData('Name 5', 679),
-  createData('Name 6', 670),
-];
-
 export default function Forest(props) {
   const classes = useStyles()
 
   return (
     <div className={classes.page}>
       <h2>This is the Forest</h2>
-      <img src="images/forest.jpg" alt="Forest" className={classes.forest}/>
+      <img src="/images/forest.jpg" alt="Forest" className={classes.forest}/>
 
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
@@ -88,16 +75,6 @@ export default function Forest(props) {
               </StyledTableRow>
             ))}
           </TableBody>
-          {/* <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                  {row.name}
-                </StyledTableCell>
-                <StyledTableCell align="right">{row.score}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody> */}
         </Table>
       </TableContainer>
     </div>

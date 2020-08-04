@@ -30,9 +30,7 @@ export default function App() {
       axios.get("/api/bins"),
       axios.get("/api/user_bins")
     ]).then(all => {
-      // console.log(all[0].data);
       const userBins = convertToArray(all[2].data);
-      // console.log(userBins);
       setState(prev => ({ ...prev, users: all[0].data, bins: all[1].data, userBins }));
     });
   }, []);

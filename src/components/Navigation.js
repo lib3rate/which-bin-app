@@ -33,7 +33,9 @@ const useStyles = makeStyles((theme) => ({
   //   marginLeft: 20,
   // },
   appBar: {
-    backgroundColor: 'black',
+    // backgroundColor: 'black',
+    // background: 'linear-gradient(45deg, #008c1c 30%, #67e64e 90%)',
+    background: 'linear-gradient(45deg, #000000 30%, #303030 90%)',
     marginBottom: 300,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,

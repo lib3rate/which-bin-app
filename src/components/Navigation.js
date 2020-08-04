@@ -40,6 +40,15 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
+  logo: {
+    height: 100,
+    margin: 15
+  },
+  title: {
+    fontSize: 32,
+    flexGrow: 1,
+    marginLeft: 20,
+  },
   appBarShift: {
     marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
@@ -118,8 +127,8 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <img src="images/tree2.jpg" alt="Logo" style={{height: 100, margin: 10}}/>
-          <Typography variant="h6" noWrap>
+          <img src="images/tree2.jpg" alt="Logo" className={classes.logo}/>
+          <Typography variant="h6" noWrap className={classes.title}>
             Which Bin
           </Typography>
         </Toolbar>
@@ -140,10 +149,10 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {['register', 'login', 'new', 'users/1'].map((text, index) => (
+          {['register', 'login', 'new', 'users/1', 'forest'].map((text, index) => (
             <MenuItem button key={text}>
             <Link 
-            to={`/${text}`} 
+              to={`/${text}`} 
             // href={`/${text}`}
             >
               {`/${text}`}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,13 +16,21 @@ import User from "./components/User/User";
 import Navigation from './components/Navigation';
 
 export default function App() {
+  const [state, setState] = useState({
+    users: {},
+    bins: {},
+    userBins: {}
+  });
+
   useEffect(() => {
     Promise.all([
       axios.get("/api/users"),
       axios.get("/api/bins"),
       axios.get("/api/user_bins")
     ]).then(all => {
-      console.log(all);
+      // console.log(all);
+      setState(prev => ({ ...prev, users: all[0].data, bins: all[1].data, userBins: all[2].data }));
+      // setState({users: all[0].data, bins: all[1].data, userBins: all[2].data });
     });
   }, []);
 
@@ -44,10 +52,14 @@ export default function App() {
             <New />
           </Route>
           <Route path="/users/:id">
-            <User />
+            <User
+              userBins={state.userBins}
+            />
           </Route>
           <Route path="/forest">
-            <Forest />
+            <Forest 
+              userBins={state.userBins}
+            />
           </Route>
         </Switch>
       </div>

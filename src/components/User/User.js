@@ -45,6 +45,10 @@ const useStyles = makeStyles({
     minWidth: 700,
     maxWidth: 1500
   },
+  link: {
+    textDecoration: 'none',
+    color: 'white'
+  }
 });
 
 function createData(category, score) {
@@ -66,7 +70,13 @@ export default function User() {
       <h2>[For testing: Requested user ID: {id}]</h2>
 
       <MyButton
-        children={<Link to="/new">Add new</Link>}
+        children={
+          <Link
+            to="/new"
+            className={classes.link}
+          >Upload
+          </Link>
+        }
       />
 
       <img alt="Tree"></img>
@@ -97,10 +107,10 @@ export default function User() {
           </TableBody>
         </Table>
       </TableContainer>
-      
+{/*       
       <MyButton
-        children={<Link to="/forest" /* style={{textDecoration: 'none'}} */>Leaderboard</Link>}
-      />
+        children={<Link to="/forest">Leaderboard</Link>}
+      /> */}
     </div>
   )
 }

@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     textDecoration: 'none',
+    color: 'black',
     fontSize: 20,
     fontWeight: 700
   },

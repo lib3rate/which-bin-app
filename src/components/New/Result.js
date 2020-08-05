@@ -16,8 +16,9 @@ export default function Result(props) {
 
   return (
     <>
-      {/* <p id="opResult"></p>
-      <h3 id="bin"></h3> */}
+      <h2>{props.recognition.label}</h2>
+      <h2>{props.recognition.bin}</h2>
+
       <MyButton
         onClick={props.onClick}
         children={<Link to="/users/1" className={classes.link}>Trashed!</Link>}

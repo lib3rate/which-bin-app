@@ -43,12 +43,24 @@ export default function New(props) {
     <div className={classes.root}>
       <h2>Submit a photo</h2>
       
-      <p id="opResult"></p>
-      <h2 id="bin"></h2>
+      {/* <p id="opResult">{props.recognition.label}</p>
+      <h2 id="bin">{props.recognition.bin}</h2> */}
 
-      {mode === UPLOAD && <Upload onChange={(event) => recognize()} />}
-      {mode === ANALYZING && <Analyzing text="Analyzing" />}
-      {mode === RESULT && <Result onClick={props.updateScore}/>}
+      {mode === UPLOAD &&
+        <Upload
+          onChange={(event) => recognize()}
+        />}
+
+      {mode === ANALYZING &&
+        <Analyzing
+          text="Analyzing"
+        />}
+
+      {mode === RESULT &&
+        <Result
+          recognition={props.recognition}
+          onClick={props.updateScore}
+        />}
     </div>
   )
 }

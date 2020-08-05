@@ -4,7 +4,8 @@ import AWS from 'aws-sdk';
 export default function useApplicationData() {
   const [state, setState] = useState({
     user: {},
-    userBins: []
+    userBins: [],
+    recognition: {}
   });
 
   function convertToArray(data) {
@@ -65,33 +66,30 @@ export default function useApplicationData() {
           rekognition.detectLabels(params, function (err, data) {
             if (err) console.log(err, err.stack); // an error occurred
             else {
+              // console.log(data);
+              const result = {
+                label: '',
+                bin: ''
+              }
               setTimeout(() => {
                 for (let label of data.Labels) {
-                  // setRecognition(data)
-                  document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
                   if (label.Name === 'Glass' || label.Name === 'Cardboard') {
-                    document.getElementById("bin").innerHTML = 'This item should go to the recycling bin.';
+                    // const name = label.Name.toLowerCase;
+                    result.label = `You have uploaded a ${label.Name}!`;
+                    result.bin = 'It should go to the recycling bin.';
+                    setState({...state, recognition: result});
                   } else if (label.Name === 'Plastic') {
-                    document.getElementById("bin").innerHTML = 'This item should go to the garbage bin.';
+                    result.label = `You have uploaded a ${label.Name}!`;
+                    result.bin = 'It should go to the garbage bin.';
+                    setState({...state, recognition: result});
                   } else if (label.Name === 'Plant') {
-                    document.getElementById("bin").innerHTML = 'This item should go to the organic bin.';
+                    result.label = `You have uploaded a ${label.Name}!`;
+                    result.bin = 'It should go to the organic bin.';
+                    setState({...state, recognition: result});
                   }
                 }
                 resolve()
               }, 750)
-              // console.log(data);
-              // for (let label of data.Labels) {
-                // setRecognition(data)
-              //   document.getElementById("opResult").innerHTML += `<p>The item is a: ${label.Name} with a ${label.Confidence} probability.</p>`;
-              //   if (label.Name === 'Glass' || label.Name === 'Cardboard') {
-              //     document.getElementById("bin").innerHTML = 'This item should go to the recycling bin.';
-              //   } else if (label.Name === 'Plastic') {
-              //     document.getElementById("bin").innerHTML = 'This item should go to the garbage bin.';
-              //   } else if (label.Name === 'Plant') {
-              //     document.getElementById("bin").innerHTML = 'This item should go to the organic bin.';
-              //   }
-              // }
-              // resolve()
             }
           });
         };

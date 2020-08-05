@@ -53,7 +53,8 @@ export default function App() {
             <Login />
           </Route>
           <Route path="/new">
-            <New 
+            <New
+              recognition={state.recognition}
               ProcessImage={ProcessImage}
               updateScore={updateScore}
               user={state.user}

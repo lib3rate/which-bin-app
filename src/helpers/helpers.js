@@ -27,8 +27,14 @@ export default function useApplicationData() {
     return result;
   }
 
-  function updateScore() {
-    const updatedScore = state.user.total + 25;
+  function updateScore(bin) {
+    let updatedScore = state.user.total;
+
+    if (bin === 'Recycling') {
+      updatedScore += 50;
+    } else if (bin === 'Organic') {
+      updatedScore += 25;
+    }
 
     const user = {
       ...state.user,
@@ -69,22 +75,26 @@ export default function useApplicationData() {
               // console.log(data);
               const result = {
                 label: '',
-                bin: ''
+                bin: '',
+                text: ''
               }
               setTimeout(() => {
                 for (let label of data.Labels) {
                   if (label.Name === 'Glass' || label.Name === 'Cardboard') {
                     // const name = label.Name.toLowerCase;
                     result.label = `You have uploaded a ${label.Name}!`;
-                    result.bin = 'It should go to the recycling bin.';
+                    result.bin = 'Recycling';
+                    result.text = 'It should go to the recycling bin.';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plastic') {
                     result.label = `You have uploaded a ${label.Name}!`;
-                    result.bin = 'It should go to the garbage bin.';
+                    result.bin = 'Garbage';
+                    result.text = 'It should go to the garbage bin.';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plant') {
                     result.label = `You have uploaded a ${label.Name}!`;
-                    result.bin = 'It should go to the organic bin.';
+                    result.bin = 'Organic';
+                    result.text = 'It should go to the organic bin.';
                     setState({...state, recognition: result});
                   }
                 }

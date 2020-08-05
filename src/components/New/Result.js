@@ -17,10 +17,10 @@ export default function Result(props) {
   return (
     <>
       <h2>{props.recognition.label}</h2>
-      <h2>{props.recognition.bin}</h2>
+      <h2>{props.recognition.text}</h2>
 
       <MyButton
-        onClick={props.onClick}
+        onClick={() => props.updateScore(props.recognition.bin)}
         children={<Link to="/users/1" className={classes.link}>Trashed!</Link>}
       />
     </>

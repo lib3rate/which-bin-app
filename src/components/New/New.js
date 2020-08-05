@@ -41,10 +41,7 @@ export default function New(props) {
 
   return (
     <div className={classes.root}>
-      <h2>Submit a photo</h2>
-      
-      {/* <p id="opResult">{props.recognition.label}</p>
-      <h2 id="bin">{props.recognition.bin}</h2> */}
+      <h1>Submit a photo</h1>
 
       {mode === UPLOAD &&
         <Upload
@@ -59,7 +56,7 @@ export default function New(props) {
       {mode === RESULT &&
         <Result
           recognition={props.recognition}
-          onClick={props.updateScore}
+          updateScore={props.updateScore}
         />}
     </div>
   )

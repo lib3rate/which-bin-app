@@ -20,7 +20,7 @@ export default function Analyzing(props) {
         src="images/status.png"
         alt="Analyzing"
       />
-      <h3>{props.text}</h3>
+      <h2>{props.text}</h2>
     </main>
   );
 }

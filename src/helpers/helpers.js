@@ -82,19 +82,19 @@ export default function useApplicationData() {
                 for (let label of data.Labels) {
                   if (label.Name === 'Glass' || label.Name === 'Cardboard') {
                     // const name = label.Name.toLowerCase;
-                    result.label = `You have uploaded a ${label.Name}!`;
+                    result.label = `You have uploaded a ${label.Name}.`;
                     result.bin = 'Recycling';
-                    result.text = 'It should go to the recycling bin.';
+                    result.text = 'Place it into the recycling bin and you will get 50 points to your score!';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plastic') {
-                    result.label = `You have uploaded a ${label.Name}!`;
+                    result.label = `You have uploaded some ${label.Name}.`;
                     result.bin = 'Garbage';
-                    result.text = 'It should go to the garbage bin.';
+                    result.text = 'Please put it into the garbage bin and use more recycled items, if possible.';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plant') {
-                    result.label = `You have uploaded a ${label.Name}!`;
+                    result.label = `You have uploaded a ${label.Name}.`;
                     result.bin = 'Organic';
-                    result.text = 'It should go to the organic bin.';
+                    result.text = 'Place it into the organics bin and you will get 25 points to your score!';
                     setState({...state, recognition: result});
                   }
                 }

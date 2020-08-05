@@ -15,11 +15,13 @@ import MyButton from "../Button";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    // backgroundColor: theme.palette.common.black,
+    backgroundColor: '#4D5D53',
     color: theme.palette.common.white,
   },
   body: {
     fontSize: 14,
+    backgroundColor: '#BDBAAE'
   },
 }))(TableCell);
 
@@ -38,10 +40,6 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center'
   },
-  tree: {
-    height: 300,
-    margin: 15
-  },
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -50,7 +48,8 @@ const useStyles = makeStyles({
   },
   table: {
     minWidth: 700,
-    maxWidth: 1500
+    maxWidth: 1500,
+    height: 300,
   },
   // tableHead: {
   //   background: 'linear-gradient(45deg, #000000 30%, #303030 90%)',

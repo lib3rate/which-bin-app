@@ -1,31 +1,33 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-// import MenuItem from '@material-ui/core/MenuItem';
-import MenuItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import ListItemText from '@material-ui/core/ListItemText';
-import clsx from 'clsx';
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import MenuItem from "@material-ui/core/ListItem";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import ListItemText from "@material-ui/core/ListItemText";
+import clsx from "clsx";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 import MyButton from "./Button";
+import Tree from "./Tree/Tree";
 
 const drawerWidth = 240;
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    width: '100%'
+    display: "flex",
+    width: "100%",
   },
   // username: {
   //   flexGrow: 1,
@@ -34,42 +36,44 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     // backgroundColor: 'black',
     // background: 'linear-gradient(45deg, #008c1c 30%, #67e64e 90%)',
-    background: 'linear-gradient(45deg, #000000 30%, #303030 90%)',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    background: "linear-gradient(45deg, #B2C2B9, 30%, #738678 90%)",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     marginBottom: 300,
-    transition: theme.transitions.create(['margin', 'width'], {
+    maxHeight: 100,
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
   logo: {
     height: 100,
-    margin: 15
+    margin: 15,
   },
   title: {
     fontSize: 32,
     flexGrow: 1,
     marginLeft: 20,
+    fontFamily: 'Cinzel Decorative',
   },
   // submit: {
   //   margin: '0 20px 0 0'
   // },
   link: {
-    textDecoration: 'none',
-    color: 'black',
+    textDecoration: "none",
+    color: "black",
     fontSize: 20,
-    fontWeight: 700
+    fontWeight: 700,
   },
   buttonLink: {
-    textDecoration: 'none',
-    color: 'white',
+    textDecoration: "none",
+    color: "white",
   },
   appBarShift: {
     marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -78,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   hide: {
-    display: 'none',
+    display: "none",
   },
   drawer: {
     width: drawerWidth,
@@ -88,24 +92,24 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
+    transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
   },
   contentShift: {
-    transition: theme.transitions.create('margin', {
+    transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -142,57 +146,79 @@ export default function PersistentDrawerLeft() {
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
+            // onBackdropClick={handleDrawerClose}
           >
             <MenuIcon />
           </IconButton>
-          <img src="/images/tree2.jpg" alt="Logo" className={classes.logo}/>
+
+          {/* <img src="/images/tree2.jpg" alt="Logo" className={classes.logo}/> */}
+          <DeleteForeverIcon />
+
           <Typography variant="h6" noWrap className={classes.title}>
             Which Bin
           </Typography>
         </Toolbar>
         <MyButton
-          onClick={() => console.log('Logging out')}
+          onClick={() => console.log("Logging out")}
           type="submit"
           fullWidth
           variant="contained"
           color="primary"
           className={classes.submit}
-          marginRight='20px'
+          marginRight="20px"
         >
-          <Link to="/login" className={classes.buttonLink}>Sign out</Link>
+          <Link to="/login" className={classes.buttonLink}>
+            Sign out
+          </Link>
         </MyButton>
       </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          <MenuItem button key={'new'}>
-            <Link to="/new" className={classes.link}>Capture a photo</Link>
-          </MenuItem>
-          <MenuItem button key={'users/1'}>
-            <Link to="/users/1" className={classes.link}>Your userpage</Link>
-          </MenuItem>
-          <MenuItem button key={'forest'}>
-            <Link to="/forest" className={classes.link}>The Forest</Link>
-          </MenuItem>
-          {/* <MenuItem button key={'about'}>
+
+      {/* <ClickAwayListener onClickAway={ handleDrawerClose }> */}
+        <Drawer
+          className={classes.drawer}
+          variant="persistent"
+          anchor="left"
+          open={open}
+          // onClose={handleClose}
+          // onBackdropClick={ handleDrawerClose }
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          // ModalProps={{ onBackdropClick: handleDrawerClose }}
+        >
+          <div className={classes.drawerHeader}>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "ltr" ? (
+                <ChevronLeftIcon />
+              ) : (
+                <ChevronRightIcon />
+              )}
+            </IconButton>
+          </div>
+          <Divider />
+          <List>
+            <MenuItem button key={"new"}>
+              <Link to="/new" className={classes.link}>
+                Capture a photo
+              </Link>
+            </MenuItem>
+            <MenuItem button key={"users/1"}>
+              <Link to="/users/1" className={classes.link}>
+                Your userpage
+              </Link>
+            </MenuItem>
+            <MenuItem button key={"forest"}>
+              <Link to="/forest" className={classes.link}>
+                The Forest
+              </Link>
+            </MenuItem>
+            {/* <MenuItem button key={'about'}>
             <Link to="/about" className={classes.link}>About</Link>
           </MenuItem> */}
-        </List>
-        <Divider />
-      </Drawer>
+          </List>
+          <Divider />
+        </Drawer>
+      {/* </ClickAwayListener> */}
     </div>
   );
 }

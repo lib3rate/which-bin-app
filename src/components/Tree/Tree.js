@@ -41,6 +41,7 @@ export default function (props) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 267.44 452.56"
       height="300"
+      // style={{treeHeight: props.treeHeight}}
     >
       <title>test-tree</title>
       <g className={classes.base}>

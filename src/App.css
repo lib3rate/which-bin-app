@@ -18,6 +18,11 @@ body {
   animation: rotate 1s linear infinite;
 }
 
+/* @keyframes branches {
+  0%   { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+} */
+
 @keyframes rotate {
   100% {
     -webkit-transform: rotate(360deg);

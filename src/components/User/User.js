@@ -91,7 +91,9 @@ export default function User(props) {
       />
 
       {/* <img {logo} className="App-logo" alt="logo" /> */}
-      <Tree />
+      <Tree 
+        total={props.user.total}
+      />
       {/* <img src="/images/tree1.jpg" alt="Tree" className={classes.tree}/> */}
 
       <TableContainer className={classes.container} component={Paper}>

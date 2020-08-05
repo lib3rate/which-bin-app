@@ -109,7 +109,7 @@ export default function User(props) {
               <StyledTableCell component="th" scope="row">
                 Recycling
               </StyledTableCell>
-              <StyledTableCell align="right">{props.user.organic ? props.user.recycling : 0}</StyledTableCell>
+              <StyledTableCell align="right">{props.user.recycling ? props.user.recycling : 0}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow key="Organic">
               <StyledTableCell component="th" scope="row">

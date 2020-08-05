@@ -28,22 +28,33 @@ export default function useApplicationData() {
   }
 
   function updateScore(bin) {
-    let updatedScore = state.user.total;
+    let updatedUser = state.user;
+    let updatedTotal = state.user.total;
+    let updatedRecycling = state.user.recycling;
+    let updatedOrganic = state.user.organic;
 
     if (bin === 'Recycling') {
-      updatedScore += 50;
+      updatedTotal += 50;
+      updatedRecycling += 50;
+      updatedUser = {
+        ...updatedUser,
+        total: updatedTotal,
+        recycling: updatedRecycling
+      };
+      console.log(updatedUser);
     } else if (bin === 'Organic') {
-      updatedScore += 25;
-    }
-
-    const user = {
-      ...state.user,
-      total: updatedScore
+      updatedTotal += 25;
+      updatedOrganic += 25;
+      updatedUser = {
+        ...updatedUser,
+        total: updatedTotal,
+        organic: updatedOrganic
+      };
     }
 
     setState({
       ...state,
-      user
+      user: updatedUser
     })
   };
 

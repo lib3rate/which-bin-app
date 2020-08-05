@@ -23,7 +23,8 @@ export default function App() {
     setState,
     convertToArray,
     convertToObject,
-    updateScore
+    updateScore,
+    ProcessImage
   } = useApplicationData();
 
   useEffect(() => {
@@ -53,6 +54,7 @@ export default function App() {
           </Route>
           <Route path="/new">
             <New 
+              ProcessImage={ProcessImage}
               updateScore={updateScore}
               user={state.user}
             />

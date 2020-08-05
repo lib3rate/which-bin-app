@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import useVisualMode from '../../helpers/useVisualMode';
-import { ProcessImage } from "../../helpers/processImage";
 
 import Upload from "./Upload";
 import Analyzing from "./Analyzing";
@@ -27,12 +26,11 @@ export default function New(props) {
   const classes = useStyles();
 
   // Showing the Upload mode by default
-
   const { mode, transition } = useVisualMode(UPLOAD);
 
   const recognize = () => {
     transition(ANALYZING);
-    ProcessImage()
+    props.ProcessImage()
       .then(() => {
         transition(RESULT);
       })

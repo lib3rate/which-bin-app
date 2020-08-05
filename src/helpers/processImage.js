@@ -60,7 +60,7 @@ export function ProcessImage() {
                 }
               }
               resolve()
-            }, 1000)
+            }, 750)
             // console.log(data);
             // for (let label of data.Labels) {
               // setRecognition(data)

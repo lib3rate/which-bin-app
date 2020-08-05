@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,7 @@ import axios from "axios";
 
 import './App.css';
 
-import { convertToArray, convertToObject } from "./helpers/helpers";
+import useApplicationData from "./helpers/helpers";
 
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -18,16 +18,17 @@ import User from "./components/User/User";
 import Navigation from './components/Navigation';
 
 export default function App() {
-  const [state, setState] = useState({
-    user: {},
-    // bins: {},
-    userBins: []
-  });
+  const {
+    state,
+    setState,
+    convertToArray,
+    convertToObject,
+    updateScore
+  } = useApplicationData();
 
   useEffect(() => {
     Promise.all([
       axios.get("/api/users"),
-      // axios.get("/api/bins"),
       axios.get("/api/user_bins")
     ]).then(all => {
       const user = convertToObject(all[0].data);
@@ -35,22 +36,6 @@ export default function App() {
       setState(prev => ({ ...prev, user, userBins }));
     });
   }, []);
-
-  const updateScore = () => {
-    console.log("Trashed!");
-    
-    const updatedScore = state.user.total + 25;
-
-    const user = {
-      ...state.user,
-      total: updatedScore
-    }
-
-    setState({
-      ...state,
-      user
-    })
-  };
 
   return (
     <Router>

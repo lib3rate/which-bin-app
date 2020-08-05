@@ -89,8 +89,9 @@ export default function User(props) {
           </Link>
         }
       />
-       {/* <img {logo} className="App-logo" alt="logo" /> */}
-       <Tree />
+
+      {/* <img {logo} className="App-logo" alt="logo" /> */}
+      <Tree />
       {/* <img src="/images/tree1.jpg" alt="Tree" className={classes.tree}/> */}
 
       <TableContainer className={classes.container} component={Paper}>
@@ -102,20 +103,38 @@ export default function User(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            <StyledTableRow key="Recycling">
+              <StyledTableCell component="th" scope="row">
+                Recycling
+              </StyledTableCell>
+              <StyledTableCell align="right">{props.user.organic ? props.user.recycling : 0}</StyledTableCell>
+            </StyledTableRow>
+            <StyledTableRow key="Organic">
+              <StyledTableCell component="th" scope="row">
+                Organic
+              </StyledTableCell>
+              <StyledTableCell align="right">{props.user.organic ? props.user.organic : 0}</StyledTableCell>
+            </StyledTableRow>
+            <StyledTableRow key="Garbage">
+              <StyledTableCell component="th" scope="row">
+                Garbage
+              </StyledTableCell>
+              <StyledTableCell align="right">{props.user.garbage ? props.user.garbage : 0}</StyledTableCell>
+            </StyledTableRow>
+            {/* {rows.map((row) => (
               <StyledTableRow key={row.category}>
                 <StyledTableCell component="th" scope="row">
                   {row.category}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.score}</StyledTableCell>
               </StyledTableRow>
-            ))}
-              <StyledTableRow key="Total">
-                <StyledTableCell component="th" scope="row">
-                  <strong>Your total score</strong>
-                </StyledTableCell>
-            <StyledTableCell align="right"><strong>{props.user.score}</strong></StyledTableCell>
-              </StyledTableRow>
+            ))} */}
+            <StyledTableRow key="Total">
+              <StyledTableCell component="th" scope="row">
+                <strong>Your total score</strong>
+              </StyledTableCell>
+              <StyledTableCell align="right"><strong>{props.user.total}</strong></StyledTableCell>
+            </StyledTableRow>
           </TableBody>
         </Table>
       </TableContainer>

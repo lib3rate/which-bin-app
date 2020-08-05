@@ -8,8 +8,12 @@ export function convertToArray(data) {
 
 export function convertToObject(data) {
   const result = {};
+  let total = 0;
   for (let item of data) {
-    result.user = item;
+    result[item.name] = Number(item.sum);
+    total += Number(item.sum);
   }
-  return result.user;
+  result.total = total;
+  console.log(result);
+  return result;
 }

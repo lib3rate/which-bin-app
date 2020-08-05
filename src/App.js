@@ -20,22 +20,19 @@ import Navigation from './components/Navigation';
 export default function App() {
   const [state, setState] = useState({
     user: {},
-    bins: {},
+    // bins: {},
     userBins: []
   });
 
   useEffect(() => {
     Promise.all([
       axios.get("/api/users"),
-      axios.get("/api/bins"),
+      // axios.get("/api/bins"),
       axios.get("/api/user_bins")
     ]).then(all => {
-      // console.log(all[0].data);
-      const userBins = convertToArray(all[2].data);
       const user = convertToObject(all[0].data);
-      setState(prev => ({ ...prev, user, bins: all[1].data, userBins }));
-      // setState(prev => ({ ...prev, user: all[0].data, bins: all[1].data, userBins }));
-      // console.log(state.user);
+      const userBins = convertToArray(all[1].data);
+      setState(prev => ({ ...prev, user, userBins }));
     });
   }, []);
 

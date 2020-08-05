@@ -36,13 +36,13 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     // backgroundColor: 'black',
     // background: 'linear-gradient(45deg, #008c1c 30%, #67e64e 90%)',
-    background: "linear-gradient(45deg, #B2C2B9, 30%, #738678 90%)",
+    background: "linear-gradient(45deg, #738678, 30%, #B2C2B9 90%)",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 300,
-    maxHeight: 100,
+    height: 90,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,

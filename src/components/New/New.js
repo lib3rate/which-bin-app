@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function New() {
+export default function New(props) {
   const classes = useStyles();
 
   // Showing the Upload mode by default
@@ -50,12 +50,7 @@ export default function New() {
 
       {mode === UPLOAD && <Upload onChange={(event) => recognize()} />}
       {mode === ANALYZING && <Analyzing text="Analyzing" />}
-      {mode === RESULT && <Result />}
-      {/* <Upload onChange={(event) => ProcessImage()}/>
-      <Analyzing
-        text="Analyzing"
-      />
-      <Result/> */}
+      {mode === RESULT && <Result onClick={props.updateScore}/>}
     </div>
   )
 }

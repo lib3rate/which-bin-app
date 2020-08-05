@@ -19,7 +19,7 @@ export default function Result(props) {
       {/* <p id="opResult"></p>
       <h3 id="bin"></h3> */}
       <MyButton
-        onClick={() => console.log("Trashed!")}
+        onClick={props.onClick}
         children={<Link to="/users/1" className={classes.link}>Trashed!</Link>}
       />
     </>

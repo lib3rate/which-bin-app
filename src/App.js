@@ -36,6 +36,22 @@ export default function App() {
     });
   }, []);
 
+  const updateScore = () => {
+    console.log("Trashed!");
+    
+    const updatedScore = state.user.total + 25;
+
+    const user = {
+      ...state.user,
+      total: updatedScore
+    }
+
+    setState({
+      ...state,
+      user
+    })
+  };
+
   return (
     <Router>
       <div>
@@ -51,7 +67,10 @@ export default function App() {
             <Login />
           </Route>
           <Route path="/new">
-            <New />
+            <New 
+              updateScore={updateScore}
+              user={state.user}
+            />
           </Route>
           <Route path="/users/:id">
             <User

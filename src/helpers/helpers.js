@@ -14,6 +14,5 @@ export function convertToObject(data) {
     total += Number(item.sum);
   }
   result.total = total;
-  console.log(result);
   return result;
 }

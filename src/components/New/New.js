@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import useVisualMode from '../../helpers/useVisualMode';
-import { ProcessImage } from "../../helpers/processImage";
 
 import Upload from "./Upload";
 import Analyzing from "./Analyzing";
@@ -23,16 +22,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function New() {
+export default function New(props) {
   const classes = useStyles();
 
   // Showing the Upload mode by default
-
   const { mode, transition } = useVisualMode(UPLOAD);
 
   const recognize = () => {
     transition(ANALYZING);
-    ProcessImage()
+    props.ProcessImage()
       .then(() => {
         transition(RESULT);
       })
@@ -43,19 +41,23 @@ export default function New() {
 
   return (
     <div className={classes.root}>
-      <h2>Submit a photo</h2>
-      
-      <p id="opResult"></p>
-      <h2 id="bin"></h2>
+      <h1>Submit a photo</h1>
 
-      {mode === UPLOAD && <Upload onChange={(event) => recognize()} />}
-      {mode === ANALYZING && <Analyzing text="Analyzing" />}
-      {mode === RESULT && <Result />}
-      {/* <Upload onChange={(event) => ProcessImage()}/>
-      <Analyzing
-        text="Analyzing"
-      />
-      <Result/> */}
+      {mode === UPLOAD &&
+        <Upload
+          onChange={(event) => recognize()}
+        />}
+
+      {mode === ANALYZING &&
+        <Analyzing
+          text="Analyzing"
+        />}
+
+      {mode === RESULT &&
+        <Result
+          recognition={props.recognition}
+          updateScore={props.updateScore}
+        />}
     </div>
   )
 }

@@ -23,7 +23,6 @@ import Tree from "./Tree/Tree";
 
 const drawerWidth = 240;
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -36,13 +35,13 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     // backgroundColor: 'black',
     // background: 'linear-gradient(45deg, #008c1c 30%, #67e64e 90%)',
-    background: "linear-gradient(45deg, #B2C2B9, 30%, #738678 90%)",
+    background: "linear-gradient(45deg, #738678, 30%, #B2C2B9 90%)",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 300,
-    maxHeight: 100,
+    height: 90,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -56,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 32,
     flexGrow: 1,
     marginLeft: 20,
-    fontFamily: 'Cinzel Decorative',
+    fontFamily: "Cinzel Decorative",
   },
   // submit: {
   //   margin: '0 20px 0 0'
@@ -139,13 +138,15 @@ export default function PersistentDrawerLeft() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar 
+        // onClose={handleDrawerOpen}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
+            onClick={handleDrawerOpen}
             // onBackdropClick={handleDrawerClose}
           >
             <MenuIcon />
@@ -174,50 +175,56 @@ export default function PersistentDrawerLeft() {
       </AppBar>
 
       {/* <ClickAwayListener onClickAway={ handleDrawerClose }> */}
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={open}
-          // onClose={handleClose}
-          // onBackdropClick={ handleDrawerClose }
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          // ModalProps={{ onBackdropClick: handleDrawerClose }}
-        >
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "ltr" ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            <MenuItem button key={"new"}>
-              <Link to="/new" className={classes.link}>
-                Capture a photo
-              </Link>
-            </MenuItem>
-            <MenuItem button key={"users/1"}>
-              <Link to="/users/1" className={classes.link}>
-                Your userpage
-              </Link>
-            </MenuItem>
-            <MenuItem button key={"forest"}>
-              <Link to="/forest" className={classes.link}>
-                The Forest
-              </Link>
-            </MenuItem>
-            {/* <MenuItem button key={'about'}>
+      <Drawer
+        className={classes.drawer}
+        variant="persistent"
+        anchor="left"
+        open={open}
+        onClose={handleDrawerClose}
+        // onBackdropClick={ handleDrawerClose }
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+        // ModalProps={{ onBackdropClick: handleDrawerClose }}
+      >
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "ltr" ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
+          </IconButton>
+        </div>
+        <Divider />
+        <List>
+          <MenuItem button key={"new"}
+          onClick={handleDrawerClose}
+          >
+            <Link to="/new" className={classes.link}>
+              Capture a photo
+            </Link>
+          </MenuItem>
+          <MenuItem button key={"users/1"}
+          onClick={handleDrawerClose}
+          >
+            <Link to="/users/1" className={classes.link}>
+              Your userpage
+            </Link>
+          </MenuItem>
+          <MenuItem button key={"forest"}
+          onClick={handleDrawerClose}
+          >
+            <Link to="/forest" className={classes.link}>
+              The Forest
+            </Link>
+          </MenuItem>
+          {/* <MenuItem button key={'about'}>
             <Link to="/about" className={classes.link}>About</Link>
           </MenuItem> */}
-          </List>
-          <Divider />
-        </Drawer>
+        </List>
+        <Divider />
+      </Drawer>
       {/* </ClickAwayListener> */}
     </div>
   );

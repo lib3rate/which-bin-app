@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,7 @@ import axios from "axios";
 
 import './App.css';
 
-import { convertToArray, convertToObject } from "./helpers/helpers";
+import useApplicationData from "./helpers/helpers";
 
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -18,24 +18,23 @@ import User from "./components/User/User";
 import Navigation from './components/Navigation';
 
 export default function App() {
-  const [state, setState] = useState({
-    user: {},
-    bins: {},
-    userBins: []
-  });
+  const {
+    state,
+    setState,
+    convertToArray,
+    convertToObject,
+    updateScore,
+    ProcessImage
+  } = useApplicationData();
 
   useEffect(() => {
     Promise.all([
       axios.get("/api/users"),
-      axios.get("/api/bins"),
       axios.get("/api/user_bins")
     ]).then(all => {
-      // console.log(all[0].data);
-      const userBins = convertToArray(all[2].data);
       const user = convertToObject(all[0].data);
-      setState(prev => ({ ...prev, user, bins: all[1].data, userBins }));
-      // setState(prev => ({ ...prev, user: all[0].data, bins: all[1].data, userBins }));
-      // console.log(state.user);
+      const userBins = convertToArray(all[1].data);
+      setState(prev => ({ ...prev, user, userBins }));
     });
   }, []);
 
@@ -54,7 +53,12 @@ export default function App() {
             <Login />
           </Route>
           <Route path="/new">
-            <New />
+            <New
+              recognition={state.recognition}
+              ProcessImage={ProcessImage}
+              updateScore={updateScore}
+              user={state.user}
+            />
           </Route>
           <Route path="/users/:id">
             <User

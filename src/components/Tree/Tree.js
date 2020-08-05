@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function (props) {
   const classes = useStyles();
+  
   return (
     <svg
       id="Layer_1"

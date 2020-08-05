@@ -14,27 +14,55 @@ const branchStyle = {
   strokeWidth: "3px",
   strokeLinejoin: "round",
   strokeLinecap: "round",
-  strokeDasharray: 1000,
-  strokeDashoffset: 1000,
-  animationName: "$branches",
   animationDuration: "10s",
-  animationIteration: "infinite",
+  animationIteration: "linear",
+  strokeDasharray: 1000,
+  strokeDashoffset: '50%',
 };
+// The stroke-dashoffset property in CSS defines the location along an SVG path where the dash of a stroke will begin. The higher the number, the further along the path the dashes will begin.
 
-const useStyles = makeStyles((theme) => ({
-  "@keyframes branches": {
+// const starting = props.total;
+
+const useStyles = makeStyles((theme) => 
+({
+  "@keyframes base": {
     from: { strokeDashoffset: 1000 },
     to: { strokeDashoffset: 0 },
   },
-  base: branchStyle,
-  baseLeaves: branchStyle,
-  leftBranch: branchStyle,
-  rightBranch: branchStyle,
+  "@keyframes baseLeaves": {
+    from: { strokeDashoffset: 1000 },
+    to: { strokeDashoffset: 0 },
+  },
+  "@keyframes leftBranch": {
+    from: { strokeDashoffset: 1000 },
+    to: { strokeDashoffset: 0 },
+  },
+  "@keyframes rightBranch": {
+    from: { strokeDashoffset: 1000 },
+    to: { strokeDashoffset: theme },
+  },
+  base: {
+    ...branchStyle,
+    animationName: "$base",
+  },
+  baseLeaves: {
+    ...branchStyle,
+    animationName: "$baseLeaves",
+  },
+  leftBranch: {
+    ...branchStyle,
+    animationName: "$leftBranch",
+  },
+  rightBranch: {
+    ...branchStyle,
+    animationName: "$rightBranch",
+  },
 }));
 
 export default function (props) {
+  const starting = Number(props.total) * 10;
   const classes = useStyles();
-  
+
   return (
     <svg
       id="Layer_1"
@@ -105,6 +133,7 @@ export default function (props) {
           transform="translate(-154.91 -37)"
         />
       </g>
+      
     </svg>
   );
 }

@@ -89,7 +89,7 @@ export default function useApplicationData() {
                   } else if (label.Name === 'Plastic') {
                     result.label = `You have uploaded some ${label.Name}.`;
                     result.bin = 'Garbage';
-                    result.text = 'Please put it into the garbage bin and use more recycled items, if possible.';
+                    result.text = 'Please put it into the garbage bin and use more recycled items, when possible.';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plant') {
                     result.label = `You have uploaded a ${label.Name}.`;

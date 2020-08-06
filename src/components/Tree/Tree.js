@@ -2,17 +2,76 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const Tree = (props) => {
-  let currentScore = props.treeTotal;
-	// console.log(currentScore);
+  // const currentScore = props.treeTotal;
+  const currentScore = 150;
+  // console.log(currentScore);
+  // const
+  let startingBaseNumber = 0;
+  let startingBaseLeavesNumber = 0;
+  let startingRightBranchNumber = 0;
+  let startingLeftBranchNumber = 0;
+  let endingBaseNumber = 0;
+  let endingBaseLeavesNumber = 0;
+  let endingRightBranchNumber = 0;
+  let endingLeftBranchNumber = 0;
+
+  if (currentScore < 100) {
+    startingBaseNumber = 1000;
+    startingBaseLeavesNumber = 1000;
+    startingRightBranchNumber = 1000;
+    startingLeftBranchNumber = 1000;
+    endingBaseNumber = 0;
+    endingBaseLeavesNumber = 1000;
+    endingRightBranchNumber = 1000;
+    endingLeftBranchNumber = 1000;
+  } else if (currentScore >= 100 && currentScore < 200) {
+    startingBaseNumber = 1000;
+    startingBaseLeavesNumber = 1000;
+    startingRightBranchNumber = 1000;
+    startingLeftBranchNumber = 1000;
+    endingBaseNumber = 0;
+    endingBaseLeavesNumber = 0;
+    endingRightBranchNumber = 1000;
+    endingLeftBranchNumber = 1000;
+  } else if (currentScore >= 200 && currentScore < 300) {
+    startingBaseNumber = 1000;
+    startingBaseLeavesNumber = 1000;
+    startingRightBranchNumber = 1000;
+    startingLeftBranchNumber = 1000;
+    endingBaseNumber = 0;
+    endingBaseLeavesNumber = 0;
+    endingRightBranchNumber = 0;
+    endingLeftBranchNumber = 1000;
+  } else if (currentScore >= 300 && currentScore < 400) {
+    startingBaseNumber = 1000;
+    startingBaseLeavesNumber = 1000;
+    startingRightBranchNumber = 1000;
+    startingLeftBranchNumber = 1000;
+    endingBaseNumber = 0;
+    endingBaseLeavesNumber = 0;
+    endingRightBranchNumber = 0;
+    endingLeftBranchNumber = 0;
+  }
+
   return (
-    <StyledTree currentScore={currentScore}>
-    {/* // <StyledTree> */}
+    <StyledTree
+      currentScore={currentScore}
+      startingBaseNumber={startingBaseNumber}
+      startingBaseLeavesNumber={startingBaseLeavesNumber}
+      startingRightBranchNumber={startingRightBranchNumber}
+      startingLeftBranchNumber={startingLeftBranchNumber}
+      endingBaseNumber={endingBaseNumber}
+      endingBaseLeavesNumber={endingBaseLeavesNumber}
+      endingRightBranchNumber={endingRightBranchNumber}
+      endingLeftBranchNumber={endingLeftBranchNumber}
+    >
+      {/* // <StyledTree> */}
       <svg
         id="Layer_1"
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 267.44 452.56"
-        height="100"
+        height="300"
       >
         <title>test-tree</title>
         <g id="base">
@@ -77,7 +136,7 @@ const Tree = (props) => {
         </g>
       </svg>
     </StyledTree>
-  )
+  );
 };
 
 const branchStyle = {
@@ -87,41 +146,69 @@ const branchStyle = {
   "stroke-linejoin": "round",
   "stroke-linecap": "round",
   "stroke-dasharray": 1000,
-  "stroke-dashoffset": 1000
+  "stroke-dashoffset": 1000,
 };
 
 const StyledTree = styled.svg`
-  #leftBranch, #rightBranch, #baseLeaves, #base {
+  #leftBranch,
+  #rightBranch,
+  #baseLeaves,
+  #base {
     ${{ ...branchStyle }}
   }
   #base {
     animation: base 4s forwards;
   }
   #baseLeaves {
-    animation: baseLeaves 4s 1.4s forwards;  
+    animation: baseLeaves 4s 1.4s forwards;
   }
   #rightBranch {
-    animation: rightBranch 4s 2.3s forwards;  
+    animation: rightBranch 4s 2.3s forwards;
   }
   #leftBranch {
-    animation: leftBranch 4s 3.2s forwards;  
+    animation: leftBranch 4s 3.2s forwards;
   }
   @keyframes base {
-		0%   { stroke-dashoffset: ${props => props.currentScore}}
-    100% { stroke-dashoffset: 0; }
-	}
+    25% {
+      stroke-dashoffset: ${(props) => props.startingBaseNumber};
+    }
+    25% {
+      stroke-dasharray: 1000 1000;
+    }
+    50% {
+      stroke-dashoffset: 500;
+    }
+    50% {
+      stroke-dasharray: 1000 1000;
+    }
+    100% {
+      stroke-dashoffset: ${(props) => props.endingBaseNumber};
+    }
+  }
   @keyframes baseLeaves {
-		0%   { stroke-dashoffset: ${props => props.currentScore}}
-    100% { stroke-dashoffset: 0; }
-	}
+    0% {
+      stroke-dashoffset: ${(props) => props.startingBaseLeavesNumber};
+    }
+    100% {
+      stroke-dashoffset: ${(props) => props.endingBaseLeavesNumber};
+    }
+  }
   @keyframes rightBranch {
-		0%   { stroke-dashoffset: ${props => props.currentScore}}
-    100% { stroke-dashoffset: 0; }
-	}
+    0% {
+      stroke-dashoffset: ${(props) => props.startingRightBranchNumber};
+    }
+    100% {
+      stroke-dashoffset: ${(props) => props.endingRightBranchNumber};
+    }
+  }
   @keyframes leftBranch {
-		0%   { stroke-dashoffset: ${props => props.currentScore}}
-    100% { stroke-dashoffset: 0; }
-	}
+    0% {
+      stroke-dashoffset: ${(props) => props.startingLeftBranchNumber};
+    }
+    100% {
+      stroke-dashoffset: ${(props) => props.endingLeftBranchNumber};
+    }
+  }
 `;
 
 export default Tree;

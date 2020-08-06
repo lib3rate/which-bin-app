@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Tree from '../Tree/Tree'
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -55,8 +57,13 @@ export default function Forest(props) {
   return (
     <div className={classes.page}>
       <h2>This is the Forest</h2>
-      <img src="/images/forest.jpg" alt="Forest" className={classes.forest}/>
-
+      {/* <img src="/images/forest.jpg" alt="Forest" className={classes.forest}/> */}
+        
+        
+        <Tree 
+            treeTotal="75"
+        />
+        
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>

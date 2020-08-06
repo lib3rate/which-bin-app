@@ -54,7 +54,12 @@ const useStyles = makeStyles({
   link: {
     textDecoration: 'none',
     color: 'white'
-  }
+  },
+  userTree: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: 300,
+  },
 });
 
 export default function User(props) {
@@ -67,21 +72,22 @@ export default function User(props) {
   return (
     <div className={classes.page}>
       {/* <h2>[For testing: Requested user ID: {id}]</h2> */}
+      <div className={classes.userTree}>
+        <MyButton
+          children={
+            <Link
+              to="/new"
+              className={classes.link}
+            >Upload
+            </Link>
+          }
+        />
 
-      <MyButton
-        children={
-          <Link
-            to="/new"
-            className={classes.link}
-          >Upload
-          </Link>
-        }
-      />
-
-      {/* <img {logo} className="App-logo" alt="logo" /> */}
-      <Tree 
-        treeTotal={treeTotal}
-      />
+        {/* <img {logo} className="App-logo" alt="logo" /> */}
+        <Tree 
+          treeTotal={treeTotal}
+        />
+      </div>
 
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
@@ -121,4 +127,4 @@ export default function User(props) {
       </TableContainer>
     </div>
   )
-}
+};

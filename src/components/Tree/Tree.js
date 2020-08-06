@@ -89,46 +89,38 @@ const branchStyle = {
   "stroke-dasharray": 1000,
   "stroke-dashoffset": 1000
 };
-const animation = {
-  "animation-duration": "10s",
-  "animation-iteration": "linear"
-};
 
 const StyledTree = styled.svg`
   #leftBranch, #rightBranch, #baseLeaves, #base {
-		${{ ...branchStyle }}
-	}
-	#base {
-		animation-name: base;
-		${{ ...animation }}
+    ${{ ...branchStyle }}
   }
-	#baseLeaves {
-		animation-name: baseLeaves;
-		${{ ...animation }}
+  #base {
+    animation: base 4s forwards;
   }
-	#rightBranch {
-		animation-name: rightBranch;
-		${{ ...animation }}
+  #baseLeaves {
+    animation: baseLeaves 4s 1.4s forwards;  
   }
-	#leftBranch {
-		animation-name: leftBranch;
-		${{ ...animation }}
+  #rightBranch {
+    animation: rightBranch 4s 2.3s forwards;  
+  }
+  #leftBranch {
+    animation: leftBranch 4s 3.2s forwards;  
   }
   @keyframes base {
-		from { stroke-dashoffset: ${props => props.currentScore} }
-		to { stroke-dashoffset: 0 }
+		0%   { stroke-dashoffset: ${props => props.currentScore}}
+    100% { stroke-dashoffset: 0; }
 	}
   @keyframes baseLeaves {
-		from { stroke-dashoffset: ${props => props.currentScore} }
-		to { stroke-dashoffset: 0 }
+		0%   { stroke-dashoffset: ${props => props.currentScore}}
+    100% { stroke-dashoffset: 0; }
 	}
   @keyframes rightBranch {
-		from { stroke-dashoffset: ${props => props.currentScore} }
-		to { stroke-dashoffset: 0 }
+		0%   { stroke-dashoffset: ${props => props.currentScore}}
+    100% { stroke-dashoffset: 0; }
 	}
   @keyframes leftBranch {
-		from { stroke-dashoffset: ${props => props.currentScore} }
-		to { stroke-dashoffset: 0 }
+		0%   { stroke-dashoffset: ${props => props.currentScore}}
+    100% { stroke-dashoffset: 0; }
 	}
 `;
 

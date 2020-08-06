@@ -51,11 +51,6 @@ const useStyles = makeStyles({
     maxWidth: 1500,
     height: 300,
   },
-  // tableHead: {
-  //   background: 'linear-gradient(45deg, #000000 30%, #303030 90%)',
-  //   minWidth: 700,
-  //   maxWidth: 1500
-  // },
   link: {
     textDecoration: 'none',
     color: 'white'
@@ -65,9 +60,9 @@ const useStyles = makeStyles({
 export default function User(props) {
   // let { id } = useParams();
   const classes = useStyles()
-  const treeTotal = Number(props.user.total) * 10 ;
-  // const treeTotal = Number(props.user.total) ;
-  // const treeTotal = 0 ;
+  const treeTotal = Number(props.user.total) * 10;
+  // const treeTotal = Number(props.user.total);
+  // const treeTotal = 0;
 
   return (
     <div className={classes.page}>
@@ -87,13 +82,12 @@ export default function User(props) {
       <Tree 
         treeTotal={treeTotal}
       />
-      {/* <img src="/images/tree1.jpg" alt="Tree" className={classes.tree}/> */}
 
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell /* className={classes.tableHead} */>Your waste in numbers</StyledTableCell>
+              <StyledTableCell>Your waste in numbers</StyledTableCell>
               <StyledTableCell align="right"></StyledTableCell>
             </TableRow>
           </TableHead>
@@ -116,14 +110,6 @@ export default function User(props) {
               </StyledTableCell>
               <StyledTableCell align="right">{props.user.garbage ? props.user.garbage : 0}</StyledTableCell>
             </StyledTableRow>
-            {/* {rows.map((row) => (
-              <StyledTableRow key={row.category}>
-                <StyledTableCell component="th" scope="row">
-                  {row.category}
-                </StyledTableCell>
-                <StyledTableCell align="right">{row.score}</StyledTableCell>
-              </StyledTableRow>
-            ))} */}
             <StyledTableRow key="Total">
               <StyledTableCell component="th" scope="row">
                 <strong>Your total score</strong>
@@ -133,10 +119,6 @@ export default function User(props) {
           </TableBody>
         </Table>
       </TableContainer>
-{/*       
-      <MyButton
-        children={<Link to="/forest">Leaderboard</Link>}
-      /> */}
     </div>
   )
 }

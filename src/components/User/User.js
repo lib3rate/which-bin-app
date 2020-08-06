@@ -75,6 +75,8 @@ const rows = [
 export default function User(props) {
   // let { id } = useParams();
   const classes = useStyles()
+  const treeTotal = Number(props.user.total) * 10 ;
+  // const treeTotal = 0 ;
 
   return (
     <div className={classes.page}>
@@ -92,7 +94,7 @@ export default function User(props) {
 
       {/* <img {logo} className="App-logo" alt="logo" /> */}
       <Tree 
-        total={props.user.total}
+        treeTotal={treeTotal}
       />
       {/* <img src="/images/tree1.jpg" alt="Tree" className={classes.tree}/> */}
 

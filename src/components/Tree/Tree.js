@@ -1,85 +1,25 @@
 import React from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import keyframes from "styled-components";
-// import
+import styled, { keyframes } from "styled-components";
 
-// const growBranches = keyframes`
-//   0%   { strokeDashoffset: 1000 },
-//   100% { strokeDashoffset: 0 }
-// `;
-
-const branchStyle = {
-  fill: "white",
-  stroke: "green",
-  strokeWidth: "3px",
-  strokeLinejoin: "round",
-  strokeLinecap: "round",
-  animationDuration: "10s",
-  animationIteration: "linear",
-  strokeDasharray: 1000,
-  strokeDashoffset: '50%',
-};
-// The stroke-dashoffset property in CSS defines the location along an SVG path where the dash of a stroke will begin. The higher the number, the further along the path the dashes will begin.
-
-// const starting = props.total;
-
-const useStyles = makeStyles((theme) => 
-({
-  "@keyframes base": {
-    from: { strokeDashoffset: 1000 },
-    to: { strokeDashoffset: 0 },
-  },
-  "@keyframes baseLeaves": {
-    from: { strokeDashoffset: 1000 },
-    to: { strokeDashoffset: 0 },
-  },
-  "@keyframes leftBranch": {
-    from: { strokeDashoffset: 1000 },
-    to: { strokeDashoffset: 0 },
-  },
-  "@keyframes rightBranch": {
-    from: { strokeDashoffset: 1000 },
-    to: { strokeDashoffset: theme },
-  },
-  base: {
-    ...branchStyle,
-    animationName: "$base",
-  },
-  baseLeaves: {
-    ...branchStyle,
-    animationName: "$baseLeaves",
-  },
-  leftBranch: {
-    ...branchStyle,
-    animationName: "$leftBranch",
-  },
-  rightBranch: {
-    ...branchStyle,
-    animationName: "$rightBranch",
-  },
-}));
-
-export default function (props) {
-  const starting = Number(props.total) * 10;
-  const classes = useStyles();
-
+const Tree = (props) => {
+	console.log(props)
   return (
+  <StyledTree>
     <svg
       id="Layer_1"
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 267.44 452.56"
       height="300"
-      // style={{treeHeight: props.treeHeight}}
     >
       <title>test-tree</title>
-      <g className={classes.base}>
+      <g id="base">
         <path
           d="M289.47,487.25a150.44,150.44,0,0,1-11.76-65c.95-22.31,7.43-43.2,16.73-63.36,8.55-18.55,18.61-36.46,25.32-55.81a129.86,129.86,0,0,0-16.27-118.19c-1.1-1.57-3.71-.07-2.59,1.51C325.28,221,330.38,265.12,316,304.69c-7.29,20.08-18.06,38.64-26.63,58.16-8.19,18.66-13.64,38.09-14.63,58.52a153.82,153.82,0,0,0,12.14,67.39c.75,1.77,3.34.24,2.59-1.51Z"
           transform="translate(-154.91 -37)"
         />
       </g>
-      <g className={classes.rightBranch}>
+      <g id="rightBranch">
         <path
           d="M325.8,289.42c2.1-14.82,4.21-29.88,9.62-43.92,5.63-14.61,15.47-26.32,25.11-38.42,8.34-10.47,15.64-21.41,20.18-34.09a115.78,115.78,0,0,0,6.41-39.75,151.57,151.57,0,0,0-7.81-45.93c-.6-1.83-3.5-1-2.89.8,11.13,34.07,11.61,73.42-8.69,104.25-9.76,14.83-23,27.23-31.14,43.16-8.4,16.48-11.1,35-13.67,53.11-.27,1.89,2.62,2.7,2.89.8Z"
           transform="translate(-154.91 -37)"
@@ -97,7 +37,7 @@ export default function (props) {
           transform="translate(-154.91 -37)"
         />
       </g>
-      <g className={classes.baseLeaves}>
+      <g id="baseLeaves">
         <path
           d="M285.26,372.24a47,47,0,0,0-4.41-33.34c-3.11-5.7-6.95-11-10.07-16.67a142.33,142.33,0,0,1-8.93-19.9,1.52,1.52,0,0,0-2.74-.36c-7.61,10.44-10.78,24.8-5.9,37.09,5.72,14.39,21.72,17.3,30.37,29,1.14,1.53,3.74,0,2.59-1.51-7.59-10.22-21.5-13.57-28.17-24.51-7.31-12-4.21-27.66,3.7-38.5l-2.74-.36a158.51,158.51,0,0,0,15.65,31.24c7.31,11.47,10.88,23.51,7.76,37.07-.43,1.88,2.46,2.68,2.89.8Z"
           transform="translate(-154.91 -37)"
@@ -115,7 +55,7 @@ export default function (props) {
           transform="translate(-154.91 -37)"
         />
       </g>
-      <g className={classes.leftBranch}>
+      <g id="leftBranch">
         <path
           d="M275.18,415.43c-2.25-11.73-10.46-20.12-19.79-26.95-11.35-8.32-23.9-14.71-34.12-24.52-23.16-22.23-34.78-53.48-40-84.54-3.48-20.62-4.41-41.57-5.23-62.44-.08-1.92-3.08-1.93-3,0,1.34,34.29,3,69.55,15.68,101.87a139,139,0,0,0,21.45,37.46c8.94,10.94,19.77,19.07,31.59,26.63,12.8,8.19,27.46,17.2,30.55,33.29.36,1.89,3.26,1.09,2.89-.8Z"
           transform="translate(-154.91 -37)"
@@ -133,7 +73,60 @@ export default function (props) {
           transform="translate(-154.91 -37)"
         />
       </g>
-      
     </svg>
-  );
+  </StyledTree>
+)
+};
+
+const branchStyle = {
+  fill: "white",
+  stroke: "green",
+  "stroke-width": "3px",
+  "stroke-linejoin": "round",
+  "stroke-linecap": "round",
+  "stroke-dasharray": 1000,
+  "stroke-dashoffset": 1000,
+};
+
+const totalTest = 1000;
+
+const StyledTree = styled.svg`
+#leftBranch, #rightBranch, #baseLeaves, #base {
+  ${{ ...branchStyle }}
 }
+#base {
+  animation: base 4s forwards;
+}
+#baseLeaves {
+  animation: baseLeaves 4s 1.4s forwards;  
+}
+#rightBranch {
+  animation: rightBranch 4s 2.3s forwards;  
+}
+#leftBranch {
+  animation: leftBranch 4s 3.2s forwards;  
+  }
+  @keyframes base {
+		0%   { stroke-dashoffset: ${props => console.log("props.treeTotal", props.treeTotal)};}
+    100% { stroke-dashoffset: 0; }
+   
+	}
+  @keyframes baseLeaves {
+		0%   { stroke-dashoffset: ${props => props.treeTotal};}
+    100% { stroke-dashoffset: 0; }
+   
+	}
+  @keyframes rightBranch {
+		0%   { stroke-dashoffset: ${props => props.treeTotal};}
+    100% { stroke-dashoffset: 0; }
+   
+	}
+  @keyframes leftBranch {
+		0%   { stroke-dashoffset: ${props => props.treeTotal};}
+    100% { stroke-dashoffset: 0; }
+   
+	}
+}
+`;
+
+export default Tree;

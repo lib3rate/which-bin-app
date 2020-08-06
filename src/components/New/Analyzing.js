@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
   status: {
@@ -8,6 +8,15 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column'
   },
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2)
+    }
+  },
+  image: {
+    color: "#009c63"
+  }
 }));
 
 export default function Analyzing(props) {
@@ -15,11 +24,15 @@ export default function Analyzing(props) {
 
   return (
     <main className={classes.status}>
-      <img
+      <div className={classes.root}>
+        <CircularProgress classname={classes.image}/>
+        {/* <CircularProgress color="#009c63" /> */}
+      </div>
+      {/* <img
         className="analyze-status-image"
         src="images/status.png"
         alt="Analyzing"
-      />
+      /> */}
       <h2>{props.text}</h2>
     </main>
   );

@@ -26,13 +26,7 @@ export default function Analyzing(props) {
     <main className={classes.status}>
       <div className={classes.root}>
         <CircularProgress className={classes.image}/>
-        {/* <CircularProgress color="#009c63" /> */}
       </div>
-      {/* <img
-        className="analyze-status-image"
-        src="images/status.png"
-        alt="Analyzing"
-      /> */}
       <h2>{props.text}</h2>
     </main>
   );

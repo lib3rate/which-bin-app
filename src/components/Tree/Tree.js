@@ -10,7 +10,7 @@ const Tree = (props) => {
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 267.44 452.56"
-      height="100"
+      height="300"
     >
       <title>test-tree</title>
       <g id="base">
@@ -87,47 +87,44 @@ const branchStyle = {
   "stroke-dasharray": 1000,
   "stroke-dashoffset": 1000,
 };
-const animation = {
-  "animation-duration": "10s",
-  "animation-iteration": "linear",
-};
+
 const totalTest = 1000;
 
 const StyledTree = styled.svg`
 #leftBranch, #rightBranch, #baseLeaves, #base {
-		${{ ...branchStyle }}
-	}
-	#base {
-		animation-name: base;
-		${{ ...animation }}
-  }
-	#baseLeaves {
-		animation-name: baseLeaves;
-		${{ ...animation }}
-  }
-	#rightBranch {
-		animation-name: rightBranch;
-		${{ ...animation }}
-  }
-	#leftBranch {
-		animation-name: leftBranch;
-		${{ ...animation }}
+  ${{ ...branchStyle }}
+}
+#base {
+  animation: base 4s forwards;
+}
+#baseLeaves {
+  animation: baseLeaves 4s 1.4s forwards;  
+}
+#rightBranch {
+  animation: rightBranch 4s 2.3s forwards;  
+}
+#leftBranch {
+  animation: leftBranch 4s 3.2s forwards;  
   }
   @keyframes base {
-		from   { stroke-dashoffset: ${props => console.log("props.treeTotal", props.treeTotal)}; }
-		to { stroke-dashoffset: 0; }
+		0%   { stroke-dashoffset: ${props => console.log("props.treeTotal", props.treeTotal)};}
+    100% { stroke-dashoffset: 0; }
+   
 	}
   @keyframes baseLeaves {
-		from   { stroke-dashoffset: ${props => props.treeTotal}; }
-		to { stroke-dashoffset: 0; }
+		0%   { stroke-dashoffset: ${props => props.treeTotal};}
+    100% { stroke-dashoffset: 0; }
+   
 	}
   @keyframes rightBranch {
-		from   { stroke-dashoffset: ${props => props.treeTotal}; }
-		to { stroke-dashoffset: 0; }
+		0%   { stroke-dashoffset: ${props => props.treeTotal};}
+    100% { stroke-dashoffset: 0; }
+   
 	}
   @keyframes leftBranch {
-		from   { stroke-dashoffset: ${props => props.treeTotal}; }
-		to { stroke-dashoffset: 0; }
+		0%   { stroke-dashoffset: ${props => props.treeTotal};}
+    100% { stroke-dashoffset: 0; }
+   
 	}
 }
 `;

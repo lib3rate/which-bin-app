@@ -59,7 +59,12 @@ const useStyles = makeStyles({
   link: {
     textDecoration: 'none',
     color: 'white'
-  }
+  },
+  userTree: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: 300,
+  },
 });
 
 function createData(category, score) {
@@ -81,7 +86,7 @@ export default function User(props) {
   return (
     <div className={classes.page}>
       {/* <h2>[For testing: Requested user ID: {id}]</h2> */}
-
+      <div className={classes.userTree}>
       <MyButton
         children={
           <Link
@@ -96,6 +101,7 @@ export default function User(props) {
       <Tree 
         treeTotal={treeTotal}
       />
+      </div>
       {/* <img src="/images/tree1.jpg" alt="Tree" className={classes.tree}/> */}
 
       <TableContainer className={classes.container} component={Paper}>

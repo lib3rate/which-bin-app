@@ -65,7 +65,7 @@ const useStyles = makeStyles({
 export default function User(props) {
   // let { id } = useParams();
   const classes = useStyles()
-  const treeTotal = Number(props.user.total) * 10;
+  const treeTotal = Number(props.user.total) ;
   // const treeTotal = Number(props.user.total);
   // const treeTotal = 0;
 

@@ -2,10 +2,9 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const Tree = (props) => {
-  // const currentScore = props.treeTotal;
-  const currentScore = 350;
-  // console.log(currentScore);
-  // const
+  const currentScore = props.treeTotal;
+  // const currentScore = 350;
+
   let startingBaseNumber = 0;
   let startingBaseLeavesNumber = 0;
   let startingAlmostTreeNumber = 0;
@@ -46,10 +45,6 @@ const Tree = (props) => {
     height = 300;
     treeDuration = '15s';
   }
-
-
-
-
   return (
     <StyledTree
       currentScore={currentScore}

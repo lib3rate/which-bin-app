@@ -13,22 +13,10 @@ body {
   justify-content: center;
 }
 
-.analyze-status-image {
-  margin: 2rem 0; 
-  animation: rotate 1s linear infinite;
-}
-
 /* @keyframes branches {
   0%   { stroke-dashoffset: 1000; }
   100% { stroke-dashoffset: 0; }
 } */
-
-@keyframes rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
 
 @media only screen and (max-width: 960px) {
   html {

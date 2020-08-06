@@ -2,8 +2,8 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const Tree = (props) => {
-  // const currentScore = props.treeTotal;
-  const currentScore = 150;
+  const currentScore = props.treeTotal;
+  // const currentScore = 150;
   // console.log(currentScore);
   // const
   let startingBaseNumber = 0;

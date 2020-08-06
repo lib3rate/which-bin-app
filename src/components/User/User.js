@@ -62,20 +62,11 @@ const useStyles = makeStyles({
   }
 });
 
-function createData(category, score) {
-  return { category, score };
-}
-
-const rows = [
-  createData('Recycling', 159),
-  createData('Garbage', 237),
-  createData('Organic', 262),
-];
-
 export default function User(props) {
   // let { id } = useParams();
   const classes = useStyles()
   const treeTotal = Number(props.user.total) * 10 ;
+  // const treeTotal = Number(props.user.total) ;
   // const treeTotal = 0 ;
 
   return (

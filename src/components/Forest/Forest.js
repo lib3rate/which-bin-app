@@ -99,7 +99,7 @@ export default function Forest(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.userBins.map((userBin) => (
+            {users.map((userBin) => (
               <StyledTableRow key={userBin.user_id}>
                 <StyledTableCell component="th" scope="row">
                   {userBin.username}

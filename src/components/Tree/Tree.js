@@ -19,7 +19,9 @@ const Tree = (props) => {
   let fullTreeRender = 0;
   let height = 150;
   let treeDuration = '15s';
+
   console.log("currentScore: ", currentScore)
+
   if (currentScore < 24 || currentScore === 0) {
     startingBaseNumber = 1000;
     endingBaseNumber = 0;
@@ -38,6 +40,7 @@ const Tree = (props) => {
     almostTreeRender = 1;
     height = 250;
     treeDuration = '16s';
+
   } else if (currentScore >= 100) {
     startingFullTreeNumber = 1000;
     endingFullTreeNumber = 0;
@@ -45,6 +48,7 @@ const Tree = (props) => {
     height = 300;
     treeDuration = '15s';
   }
+  
   return (
     <StyledTree
       currentScore={currentScore}

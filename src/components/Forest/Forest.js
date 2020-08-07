@@ -67,14 +67,12 @@ const useStyles = makeStyles({
 
 export default function Forest(props) {
   const classes = useStyles();
-
-  const users = props.userBins;
-  users.sort((a, b) => (b.score - a.score));
-
+  
   const scoresArr = [];
-  users.map((userBin) => scoresArr.push(Number(userBin.score)));
+  props.userBins.map((userBin) => scoresArr.push(Number(userBin.score)));
   const reArrangedArr = rearrangedScores(scoresArr.reverse());
   console.log("reArrangedArr", reArrangedArr)
+  
   return ( 
     <div className={classes.page}>
       <h2>This is the Forest</h2>

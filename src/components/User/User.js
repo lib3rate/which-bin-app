@@ -47,7 +47,7 @@ const useStyles = makeStyles({
     margin: 20
   },
   table: {
-    minWidth: 700,
+    minWidth: 250,
     maxWidth: 1500,
     height: 300,
   },
@@ -58,7 +58,8 @@ const useStyles = makeStyles({
   userTree: {
     display: 'flex',
     flexDirection: 'row',
-    height: 300,
+    // alignItems: 'center',
+    // height: 300,
   },
 });
 
@@ -71,58 +72,58 @@ export default function User(props) {
     <div className={classes.page}>
       {/* <h2>[For testing: Requested user ID: {id}]</h2> */}
       <div className={classes.userTree}>
-        <MyButton
-          children={
-            <Link
-              to="/new"
-              className={classes.link}
-            >Upload
-            </Link>
-          }
-        />
-
         {/* <img {logo} className="App-logo" alt="logo" /> */}
         <Tree 
           treeTotal={treeTotal}
         />
+
+        <TableContainer className={classes.container} component={Paper}>
+          <Table className={classes.table} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Your waste in numbers</StyledTableCell>
+                <StyledTableCell align="right"></StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <StyledTableRow key="Recycling">
+                <StyledTableCell component="th" scope="row">
+                  Recycling
+                </StyledTableCell>
+                <StyledTableCell align="right">{props.user.recycling ? props.user.recycling : 0}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow key="Organic">
+                <StyledTableCell component="th" scope="row">
+                  Organic
+                </StyledTableCell>
+                <StyledTableCell align="right">{props.user.organic ? props.user.organic : 0}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow key="Garbage">
+                <StyledTableCell component="th" scope="row">
+                  Garbage
+                </StyledTableCell>
+                <StyledTableCell align="right">{props.user.garbage ? props.user.garbage : 0}</StyledTableCell>
+              </StyledTableRow>
+              <StyledTableRow key="Total">
+                <StyledTableCell component="th" scope="row">
+                  <strong>Your total score</strong>
+                </StyledTableCell>
+                <StyledTableCell align="right"><strong>{props.user.total}</strong></StyledTableCell>
+              </StyledTableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
 
-      <TableContainer className={classes.container} component={Paper}>
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Your waste in numbers</StyledTableCell>
-              <StyledTableCell align="right"></StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <StyledTableRow key="Recycling">
-              <StyledTableCell component="th" scope="row">
-                Recycling
-              </StyledTableCell>
-              <StyledTableCell align="right">{props.user.recycling ? props.user.recycling : 0}</StyledTableCell>
-            </StyledTableRow>
-            <StyledTableRow key="Organic">
-              <StyledTableCell component="th" scope="row">
-                Organic
-              </StyledTableCell>
-              <StyledTableCell align="right">{props.user.organic ? props.user.organic : 0}</StyledTableCell>
-            </StyledTableRow>
-            <StyledTableRow key="Garbage">
-              <StyledTableCell component="th" scope="row">
-                Garbage
-              </StyledTableCell>
-              <StyledTableCell align="right">{props.user.garbage ? props.user.garbage : 0}</StyledTableCell>
-            </StyledTableRow>
-            <StyledTableRow key="Total">
-              <StyledTableCell component="th" scope="row">
-                <strong>Your total score</strong>
-              </StyledTableCell>
-              <StyledTableCell align="right"><strong>{props.user.total}</strong></StyledTableCell>
-            </StyledTableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <MyButton
+          children={
+            <Link
+              to="/new"
+              className={classes.link}
+            >Add more
+            </Link>
+          }
+        />
     </div>
   )
 };

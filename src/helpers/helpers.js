@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AWS from 'aws-sdk';
+import axios from "axios";
 
 export default function useApplicationData() {
   const [state, setState] = useState({
@@ -46,8 +47,12 @@ export default function useApplicationData() {
     let updatedOrganic = state.user.organic;
     const userId = state.user.userId;
     let foundUser = findUserById(userId);
+    let binId = 3;
+    let score = 0;
 
     if (bin === 'Recycling') {
+      binId = 2;
+      score = 50;
       updatedTotal += 50;
       updatedRecycling += 50;
       updatedUser = {
@@ -57,6 +62,8 @@ export default function useApplicationData() {
       };
       // console.log(updatedUser);
     } else if (bin === 'Organic') {
+      binId = 1;
+      score = 50;
       updatedTotal += 25;
       updatedOrganic += 25;
       updatedUser = {
@@ -68,10 +75,26 @@ export default function useApplicationData() {
 
     foundUser.score = updatedTotal;
 
-    setState({
-      ...state,
-      user: updatedUser
-    })
+    const item = {
+      userId,
+      binId,
+      score
+    };
+
+    return (
+      axios.put(`/api/user_bins`, {item})
+        .then(() => {
+          setState({
+            ...state,
+            user: updatedUser
+          })
+        })
+    );
+
+    // setState({
+    //   ...state,
+    //   user: updatedUser
+    // })
   };
 
   //Loads selected image and unencodes image bytes for Rekognition DetectFaces API

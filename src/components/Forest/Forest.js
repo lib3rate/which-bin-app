@@ -7,6 +7,19 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Tree from '../Tree/Tree'
+
+const rearrangedScores = (arr) => {
+  let arr1 = arr.slice(0, arr.length / 2);
+  let arr2 = arr.slice(arr.length / 2, arr.length);
+  arr2.sort(function (a, b) {
+      return b - a;
+});
+  return arr = arr1.concat(arr2);
+
+}
+// console.log("array: ", rearrangedScores([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -35,7 +48,10 @@ const useStyles = makeStyles({
   },
   forest: {
     height: 300,
-    margin: 15
+    margin: 15,
+    display: 'flex',
+    flexDirection: 'row',
+    width: 1000,
   },
   container: {
     display: 'flex',
@@ -50,13 +66,25 @@ const useStyles = makeStyles({
 });
 
 export default function Forest(props) {
-  const classes = useStyles()
-
-  return (
+  const classes = useStyles();
+  const scoresArr = [];
+  props.userBins.map((userBin) => scoresArr.push(Number(userBin.score)));
+  const reArrangedArr = rearrangedScores(scoresArr.reverse());
+  console.log("reArrangedArr", reArrangedArr)
+  return ( 
     <div className={classes.page}>
       <h2>This is the Forest</h2>
-      <img src="/images/forest.jpg" alt="Forest" className={classes.forest}/>
+      {/* <img src="/images/forest.jpg" alt="Forest" className={classes.forest}/> */}
+        <div className={classes.forest}>
+      {reArrangedArr.map((individualScore) => (
+        
+        <Tree 
+            treeTotal={(individualScore)} 
+        />
 
+        
+      ))}
+        </div>
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>

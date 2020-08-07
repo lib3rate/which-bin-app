@@ -12,17 +12,19 @@ export default function Upload(props) {
   const classes = useStyles();
 
   return (
-    // <input
-    <Input
-      type="file"
-      name="fileToUpload"
-      id="fileToUpload"
-      accept="image/*"
-      className={classes.input}
-      // capture="environment"
-      onChange={props.onChange}
-    >
-    </Input>
-    // </input>
+    <>
+      <h1>Submit a photo</h1>
+
+      <Input
+        type="file"
+        name="fileToUpload"
+        id="fileToUpload"
+        accept="image/*"
+        className={classes.input}
+        // capture="environment"
+        onChange={props.onChange}
+      >
+      </Input>
+    </>
   )
 }

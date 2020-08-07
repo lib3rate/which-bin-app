@@ -9,6 +9,7 @@ import axios from "axios";
 import './App.css';
 
 import useApplicationData from "./helpers/helpers";
+import feed from "./helpers/capture";
 
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -35,6 +36,7 @@ export default function App() {
       const user = convertToObject(all[0].data);
       const userBins = convertToArray(all[1].data);
       setState(prev => ({ ...prev, user, userBins }));
+      feed();
     });
   }, []);
 

@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import useVisualMode from '../../helpers/useVisualMode';
 
-import Upload from "./Upload";
+// import Upload from "./Upload";
+import Upload from "./UploadWithRTC";
 import Analyzing from "./Analyzing";
 import Result from "./Result";
 
@@ -41,7 +42,7 @@ export default function New(props) {
 
   return (
     <div className={classes.root}>
-      <h1>Submit a photo</h1>
+      {/* <h1>Submit a photo</h1> */}
 
       {mode === UPLOAD &&
         <Upload

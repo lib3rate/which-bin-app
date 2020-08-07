@@ -1,9 +1,9 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 const Tree = (props) => {
   const currentScore = props.treeTotal;
-  // const currentScore = 350;
+  // const currentScore = 106;
 
   let startingBaseNumber = 0;
   let startingBaseLeavesNumber = 0;
@@ -18,26 +18,26 @@ const Tree = (props) => {
   let almostTreeRender = 0;
   let fullTreeRender = 0;
   let height = 150;
-  let treeDuration = '7s';
-
-  if (currentScore < 25 || currentScore === 0) {
+  let treeDuration = '15s';
+  console.log("currentScore: ", currentScore)
+  if (currentScore < 24 || currentScore === 0) {
     startingBaseNumber = 1000;
     endingBaseNumber = 0;
     baseRender = 1;
     
-  } else if (currentScore >= 25 && currentScore < 50) {
+  } else if (currentScore >= 25 && currentScore < 49) {
     startingBaseLeavesNumber = 1000;
     endingBaseLeavesNumber = 0;
     baseLeavesRender = 1;
     height = 175;
-    treeDuration = '8.5s';
+    treeDuration = '15s';
     
-  } else if (currentScore >= 50 && currentScore < 75 ) {
+  } else if (currentScore >= 50 && currentScore < 76 ) {
     startingAlmostTreeNumber = 1000;
     endingAlmostTreeNumber = 0;
     almostTreeRender = 1;
     height = 250;
-    treeDuration = '10s';
+    treeDuration = '16s';
   } else if (currentScore >= 100) {
     startingFullTreeNumber = 1000;
     endingFullTreeNumber = 0;

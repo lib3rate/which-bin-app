@@ -16,9 +16,10 @@ const rearrangedScores = (arr) => {
       return b - a;
 });
   return arr = arr1.concat(arr2);
-}
 
-console.log(rearrangedScores([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+}
+// console.log("array: ", rearrangedScores([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -65,17 +66,20 @@ const useStyles = makeStyles({
 });
 
 export default function Forest(props) {
-  const classes = useStyles()
-  props.userBins.map((userBin) => console.log("userBin.score: ", userBin.score))
-  return (
+  const classes = useStyles();
+  const scoresArr = [];
+  props.userBins.map((userBin) => scoresArr.push(Number(userBin.score)));
+  const reArrangedArr = rearrangedScores(scoresArr.reverse());
+  console.log("reArrangedArr", reArrangedArr)
+  return ( 
     <div className={classes.page}>
       <h2>This is the Forest</h2>
       {/* <img src="/images/forest.jpg" alt="Forest" className={classes.forest}/> */}
         <div className={classes.forest}>
-      {props.userBins.map((userBin) => (
+      {reArrangedArr.map((individualScore) => (
         
         <Tree 
-            treeTotal={(userBin.score)} 
+            treeTotal={(individualScore)} 
         />
 
         

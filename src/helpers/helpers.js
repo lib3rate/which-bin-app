@@ -24,7 +24,19 @@ export default function useApplicationData() {
       total += Number(item.sum);
     }
     result.total = total;
+    result.userId = data[0].user_id;
     return result;
+  };
+
+  function findUserById(userId) {
+    let foundUser = {};
+    
+    for (let user of state.userBins) {
+      if (user.user_id === userId)
+      foundUser = user;
+    };
+
+    return foundUser;
   }
 
   function updateScore(bin) {
@@ -32,6 +44,8 @@ export default function useApplicationData() {
     let updatedTotal = state.user.total;
     let updatedRecycling = state.user.recycling;
     let updatedOrganic = state.user.organic;
+    const userId = state.user.userId;
+    let foundUser = findUserById(userId);
 
     if (bin === 'Recycling') {
       updatedTotal += 50;
@@ -41,7 +55,7 @@ export default function useApplicationData() {
         total: updatedTotal,
         recycling: updatedRecycling
       };
-      console.log(updatedUser);
+      // console.log(updatedUser);
     } else if (bin === 'Organic') {
       updatedTotal += 25;
       updatedOrganic += 25;
@@ -51,6 +65,8 @@ export default function useApplicationData() {
         organic: updatedOrganic
       };
     }
+
+    foundUser.score = updatedTotal;
 
     setState({
       ...state,
@@ -118,7 +134,7 @@ export default function useApplicationData() {
       })(file);
       reader.readAsArrayBuffer(file);
     })
-  }
+  };
   
   //Provides anonymous log on to AWS services
   function AnonLog() {
@@ -135,7 +151,7 @@ export default function useApplicationData() {
       var secretAccessKey = AWS.config.credentials.secretAccessKey;
       var sessionToken = AWS.config.credentials.sessionToken;
     });
-  }
+  };
 
   return {
     state,

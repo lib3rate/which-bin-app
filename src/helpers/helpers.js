@@ -183,7 +183,20 @@ export default function useApplicationData() {
       AnonLog();
 
       const file = document.getElementsByClassName('photo')[0];
-  
+      
+      // const canvas = document.getElementsByClassName('canvas')[0];
+      // const file = canvas.toBlob(function(blob) {
+      //   var newImg = document.createElement('img'),
+      //       url = URL.createObjectURL(blob);
+      
+      //   newImg.onload = function() {
+      //     // no longer need to read the blob so it's revoked
+      //     URL.revokeObjectURL(url);
+      //   };
+      
+      //   newImg.src = url;
+      // });
+
       // Load base64 encoded image for display 
       var reader = new FileReader();
       reader.onload = (function (theFile) {

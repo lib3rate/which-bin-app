@@ -55,6 +55,10 @@ export default function New(props) {
     <div className={classes.root}>
       {/* <h1>Submit a photo</h1> */}
 
+      <canvas className="canvas" style={{display: 'none'}}>
+      </canvas>
+      <img className="photo" alt="The screen capture will appear in this box."/>
+
       {mode === UPLOAD &&
         <Upload
           onClick={event => recognizePhoto()}

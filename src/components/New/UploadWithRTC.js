@@ -2,6 +2,10 @@ import React from 'react';
 import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/styles';
 
+import MyButton from "../Button";
+
+import feed from "./../../helpers/capture";
+
 const useStyles = makeStyles((theme) => ({
   input: {
     marginTop: 50
@@ -52,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Upload(props) {
   const classes = useStyles();
 
+  feed();
+
   return (
     <>
       <div className={classes.contentarea}>
@@ -62,7 +68,7 @@ export default function Upload(props) {
           {/* <video className={classes.video}>Video stream not available.</video> */}
           <video className="video">Video stream not available.</video>
           {/* <button className={classes.startbutton}>Capture</button>  */}
-          <button className="startbutton">Capture</button> 
+          <button className="startbutton">Capture</button>
         </div>
         {/* <canvas className={classes.canvas}> */}
         <canvas className="canvas">
@@ -71,6 +77,9 @@ export default function Upload(props) {
           {/* <img className={classes.photo} alt="The screen capture will appear in this box."/> */}
           <img className="photo" alt="The screen capture will appear in this box."/>
         </div>
+        <MyButton onClick={props.onClick}>
+          Submit
+        </MyButton>
       </div>
       <h1>
         Upload a file

@@ -176,12 +176,134 @@ export default function useApplicationData() {
     });
   };
 
+  function DetectLabels(e) {
+  // function DetectLabels(imageData) {
+
+
+      AWS.region = "RegionToUse";
+      var rekognition = new AWS.Rekognition();
+      var params = {
+        Image: {
+          Bytes: e.target.result
+        },
+        MaxLabels: 123, 
+        MinConfidence: 70
+      };
+      // var params = {
+      //   Image: {
+      //     Bytes: imageData
+      //   },
+      //   Attributes: [
+      //     'ALL',
+      //   ]
+      // };
+
+
+  }
+
+  function ProcessPhoto() {
+    return new Promise((resolve, reject) => {
+      AnonLog();
+
+      let photo = document.getElementsByClassName('photo')[0];
+      const file = photo.file;
+
+      // Load base64 encoded image 
+      var reader = new FileReader();
+      reader.onload = (function (theFile) {
+        return function (e) {
+          var img = document.createElement('img');
+          var image = null;
+          img.src = e.target.result;
+          var jpg = true;
+          try {
+            image = atob(e.target.result.split("data:image/jpeg;base64,")[1]);
+
+          } catch (e) {
+            jpg = false;
+          }
+          if (jpg == false) {
+            try {
+              image = atob(e.target.result.split("data:image/png;base64,")[1]);
+            } catch (e) {
+              alert("Not an image file Rekognition can process");
+              return;
+            }
+          }
+          //unencode image bytes for Rekognition DetectFaces API 
+          var length = image.length;
+          let imageBytes = new ArrayBuffer(length);
+          var ua = new Uint8Array(imageBytes);
+          for (var i = 0; i < length; i++) {
+            ua[i] = image.charCodeAt(i);
+          }
+          //Call Rekognition  
+          // DetectLabels(imageBytes);
+          AWS.region = "us-east-1";  
+          var rekognition = new AWS.Rekognition();
+          var params = {
+            Image: {
+              Bytes: imageBytes
+            },
+            Attributes: [
+              'ALL',
+            ]
+          };
+          // var params = {
+          //   Image: {
+          //     Bytes: e.target.result
+          //   },
+          //   MaxLabels: 123, 
+          //   MinConfidence: 70
+          // };
+          rekognition.detectLabels(params, function (err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else {
+              console.log(data);
+    
+              const result = {
+                label: '',
+                bin: '',
+                text: ''
+              }
+    
+              setTimeout(() => {
+                for (let label of data.Labels) {
+                  if (label.Name === 'Glass' || label.Name === 'Cardboard' || label.Name === 'Can') {
+                    // const name = label.Name.toLowerCase;
+                    result.label = `You have uploaded a ${label.Name}.`;
+                    result.bin = 'Recycling';
+                    result.text = 'Place it into the recycling bin and you will get 50 points to your score!';
+                    setState({...state, recognition: result});
+                  } else if (label.Name === 'Plastic') {
+                    result.label = `You have uploaded some ${label.Name}.`;
+                    result.bin = 'Garbage';
+                    result.text = 'Please put it into the garbage bin and use more recycled items, when possible.';
+                    setState({...state, recognition: result});
+                  } else if (label.Name === 'Plant') {
+                    result.label = `You have uploaded a ${label.Name}.`;
+                    result.bin = 'Organic';
+                    result.text = 'Place it into the organics bin and you will get 25 points to your score!';
+                    setState({...state, recognition: result});
+                  }
+                }
+                resolve()
+              }, 750)
+            }
+          });
+        };
+      })(file);
+      reader.readAsDataURL(file);
+    })
+  }
+
   return {
     state,
     setState,
     convertToArray,
     convertToObject,
     updateScore,
-    ProcessImage
+    ProcessImage,
+    ProcessPhoto
   };
 };

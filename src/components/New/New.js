@@ -40,12 +40,24 @@ export default function New(props) {
       // });
   };
 
+  const recognizePhoto = () => {
+    transition(ANALYZING);
+    props.ProcessPhoto()
+      .then(() => {
+        transition(RESULT);
+      })
+      // .catch(error => {
+      //   transition(ERROR, true)
+      // });
+  };
+
   return (
     <div className={classes.root}>
       {/* <h1>Submit a photo</h1> */}
 
       {mode === UPLOAD &&
         <Upload
+          onClick={event => recognizePhoto()}
           onChange={(event) => recognize()}
         />}
 

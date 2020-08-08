@@ -28,13 +28,13 @@ export default function feed() {
     startbutton = document.getElementsByClassName('startbutton')[0];
 
     navigator.mediaDevices.getUserMedia({video: true, audio: false})
-    .then(function(stream) {
-      video.srcObject = stream;
-      video.play();
-    })
-    .catch(function(err) {
-      console.log("An error occurred: " + err);
-    });
+      .then(function(stream) {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(function(err) {
+        console.log("An error occurred: " + err);
+      });
 
     video.addEventListener('canplay', function(ev){
       if (!streaming) {

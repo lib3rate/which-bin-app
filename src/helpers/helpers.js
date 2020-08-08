@@ -182,8 +182,12 @@ export default function useApplicationData() {
   
       AnonLog();
 
-      const file = document.getElementsByClassName('photo')[0];
+      // const file = document.getElementsByClassName('photo')[0];
       
+      // const file = document.getElementsByClassName('canvas')[0];
+      
+      const file = new Blob([document.getElementsByClassName('photo')[0]], {type: 'image/png'});
+
       // const canvas = document.getElementsByClassName('canvas')[0];
       // const file = canvas.toBlob(function(blob) {
       //   var newImg = document.createElement('img'),

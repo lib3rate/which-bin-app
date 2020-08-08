@@ -7,7 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Tree from "../Tree/Tree";
+import ForestTree from "../Forest/ForestTree";
 
 // const rearrangedScores = (arr) => {
 //   let arr1 = arr.slice(0, arr.length / 2);
@@ -47,7 +47,6 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   forest: {
-    height: 'auto',
     margin: 15,
     display: "flex",
     flexDirection: "row",
@@ -57,11 +56,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    height: 'auto',
     justifyContent: "space-around",
-  },
-  tree: {
-    height: 600
   },
   container: {
     display: "flex",
@@ -108,7 +103,7 @@ export default function Forest(props) {
          {users.map((userBin) => (   
           <div className={classes.treeWName}>
             <div className={classes.tree}>
-              <Tree
+              <ForestTree
                 treeTotal={userBin.score}
               />
             </div>

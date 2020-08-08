@@ -120,7 +120,7 @@ export default function User(props) {
             <Link
               to="/new"
               className={classes.link}
-            >Add more
+            >Add item
             </Link>
           }
         />

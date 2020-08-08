@@ -18,7 +18,11 @@ export default function useApplicationData() {
   };
 
   function convertToObject(data) {
-    const result = {};
+    const result = {
+      'organic': 0,
+      'recycling': 0,
+      'garbage': 0
+    };
     let total = 0;
     for (let item of data) {
       result[item.name] = Number(item.sum);
@@ -43,33 +47,42 @@ export default function useApplicationData() {
   function updateScore(bin) {
     let updatedUser = state.user;
     let updatedTotal = state.user.total;
-    let updatedRecycling = state.user.recycling;
     let updatedOrganic = state.user.organic;
+    let updatedRecycling = state.user.recycling;
+    let updatedGarbage = state.user.garbage;
     const userId = state.user.userId;
     let foundUser = findUserById(userId);
-    let binId = 3;
+    let binId = 1;
     let score = 0;
 
-    if (bin === 'Recycling') {
-      binId = 2;
-      score = 50;
-      updatedTotal += 50;
-      updatedRecycling += 50;
-      updatedUser = {
-        ...updatedUser,
-        total: updatedTotal,
-        recycling: updatedRecycling
-      };
-      // console.log(updatedUser);
-    } else if (bin === 'Organic') {
-      binId = 1;
-      score = 50;
+    if (bin === 'Organic') {
+      score = 25;
       updatedTotal += 25;
       updatedOrganic += 25;
       updatedUser = {
         ...updatedUser,
         total: updatedTotal,
         organic: updatedOrganic
+      };
+    } else if (bin === 'Recycling') {
+      binId = 2;
+      score = 25;
+      updatedTotal += 25;
+      updatedRecycling += 25;
+      updatedUser = {
+        ...updatedUser,
+        total: updatedTotal,
+        recycling: updatedRecycling
+      };
+    } else if (bin === 'Garbage') {
+      binId = 3;
+      score = 10;
+      updatedTotal += 10;
+      updatedGarbage += 10;
+      updatedUser = {
+        ...updatedUser,
+        total: updatedTotal,
+        garbage: updatedGarbage
       };
     }
 
@@ -90,11 +103,6 @@ export default function useApplicationData() {
           })
         })
     );
-
-    // setState({
-    //   ...state,
-    //   user: updatedUser
-    // })
   };
 
   //Loads selected image and unencodes image bytes for Rekognition DetectFaces API

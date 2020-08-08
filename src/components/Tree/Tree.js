@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Tree = (props) => {
   const currentScore = props.treeTotal;
-  // const currentScore = 106;
+  // const currentScore = 20;
 
   let startingBaseNumber = 0;
   let startingBaseLeavesNumber = 0;
@@ -66,7 +66,7 @@ const Tree = (props) => {
       fullTreeRender={fullTreeRender}
       treeDuration={treeDuration}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230.91 340.82" height={height}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230.91 340.82">
         <title>new-tree</title>
         <g id="Full_Tree" data-name="Full Tree">
           <g id="fullTree">

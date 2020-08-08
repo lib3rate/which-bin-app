@@ -61,7 +61,7 @@ const useStyles = makeStyles({
     justifyContent: "space-around",
   },
   tree: {
-    height: "auto"
+    height: 600
   },
   container: {
     display: "flex",

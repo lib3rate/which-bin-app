@@ -29,7 +29,7 @@ export default function New(props) {
   // Showing the Upload mode by default
   const { mode, transition } = useVisualMode(UPLOAD);
 
-  const recognize = () => {
+  const recognizeImage = () => {
     transition(ANALYZING);
     props.ProcessImage()
       .then(() => {
@@ -55,14 +55,14 @@ export default function New(props) {
     <div className={classes.root}>
       {/* <h1>Submit a photo</h1> */}
 
-      <canvas className="canvas" style={{display: 'none'}}>
+      {/* <canvas className="canvas" style={{display: 'none'}}>
       </canvas>
-      <img className="photo" alt="The screen capture will appear in this box."/>
+      <img className="photo" alt="The screen capture will appear in this box."/> */}
 
       {mode === UPLOAD &&
         <Upload
           onClick={event => recognizePhoto()}
-          onChange={(event) => recognize()}
+          onChange={(event) => recognizeImage()}
         />}
 
       {mode === ANALYZING &&

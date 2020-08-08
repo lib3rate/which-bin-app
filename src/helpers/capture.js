@@ -21,6 +21,8 @@ export default function feed() {
   var photo = null;
   var startbutton = null;
 
+  // video = document.getElementsByClassName('video')[0];
+
   function startup() {
     console.log('HERE');
 
@@ -91,10 +93,6 @@ export default function feed() {
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
 
-      // var data = canvas.toBlob(function(blob) {        // get content as JPEG blob
-      //   // here the image is a blob
-      // }, "image/jpeg", 0.75);
-    
       var data = canvas.toDataURL('image/png');
 
       photo.setAttribute('src', data);
@@ -103,8 +101,7 @@ export default function feed() {
     }
   }
 
-  // Set up our event listener to run the startup process
-  // once loading is complete.
-  // startup();
-  window.addEventListener('load', startup, false);
+  // Run the startup process.
+  
+  startup();
 };

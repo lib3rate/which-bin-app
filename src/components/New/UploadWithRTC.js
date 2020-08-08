@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -56,27 +56,25 @@ const useStyles = makeStyles((theme) => ({
 export default function Upload(props) {
   const classes = useStyles();
 
-  feed();
+  // feed();
+
+  useEffect(() => {
+    feed();
+  }, []);
 
   return (
     <>
+      <h1>
+        Take a photo
+      </h1>
       <div className={classes.contentarea}>
-        <h1>
-          Take a photo
-        </h1>
         <div className={classes.camera}>
-          {/* <video className={classes.video}>Video stream not available.</video> */}
           <video className="video">Video stream not available.</video>
-          {/* <button className={classes.startbutton}>Capture</button>  */}
           <button className="startbutton">Capture</button>
         </div>
-        {/* <canvas className={classes.canvas}> */}
-        {/* <canvas className="canvas"> */}
-        {/* <canvas className="canvas" style={{display: 'none'}}>
-        </canvas> */}
+        <canvas className="canvas" style={{display: 'none'}}></canvas>
         <div className={classes.output}>
-          {/* <img className={classes.photo} alt="The screen capture will appear in this box."/> */}
-          {/* <img className="photo" alt="The screen capture will appear in this box."/> */}
+          <img className="photo" alt="The screen capture will appear in this box."/>
         </div>
         <MyButton onClick={props.onClick}>
           Submit

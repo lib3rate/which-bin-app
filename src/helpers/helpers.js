@@ -182,25 +182,19 @@ export default function useApplicationData() {
   
       AnonLog();
 
-      // const file = document.getElementsByClassName('photo')[0];
-      
-      // const file = document.getElementsByClassName('canvas')[0];
-      
-      const file = new Blob([document.getElementsByClassName('photo')[0]], {type: 'image/png'});
-      console.log(file);
+      const canvas = document.getElementsByClassName('canvas')[0];
 
-      // const canvas = document.getElementsByClassName('canvas')[0];
-      // const file = canvas.toBlob(function(blob) {
-      //   var newImg = document.createElement('img'),
-      //       url = URL.createObjectURL(blob);
-      
-      //   newImg.onload = function() {
-      //     // no longer need to read the blob so it's revoked
-      //     URL.revokeObjectURL(url);
-      //   };
-      
-      //   newImg.src = url;
-      // });
+      var dataUrl = canvas.toDataURL("image/jpeg");
+      var file = dataURItoBlob(dataUrl);
+
+      function dataURItoBlob(dataURI) {
+        var binary = atob(dataURI.split(',')[1]);
+        var array = [];
+        for(var i = 0; i < binary.length; i++) {
+            array.push(binary.charCodeAt(i));
+        }
+        return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
+    }
 
       // Load base64 encoded image for display 
       var reader = new FileReader();

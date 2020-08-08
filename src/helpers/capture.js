@@ -22,6 +22,8 @@ export default function feed() {
   var startbutton = null;
 
   function startup() {
+    console.log('HERE');
+
     video = document.getElementsByClassName('video')[0];
     // video = useRef('video');
     canvas = document.getElementsByClassName('canvas')[0];
@@ -103,5 +105,6 @@ export default function feed() {
 
   // Set up our event listener to run the startup process
   // once loading is complete.
+  // startup();
   window.addEventListener('load', startup, false);
 };

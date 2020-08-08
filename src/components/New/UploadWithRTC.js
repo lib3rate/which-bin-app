@@ -71,7 +71,8 @@ export default function Upload(props) {
           <button className="startbutton">Capture</button>
         </div>
         {/* <canvas className={classes.canvas}> */}
-        <canvas className="canvas">
+        {/* <canvas className="canvas"> */}
+        <canvas className="canvas" style={{display: 'none'}}>
         </canvas>
         <div className={classes.output}>
           {/* <img className={classes.photo} alt="The screen capture will appear in this box."/> */}

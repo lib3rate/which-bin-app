@@ -102,6 +102,7 @@ export default function useApplicationData() {
     return new Promise((resolve, reject) => {
   
       AnonLog();
+
       var control = document.getElementById("fileToUpload");
       var file = control.files[0];
   
@@ -176,97 +177,37 @@ export default function useApplicationData() {
     });
   };
 
-  function DetectLabels(e) {
-  // function DetectLabels(imageData) {
-
-
-      AWS.region = "RegionToUse";
-      var rekognition = new AWS.Rekognition();
-      var params = {
-        Image: {
-          Bytes: e.target.result
-        },
-        MaxLabels: 123, 
-        MinConfidence: 70
-      };
-      // var params = {
-      //   Image: {
-      //     Bytes: imageData
-      //   },
-      //   Attributes: [
-      //     'ALL',
-      //   ]
-      // };
-
-
-  }
-
   function ProcessPhoto() {
     return new Promise((resolve, reject) => {
+  
       AnonLog();
 
-      let photo = document.getElementsByClassName('photo')[0];
-      const file = photo.file;
-
-      // Load base64 encoded image 
+      const file = document.getElementsByClassName('photo')[0];
+  
+      // Load base64 encoded image for display 
       var reader = new FileReader();
       reader.onload = (function (theFile) {
         return function (e) {
-          var img = document.createElement('img');
-          var image = null;
-          img.src = e.target.result;
-          var jpg = true;
-          try {
-            image = atob(e.target.result.split("data:image/jpeg;base64,")[1]);
-
-          } catch (e) {
-            jpg = false;
-          }
-          if (jpg == false) {
-            try {
-              image = atob(e.target.result.split("data:image/png;base64,")[1]);
-            } catch (e) {
-              alert("Not an image file Rekognition can process");
-              return;
-            }
-          }
-          //unencode image bytes for Rekognition DetectFaces API 
-          var length = image.length;
-          let imageBytes = new ArrayBuffer(length);
-          var ua = new Uint8Array(imageBytes);
-          for (var i = 0; i < length; i++) {
-            ua[i] = image.charCodeAt(i);
-          }
           //Call Rekognition  
-          // DetectLabels(imageBytes);
           AWS.region = "us-east-1";  
           var rekognition = new AWS.Rekognition();
           var params = {
             Image: {
-              Bytes: imageBytes
+              Bytes: e.target.result
             },
-            Attributes: [
-              'ALL',
-            ]
+            MaxLabels: 123, 
+            MinConfidence: 70
           };
-          // var params = {
-          //   Image: {
-          //     Bytes: e.target.result
-          //   },
-          //   MaxLabels: 123, 
-          //   MinConfidence: 70
-          // };
           rekognition.detectLabels(params, function (err, data) {
             if (err) console.log(err, err.stack); // an error occurred
             else {
               console.log(data);
-    
+
               const result = {
                 label: '',
                 bin: '',
                 text: ''
               }
-    
               setTimeout(() => {
                 for (let label of data.Labels) {
                   if (label.Name === 'Glass' || label.Name === 'Cardboard' || label.Name === 'Can') {
@@ -293,7 +234,7 @@ export default function useApplicationData() {
           });
         };
       })(file);
-      reader.readAsDataURL(file);
+      reader.readAsArrayBuffer(file);
     })
   }
 

@@ -23,6 +23,7 @@ export default function feed() {
 
   function startup() {
     video = document.getElementsByClassName('video')[0];
+    // video = useRef('video');
     canvas = document.getElementsByClassName('canvas')[0];
     photo = document.getElementsByClassName('photo')[0];
     startbutton = document.getElementsByClassName('startbutton')[0];
@@ -87,8 +88,13 @@ export default function feed() {
       canvas.width = width;
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
+
+      // var data = canvas.toBlob(function(blob) {        // get content as JPEG blob
+      //   // here the image is a blob
+      // }, "image/jpeg", 0.75);
     
       var data = canvas.toDataURL('image/png');
+
       photo.setAttribute('src', data);
     } else {
       clearphoto();

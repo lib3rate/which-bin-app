@@ -187,6 +187,7 @@ export default function useApplicationData() {
       // const file = document.getElementsByClassName('canvas')[0];
       
       const file = new Blob([document.getElementsByClassName('photo')[0]], {type: 'image/png'});
+      console.log(file);
 
       // const canvas = document.getElementsByClassName('canvas')[0];
       // const file = canvas.toBlob(function(blob) {

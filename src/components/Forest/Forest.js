@@ -78,6 +78,7 @@ export default function Forest(props) {
 
   return ( 
     <div className={classes.page}>
+      <style>{'body { background-image: url(/images/backgroundtest.png) }'}</style>
       <h2>This is the Forest</h2>
       {/* <img src="/images/forest.jpg" alt="Forest" className={classes.forest}/> */}
         <div className={classes.forest}>

@@ -10,18 +10,6 @@ import Paper from "@material-ui/core/Paper";
 import ForestTree from "../Forest/ForestTree";
 import Tooltip from "@material-ui/core/Tooltip";
 
-// const rearrangedScores = (arr) => {
-//   let arr1 = arr.slice(0, arr.length / 2);
-//   let arr2 = arr.slice(arr.length / 2, arr.length);
-//   arr2.sort(function (a, b) {
-//     return b - a;
-//   });
-//   return (arr = arr1.concat(arr2));
-// };
-// console.log("array: ", rearrangedScores([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
-
-// const shuffle = array => array.sort((a, b) => 0.5 - Math.random())
-
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -48,11 +36,12 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   forest: {
+    height: 175,
     margin: 15,
     display: "flex",
     flexDirection: "row",
+    width: 1000,
   },
-  
   container: {
     display: "flex",
     flexDirection: "column",
@@ -63,13 +52,10 @@ const useStyles = makeStyles({
     minWidth: 700,
     maxWidth: 1500,
   },
-  containerTrees: {
-    maxWidth: 100,
-  },
-  MuiTableContainerRoot: {
-    width: 100,
+  tree: {
+    width: 150
   }
-});
+  });
 
 export default function Forest(props) {
   const classes = useStyles();
@@ -79,48 +65,13 @@ export default function Forest(props) {
 
   return (
     <div className={classes.page}>
-
-      {/* <img src="/images/forest.jpg" alt="Forest" className={classes.forest}/> */}
-      {/* <div className={classes.forest}>
-          {reArrangedArr.map((individualScore) => (
-            <Tree 
-            treeTotal={(individualScore)} 
-            />        
-            ))}
-            <div className="forestNames" >
-            <div>
-            {reArrangedNamesArr.map((individualName) => (   
-              <h1>{individualName} </h1>
-              ))}
-              </div>
-              
-              </div> 
-            </div> */}
-
       <h2>This is the Forest</h2>
-      
-        <section className={classes.forest}>
-         {users.map((userBin) => (   
-            <div className={classes.containerTrees}>
-            <Tooltip
-              title={userBin.username}
-              placement="top"
-            >
-              <TableContainer component={Paper}>
-                
-                  <div className={classes.tree}>
-                    <ForestTree
-                    treeTotal={userBin.score}
-                    />
-                </div>
-              </TableContainer>
-            </Tooltip>
-            </div>
-        )
-        )}
+      <section className={classes.forest}>
+        {users.map((userBin) => (
+              <ForestTree treeTotal={userBin.score} name={userBin.username}/>
+        ))}
       </section>
-      
-    
+
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>

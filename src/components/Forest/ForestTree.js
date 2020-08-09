@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const ForestTree = (props) => {
   const currentScore = props.treeTotal;
@@ -36,6 +37,7 @@ const ForestTree = (props) => {
   }
   
   return (
+    <Tooltip title={props.name} placement="top" >
     <StyledTree
       currentScore={currentScore}
       baseRender={baseRender}
@@ -43,7 +45,9 @@ const ForestTree = (props) => {
       almostTreeRender={almostTreeRender}
       fullTreeRender={fullTreeRender}
     >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230.91 340.82">
+      <svg xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 230.91 250"
+      >
         <title>new-tree</title>
         <g id="Full_Tree" data-name="Full Tree">
           <g id="fullTree">
@@ -561,6 +565,7 @@ const ForestTree = (props) => {
         </g>
       </svg>
     </StyledTree>
+      </Tooltip>
   );
 };
 
@@ -572,6 +577,7 @@ const branchStyle = {
   "stroke-width": "3px",
   "stroke-linejoin": "round",
   "stroke-linecap": "round",
+  maxWidth: 100
   // "stroke-dasharray": 1000,
   // "stroke-dashoffset": 1000,
 };

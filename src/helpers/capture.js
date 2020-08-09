@@ -24,11 +24,11 @@ export default function feed() {
   // video = document.getElementsByClassName('video')[0];
 
   function startup() {
-    video = document.getElementsByClassName('video')[0];
+    video = document.getElementById('video');
     // video = useRef('video');
-    canvas = document.getElementsByClassName('canvas')[0];
-    photo = document.getElementsByClassName('photo')[0];
-    startbutton = document.getElementsByClassName('startbutton')[0];
+    canvas = document.getElementById('canvas');
+    photo = document.getElementById('photo');
+    startbutton = document.getElementById('startbutton');
 
     navigator.mediaDevices.getUserMedia({video: true, audio: false})
       .then(function(stream) {

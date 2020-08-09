@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     border: 1,
-    marginTop: 200,
+    marginTop: 100,
   },
 }));
 
@@ -26,7 +26,7 @@ export default function New(props) {
   const classes = useStyles();
 
   // Showing the Upload mode by default
-  
+
   const { mode, transition } = useVisualMode(UPLOAD);
 
   const recognizeImage = () => {

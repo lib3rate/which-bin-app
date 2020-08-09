@@ -8,7 +8,7 @@ import feed from "./../../helpers/capture";
 
 const useStyles = makeStyles((theme) => ({
   input: {
-    marginTop: 50
+    margin: '0 0 100px 0'
   },
   video: {
     border: '1px solid black',
@@ -49,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
   contentarea: {
     // fontSize: 16,
     // fontFamily: "Lucida Grande", "Arial", sans-serif;
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     width: 760
   }
 }));
@@ -69,19 +72,19 @@ export default function Upload(props) {
       </h1>
       <div className={classes.contentarea}>
         <div className={classes.camera}>
-          <video className="video">Video stream not available.</video>
-          <button className="startbutton">Capture</button>
+          <video className={classes.video} id="video">Video stream not available.</video>
+          <button className={classes.startbutton} id="startbutton">Capture</button>
         </div>
-        <canvas className="canvas" style={{display: 'none'}}></canvas>
+        <canvas className={classes.canvas} id="canvas" style={{display: 'none'}}></canvas>
         <div className={classes.output}>
-          <img className="photo" alt="The screen capture will appear in this box."/>
+          <img className={classes.photo} id="photo" alt="The screen capture will appear in this box."/>
         </div>
         <MyButton onClick={props.onClick}>
           Submit
         </MyButton>
       </div>
       <h1>
-        Upload a file
+        Or upload a file
       </h1>
       <Input
         type="file"

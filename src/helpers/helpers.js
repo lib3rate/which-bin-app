@@ -190,7 +190,7 @@ export default function useApplicationData() {
   
       AnonLog();
 
-      const canvas = document.getElementsByClassName('canvas')[0];
+      const canvas = document.getElementById('canvas');
 
       var dataUrl = canvas.toDataURL("image/jpeg");
       var file = dataURItoBlob(dataUrl);

@@ -41,6 +41,7 @@ const useStyles = makeStyles({
     alignItems: 'center'
   },
   container: {
+    width: '50%', 
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -58,6 +59,7 @@ const useStyles = makeStyles({
   userTree: {
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-between'
     // alignItems: 'center',
     // height: 300,
   },

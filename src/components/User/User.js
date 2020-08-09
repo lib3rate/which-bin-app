@@ -63,6 +63,14 @@ const useStyles = makeStyles({
     // alignItems: 'center',
     // height: 300,
   },
+  nameTitle: {
+    color: "white",
+    fontSize: "50",
+    margin: "0 0 3em 0"
+  },
+  tableHead: {
+    background: "#4A235A" ,
+  }
 });
 
 export default function User(props) {
@@ -72,18 +80,17 @@ export default function User(props) {
 
   return (
     <div className={classes.page}>
-      {/* <h2>[For testing: Requested user ID: {id}]</h2> */}
+      <h2 className={classes.nameTitle}>Welcome, {props.user.username} this is your tree and your stats</h2>
       <div className={classes.userTree}>
-        {/* <img {logo} className="App-logo" alt="logo" /> */}
         <Tree 
           treeTotal={treeTotal}
         />
 
         <TableContainer className={classes.container} component={Paper}>
           <Table className={classes.table} aria-label="customized table">
-            <TableHead>
+            <TableHead className={classes.tableHead}>
               <TableRow>
-                <StyledTableCell>Your waste in numbers</StyledTableCell>
+                <StyledTableCell >Your waste in numbers</StyledTableCell>
                 <StyledTableCell align="right"></StyledTableCell>
               </TableRow>
             </TableHead>

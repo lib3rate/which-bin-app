@@ -23,7 +23,7 @@ import MyButton from "../Button";
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    marginTop: 200,
+    // marginTop: 200,
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -49,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     color: 'white',
   },
+  title: {
+    fontSize: "100"
+  }
 }));
 
 export default function SignIn(props) {
@@ -59,6 +62,7 @@ export default function SignIn(props) {
 
   return ( 
     <Container component="main" maxWidth="xs" className={classes.page}>
+      <h1 className={classes.title}> Welcome to ReForest</h1>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

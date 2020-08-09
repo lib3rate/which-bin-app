@@ -156,6 +156,11 @@ export default function useApplicationData() {
                     result.bin = 'Organic';
                     result.text = 'Place it into the organics bin and you will get 25 points to your score!';
                     setState({...state, recognition: result});
+                  } else {
+                    result.label = `Sorry, we didn't recognize the item.`;
+                    result.bin = 'Garbage';
+                    result.text = 'Please put it into the garbage bin to get 10 points anyway.';
+                    setState({...state, recognition: result});
                   }
                 }
                 resolve()

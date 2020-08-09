@@ -40,13 +40,16 @@ export default function App() {
       setState(prev => ({ ...prev, user, userBins }));
     });
   }, []);
-
+  let displaySignout = true;
   return (
     <Router>
-      <div>
+      <div> 
         <Navigation
           user={state.user}
-        />
+          login={displaySignout}
+        >
+       
+        </Navigation>
         <Switch>
           <Route exact path="/">
             <Login />
@@ -55,6 +58,7 @@ export default function App() {
             <Register />
           </Route>
           <Route path="/login">
+            
             <Login />
           </Route>
           <Route path="/new">

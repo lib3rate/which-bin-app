@@ -20,7 +20,9 @@ const useStyles = makeStyles((theme) => ({
     color: 'white'
   },
   input: {
-    margin: '0 0 100px 0'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   },
   video: {
     border: '1px solid black',
@@ -73,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "10px"
   },
   photoUpload: {
-    marginBottom: "50px",
+    background: "linear-gradient(45deg, #BB76C2, 30%, #C9A7CC 90%)",
     width: "372px",
     [theme.breakpoints.up('md')]: {
       width: "712px"
@@ -97,7 +99,8 @@ const useStyles = makeStyles((theme) => ({
   accordionActions: {
     background: "linear-gradient(90deg, #884EA0, 40%, #BB8FCE 90%)",
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    height: "80px"
   },
   videoAccordion: {
     boxShadow: '0px 0px 1px 2px rgba(0, 0, 0, 0.2)'
@@ -117,6 +120,9 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: 10
   },
+  downArrow: {
+    color: "white"
+  }
 }));
 
 export default function Upload(props) {
@@ -135,11 +141,11 @@ export default function Upload(props) {
       <div className={classes.contentarea}>
         <Accordion defaultCollapsed className={classes.videoAccordion}>
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1c-content"
-            id="panel1c-header"
-            className={classes.summary}
-          >
+             expandIcon={<ExpandMoreIcon className={classes.downArrow}/>} 
+             aria-controls="panel1c-content" 
+             id="panel1c-header"
+             className={classes.summary} 
+           > 
             <div className={classes.accordianHeader}>
             <CameraAltIcon className={classes.icon}/>
             <h4>
@@ -166,35 +172,39 @@ export default function Upload(props) {
             </MyButton>
           </AccordionActions>
         </Accordion>
-        <Accordion defaultCollapsed className={classes.photoAccordion}>
+        <Accordion defaultCollapsed className={classes.photoAccordion}> 
           <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1c-content"
-              id="panel1c-header"
-              className={classes.summary}
-            >
-              <div className={classes.accordianHeader}> 
-              <PublishIcon className={classes.icon}/>
-              <h4>
-                Upload a photo
-              </h4>
-              </div>
-          </AccordionSummary>
-          <AccordionDetails className={classes.photoUpload}>
-            <h1>
-              Or upload a file
-            </h1>
+            expandIcon={<ExpandMoreIcon className={classes.downArrow}/>}
+            aria-controls="panel1c-content"
+            id="panel1c-header"
+            className={classes.summary}
+          > 
+            <div className={classes.accordianHeader}> 
+            <PublishIcon className={classes.icon}/>
+            <h4>
+              Upload a photo
+            </h4>
+            </div>
+          </AccordionSummary> 
+          <AccordionDetails className={classes.photoUpload}> 
+            <div className={classes.input}>
             <Input
               type="file"
               name="fileToUpload"
               id="fileToUpload"
               accept="image/*"
-              className={classes.input}
+              // className={classes.input}
               // capture="environment"
-              onChange={props.onChange}
+              onChange={props.onChange}           
             >
            </Input>
+           </div>
           </AccordionDetails>
+          <AccordionActions className={classes.accordionActions}>
+            <MyButton onClick={props.onClick}>
+              Submit
+            </MyButton>
+          </AccordionActions>
         </Accordion>
       </div>
       

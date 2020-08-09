@@ -50,13 +50,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(0, 150, 0, 0.5)',
     border: '1px solid rgba(255, 255, 255, 0.7)',
     boxShadow: '0px 0px 1px 2px rgba(0, 0, 0, 0.2)',
-    // fontSize: 14,
-    // fontFamily: "Lucida Grande", "Arial", sans-serif;
     color: 'rgba(255, 255, 255, 1.0)'
   },
   contentarea: {
-    // fontSize: 16,
-    // fontFamily: "Lucida Grande", "Arial", sans-serif;
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -66,8 +62,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Upload(props) {
   const classes = useStyles();
-
-  // feed();
 
   useEffect(() => {
     feed();

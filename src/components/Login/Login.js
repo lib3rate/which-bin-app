@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useAuth0 } from "@auth0/auth0-react";
 
 // import Form from "../Form";
 import MyButton from "../Button";
@@ -53,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const { loginWithRedirect } = useAuth0();
 
   return (
     <Container component="main" maxWidth="xs" className={classes.page}>
@@ -88,7 +90,7 @@ export default function SignIn() {
             autoComplete="current-password"
           />
           <MyButton
-            // onClick={() => login()}
+            onClick={() => loginWithRedirect()}
             type="submit"
             fullWidth
             variant="contained"

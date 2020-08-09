@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     color: 'white',
   },
+  label: {
+    margin: '100px 0 0 0'
+  }
 }));
 
 export default function Result(props) {
@@ -16,7 +19,7 @@ export default function Result(props) {
 
   return (
     <>
-      <h2>{props.recognition.label}</h2>
+      <h2 className={classes.label}>{props.recognition.label}</h2>
       <h2>{props.recognition.text}</h2>
 
       <MyButton

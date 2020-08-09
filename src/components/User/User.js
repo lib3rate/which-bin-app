@@ -120,10 +120,19 @@ export default function User(props) {
             <Link
               to="/new"
               className={classes.link}
-            >Add more
+            >Add item
             </Link>
           }
         />
+      <MyButton
+        children={
+          <Link
+            to="/forest"
+            className={classes.link}
+          >The Forest
+          </Link>
+        }
+      />
     </div>
   )
 };

@@ -6,7 +6,8 @@ const useStyles = makeStyles((theme) => ({
   status: {
     display: 'flex',
     alignItems: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    margin: '100px 0 0 0',
   },
   root: {
     display: 'flex',

@@ -18,7 +18,11 @@ export default function useApplicationData() {
   };
 
   function convertToObject(data) {
-    const result = {};
+    const result = {
+      'organic': 0,
+      'recycling': 0,
+      'garbage': 0
+    };
     let total = 0;
     for (let item of data) {
       result[item.name] = Number(item.sum);
@@ -43,33 +47,42 @@ export default function useApplicationData() {
   function updateScore(bin) {
     let updatedUser = state.user;
     let updatedTotal = state.user.total;
-    let updatedRecycling = state.user.recycling;
     let updatedOrganic = state.user.organic;
+    let updatedRecycling = state.user.recycling;
+    let updatedGarbage = state.user.garbage;
     const userId = state.user.userId;
     let foundUser = findUserById(userId);
-    let binId = 3;
+    let binId = 1;
     let score = 0;
 
-    if (bin === 'Recycling') {
-      binId = 2;
-      score = 50;
-      updatedTotal += 50;
-      updatedRecycling += 50;
-      updatedUser = {
-        ...updatedUser,
-        total: updatedTotal,
-        recycling: updatedRecycling
-      };
-      // console.log(updatedUser);
-    } else if (bin === 'Organic') {
-      binId = 1;
-      score = 50;
+    if (bin === 'Organic') {
+      score = 25;
       updatedTotal += 25;
       updatedOrganic += 25;
       updatedUser = {
         ...updatedUser,
         total: updatedTotal,
         organic: updatedOrganic
+      };
+    } else if (bin === 'Recycling') {
+      binId = 2;
+      score = 25;
+      updatedTotal += 25;
+      updatedRecycling += 25;
+      updatedUser = {
+        ...updatedUser,
+        total: updatedTotal,
+        recycling: updatedRecycling
+      };
+    } else if (bin === 'Garbage') {
+      binId = 3;
+      score = 10;
+      updatedTotal += 10;
+      updatedGarbage += 10;
+      updatedUser = {
+        ...updatedUser,
+        total: updatedTotal,
+        garbage: updatedGarbage
       };
     }
 
@@ -90,11 +103,6 @@ export default function useApplicationData() {
           })
         })
     );
-
-    // setState({
-    //   ...state,
-    //   user: updatedUser
-    // })
   };
 
   //Loads selected image and unencodes image bytes for Rekognition DetectFaces API
@@ -102,9 +110,100 @@ export default function useApplicationData() {
     return new Promise((resolve, reject) => {
   
       AnonLog();
+
       var control = document.getElementById("fileToUpload");
       var file = control.files[0];
   
+      // Load base64 encoded image for display 
+      var reader = new FileReader();
+      reader.onload = (function (theFile) {
+        return function (e) {
+          //Call Rekognition  
+          AWS.region = "us-east-1";  
+          var rekognition = new AWS.Rekognition();
+          var params = {
+            Image: {
+              Bytes: e.target.result
+            },
+            MaxLabels: 123, 
+            MinConfidence: 70
+          };
+          rekognition.detectLabels(params, function (err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else {
+              console.log(data);
+
+              const result = {
+                label: '',
+                bin: '',
+                text: ''
+              }
+              setTimeout(() => {
+                for (let label of data.Labels) {
+                  if (label.Name === 'Glass' || label.Name === 'Cardboard' || label.Name === 'Can') {
+                    // const name = label.Name.toLowerCase;
+                    result.label = `You have uploaded a ${label.Name}.`;
+                    result.bin = 'Recycling';
+                    result.text = 'Place it into the recycling bin and you will get 25 points to your score!';
+                    setState({...state, recognition: result});
+                  } else if (label.Name === 'Plastic') {
+                    result.label = `You have uploaded some ${label.Name}.`;
+                    result.bin = 'Garbage';
+                    result.text = 'Please put it into the garbage bin to get 10 points and use more recycled items, when possible.';
+                    setState({...state, recognition: result});
+                  } else if (label.Name === 'Plant') {
+                    result.label = `You have uploaded a ${label.Name}.`;
+                    result.bin = 'Organic';
+                    result.text = 'Place it into the organics bin and you will get 25 points to your score!';
+                    setState({...state, recognition: result});
+                  }
+                }
+                resolve()
+              }, 750)
+            }
+          });
+        };
+      })(file);
+      reader.readAsArrayBuffer(file);
+    })
+  };
+  
+  //Provides anonymous log on to AWS services
+  function AnonLog() {
+    
+    // Configure the credentials provider to use your identity pool
+    AWS.config.region = 'us-east-1'; // Region
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:ef7bd933-2344-4091-abac-aaca08dd6ba3',
+    });
+    // Make the call to obtain credentials
+    AWS.config.credentials.get(function () {
+      // Credentials will be available when this function is called.
+      var accessKeyId = AWS.config.credentials.accessKeyId;
+      var secretAccessKey = AWS.config.credentials.secretAccessKey;
+      var sessionToken = AWS.config.credentials.sessionToken;
+    });
+  };
+
+  function ProcessPhoto() {
+    return new Promise((resolve, reject) => {
+  
+      AnonLog();
+
+      const canvas = document.getElementById('canvas');
+
+      var dataUrl = canvas.toDataURL("image/jpeg");
+      var file = dataURItoBlob(dataUrl);
+
+      function dataURItoBlob(dataURI) {
+        var binary = atob(dataURI.split(',')[1]);
+        var array = [];
+        for(var i = 0; i < binary.length; i++) {
+            array.push(binary.charCodeAt(i));
+        }
+        return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
+    }
+
       // Load base64 encoded image for display 
       var reader = new FileReader();
       reader.onload = (function (theFile) {
@@ -157,24 +256,7 @@ export default function useApplicationData() {
       })(file);
       reader.readAsArrayBuffer(file);
     })
-  };
-  
-  //Provides anonymous log on to AWS services
-  function AnonLog() {
-    
-    // Configure the credentials provider to use your identity pool
-    AWS.config.region = 'us-east-1'; // Region
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: 'us-east-1:ef7bd933-2344-4091-abac-aaca08dd6ba3',
-    });
-    // Make the call to obtain credentials
-    AWS.config.credentials.get(function () {
-      // Credentials will be available when this function is called.
-      var accessKeyId = AWS.config.credentials.accessKeyId;
-      var secretAccessKey = AWS.config.credentials.secretAccessKey;
-      var sessionToken = AWS.config.credentials.sessionToken;
-    });
-  };
+  }
 
   return {
     state,
@@ -182,6 +264,7 @@ export default function useApplicationData() {
     convertToArray,
     convertToObject,
     updateScore,
-    ProcessImage
+    ProcessImage,
+    ProcessPhoto
   };
 };

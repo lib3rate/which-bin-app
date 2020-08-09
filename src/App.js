@@ -24,7 +24,8 @@ export default function App() {
     convertToArray,
     convertToObject,
     updateScore,
-    ProcessImage
+    ProcessImage,
+    ProcessPhoto
   } = useApplicationData();
 
   useEffect(() => {
@@ -56,6 +57,7 @@ export default function App() {
             <New
               recognition={state.recognition}
               ProcessImage={ProcessImage}
+              ProcessPhoto={ProcessPhoto}
               updateScore={updateScore}
               user={state.user}
             />

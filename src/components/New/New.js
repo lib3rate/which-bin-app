@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     border: 1,
-    marginTop: 200,
+    margin: '100px 0 0 0',
   },
 }));
 
@@ -26,9 +26,10 @@ export default function New(props) {
   const classes = useStyles();
 
   // Showing the Upload mode by default
+
   const { mode, transition } = useVisualMode(UPLOAD);
 
-  const recognize = () => {
+  const recognizeImage = () => {
     transition(ANALYZING);
     props.ProcessImage()
       .then(() => {
@@ -39,13 +40,23 @@ export default function New(props) {
       // });
   };
 
+  const recognizePhoto = () => {
+    transition(ANALYZING);
+    props.ProcessPhoto()
+      .then(() => {
+        transition(RESULT);
+      })
+      // .catch(error => {
+      //   transition(ERROR, true)
+      // });
+  };
+
   return (
     <div className={classes.root}>
-      <h1>Submit a photo</h1>
-
       {mode === UPLOAD &&
         <Upload
-          onChange={(event) => recognize()}
+          onClick={event => recognizePhoto()}
+          onChange={(event) => recognizeImage()}
         />}
 
       {mode === ANALYZING &&

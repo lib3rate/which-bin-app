@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import axios from "axios";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 import './App.css';
 
@@ -42,42 +43,48 @@ export default function App() {
   }, []);
 
   return (
-    <Router>
-      <div>
-        <Navigation
-          user={state.user}
-        />
-        <Switch>
-          <Route exact path="/">
-            <Login />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/new">
-            <New
-              recognition={state.recognition}
-              ProcessImage={ProcessImage}
-              ProcessPhoto={ProcessPhoto}
-              updateScore={updateScore}
-              user={state.user}
-            />
-          </Route>
-          <Route path="/users/:id">
-            <User
-              user={state.user}
-            />
-          </Route>
-          <Route path="/forest">
-            <Forest 
-              userBins={state.userBins}
-            />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <Auth0Provider
+    domain="dev-76k88uwa.us.auth0.com"
+    clientId="lgJ3PMd38e14S40QA4OCekaMuC5dlRas"
+    redirectUri={window.location.origin}
+    >
+      <Router>
+        <div>
+          <Navigation
+            user={state.user}
+          />
+          <Switch>
+            <Route exact path="/">
+              <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/new">
+              <New
+                recognition={state.recognition}
+                ProcessImage={ProcessImage}
+                ProcessPhoto={ProcessPhoto}
+                updateScore={updateScore}
+                user={state.user}
+              />
+            </Route>
+            <Route path="/users/:id">
+              <User
+                user={state.user}
+              />
+            </Route>
+            <Route path="/forest">
+              <Forest 
+                userBins={state.userBins}
+              />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </Auth0Provider>
   );
 }

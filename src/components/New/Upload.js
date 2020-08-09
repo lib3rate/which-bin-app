@@ -27,11 +27,19 @@ const useStyles = makeStyles((theme) => ({
   },
   camera: {
     width: 340,
-    display: 'inline-block'
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  message: {
+    marginTop: 0
   },
   output: {
     width: 340,
-    display: 'inline-block'
+    margin: '0 0 10px 0',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   startbutton: {
     display: 'block',
@@ -77,6 +85,7 @@ export default function Upload(props) {
         </div>
         <canvas className={classes.canvas} id="canvas" style={{display: 'none'}}></canvas>
         <div className={classes.output}>
+          <h3 className = {classes.message}>Your image will appear below</h3>
           <img className={classes.photo} id="photo" alt="The screen capture will appear in this box."/>
         </div>
         <MyButton onClick={props.onClick}>

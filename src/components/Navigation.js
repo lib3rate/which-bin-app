@@ -178,8 +178,10 @@ export default function PersistentDrawerLeft(props) {
   
   `;
  
-
+  console.log("props.url: ", props.url)
   return (
+    !props.url ? null :
+
     <div className={classes.root}>
       <CssBaseline />
       <AppBar

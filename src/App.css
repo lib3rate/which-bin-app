@@ -11,6 +11,11 @@ body {
 #root {
   display: flex;
   justify-content: center;
+  background-image: url("/images/48-nice-green-gradient.jpg");
+  /* background: 'black'; */
+  min-height: 100vh;
+  
+
 }
 
 /* @keyframes branches {

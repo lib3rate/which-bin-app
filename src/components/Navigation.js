@@ -30,15 +30,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     width: "100%",
+
   },
   // username: {
   //   flexGrow: 1,
   //   marginLeft: 20,
   // },
   appBar: {
+    backgroundImage: "url('/images/48-nice-green-gradient.jpg')",
     // backgroundColor: 'black',
     // background: 'linear-gradient(45deg, #008c1c 30%, #67e64e 90%)',
-    background: "linear-gradient(45deg, #738678, 30%, #B2C2B9 90%)",
+    // background: "linear-gradient(45deg, #738678, 30%, #B2C2B9 90%)",
+    // background: "linear-gradient(45deg, black, 30%, #239d60, 66%, lightGreen 90%)",
+    // backgroundColor:"black",
+    opacity: "0.9",
+    // filter: alpha("opacity=50"),
+    color: "white",
+    // background: "none",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -59,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 15,
   },
   title: {
-    fontSize: 32,
+    fontSize: 39,
     flexGrow: 1,
     marginLeft: 20,
     fontFamily: "Cinzel Decorative",
@@ -136,11 +144,14 @@ const useStyles = makeStyles((theme) => ({
     padding: ".5em",
     marginLeft: 7,
     "&:hover": {
-      color: 'red'
+      color: '#4A235A'
       },
       [theme.breakpoints.down('sm')]: {
         display: "none",
       },
+  },
+  signName: {
+    marginRight: 7,
   }
 
   
@@ -177,9 +188,6 @@ export default function PersistentDrawerLeft(props) {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar 
-        // onClose={handleDrawerOpen}
-        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -190,7 +198,12 @@ export default function PersistentDrawerLeft(props) {
           >
             <MenuIcon />
           </IconButton>
-        
+          <Typography variant="h6" noWrap className={classes.title}>
+            ReForest
+          </Typography>
+        <Toolbar 
+        // onClose={handleDrawerOpen}
+        >
         
           <Link to="/new" className={classes.menuItem}>
             Capture a photo
@@ -201,14 +214,16 @@ export default function PersistentDrawerLeft(props) {
 
           {/* <img src="/images/tree2.jpg" alt="Logo" className={classes.logo}/> */}
          
-        </Toolbar>
-          <Typography variant="h6" noWrap className={classes.title}>
-            Which Bin
-          </Typography>
+        
         <Link to="/forest" className={classes.menuItem}>
               The Forest
           </Link>
+        </Toolbar>
           <div className={classes.login}>
+          <h4 className={classes.signName}>
+            Signed in as {props.user.username}
+          </h4>
+        </div>
           <StyledButton
             onClick={() => console.log("Logging out")}
             type="submit"
@@ -223,7 +238,6 @@ export default function PersistentDrawerLeft(props) {
               Sign out
             </Link>
           </StyledButton>
-        </div>
       </AppBar>
 
       {/* <ClickAwayListener onClickAway={ handleDrawerClose }> */}

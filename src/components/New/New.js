@@ -13,7 +13,7 @@ const RESULT = "RESULT";
 // const ERROR = "ERROR";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  new: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -52,7 +52,8 @@ export default function New(props) {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.new}>
+            
       {mode === UPLOAD &&
         <Upload
           onClick={event => recognizePhoto()}

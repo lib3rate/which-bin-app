@@ -10,6 +10,37 @@ describe("Navigation", () => {
       .should("exist");
   });
 
+  it("should navigate to the Forest page", () => {
+    cy.visit("/");
+  
+    cy.get('form')
+      .contains("Sign in")
+      .click();
+
+    cy.contains("Your waste in numbers")
+      .should("exist");
+
+    cy.contains('The Forest')
+      .click({force: true});
+
+    cy.contains("This is the Forest")
+      .should("exist");
+  });
+
+  it("should navigate to the register page", () => {
+    cy.visit("/");
+  
+    cy.get('form')
+      .contains("Don't have an account? Sign Up")
+      .click();
+
+    cy.contains("Username")
+      .should("exist");
+
+    cy.contains("Already have an account? Sign in")
+      .should("exist");
+  });
+
   it("should navigate to the login page after signing out", () => {
     cy.visit("/");
   
@@ -45,7 +76,7 @@ describe("Navigation", () => {
       .should("exist")
       .click();
 
-    cy.contains("Submit a photo")
+    cy.contains("Take a photo")
       .should("exist");
   });
 
@@ -59,14 +90,10 @@ describe("Navigation", () => {
     cy.contains("Your waste in numbers")
       .should("exist");
 
-    cy.get('[aria-label="open drawer"]')
+    cy.contains('Add item')
       .click();
 
-    cy.contains("Capture a photo")
-      .should("exist")
-      .click();
-
-    cy.contains("Submit a photo")
+    cy.contains("Or upload a file")
       .should("exist");
 
     cy.fixture('/images/boxes.jpg').then(fileContent => {

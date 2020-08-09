@@ -56,10 +56,18 @@ export default function SignIn() {
   const classes = useStyles();
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
   return (
     <Container component="main" maxWidth="xs" className={classes.page}>
-      <CssBaseline />
+      { isAuthenticated && (
+        <div>
+          {/* <img src={user.picture} alt={user.name} /> */}
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+        </div>
+      ) }
+      {/* <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -89,7 +97,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
-          />
+      />*/}
           <MyButton
             onClick={() => loginWithRedirect()}
             type="submit"
@@ -120,17 +128,17 @@ export default function SignIn() {
             Sign In
           </Button> */}
           {/* <Grid container> */}
-            <Grid item>
+            {/* <Grid item> */}
               {/* <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link> */}
-              <Link to="/register" variant="body2">
+              {/* <Link to="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           {/* </Grid> */}
-        </form>
-      </div>
+        {/* </form> */}
+      {/* </div> */}
     </Container>
   );
 }

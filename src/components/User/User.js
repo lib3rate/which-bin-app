@@ -9,7 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 // import logo from '../../logo.svg'
-import Tree from '../Tree/Tree'
+import Tree from '../Tree/Tree';
+import { useAuth0 } from "@auth0/auth0-react";
 
 import MyButton from "../Button";
 
@@ -67,11 +68,20 @@ const useStyles = makeStyles({
 
 export default function User(props) {
   // let { id } = useParams();
-  const classes = useStyles()
+  const classes = useStyles();
+  const { user, isAuthenticated } = useAuth0();
+
   const treeTotal = Number(props.user.total);
 
   return (
     <div className={classes.page}>
+      { isAuthenticated && (
+        <div>
+          {/* <img src={user.picture} alt={user.name} /> */}
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+        </div>
+      ) }
       {/* <h2>[For testing: Requested user ID: {id}]</h2> */}
       <div className={classes.userTree}>
         {/* <img {logo} className="App-logo" alt="logo" /> */}

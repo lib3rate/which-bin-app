@@ -140,24 +140,30 @@ export default function useApplicationData() {
                 text: ''
               }
               setTimeout(() => {
+                let found = false;
+
                 for (let label of data.Labels) {
                   if (label.Name === 'Glass' || label.Name === 'Cardboard' || label.Name === 'Can') {
                     // const name = label.Name.toLowerCase;
-                    result.label = `You have uploaded a ${label.Name}.`;
+                    found = true;
+                    result.label = `You have submitted a ${label.Name}.`;
                     result.bin = 'Recycling';
-                    result.text = 'Place it into the recycling bin and you will get 25 points to your score!';
+                    result.text = 'Place it into the recycling bin and you will get 50 points to your score!';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plastic') {
-                    result.label = `You have uploaded some ${label.Name}.`;
+                    found = true;
+                    result.label = `You have submitted some ${label.Name}.`;
                     result.bin = 'Garbage';
-                    result.text = 'Please put it into the garbage bin to get 10 points and use more recycled items, when possible.';
+                    result.text = 'Please put it into the garbage bin and use more recycled items, when possible.';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plant') {
-                    result.label = `You have uploaded a ${label.Name}.`;
+                    found = true;
+                    result.label = `You have submitted a ${label.Name}.`;
                     result.bin = 'Organic';
                     result.text = 'Place it into the organics bin and you will get 25 points to your score!';
                     setState({...state, recognition: result});
-                  } else {
+                  }
+                  if (!found) {
                     result.label = `Sorry, we didn't recognize the item.`;
                     result.bin = 'Garbage';
                     result.text = 'Please put it into the garbage bin to get 10 points anyway.';
@@ -235,24 +241,30 @@ export default function useApplicationData() {
                 text: ''
               }
               setTimeout(() => {
+                let found = false;
+
                 for (let label of data.Labels) {
                   if (label.Name === 'Glass' || label.Name === 'Cardboard' || label.Name === 'Can') {
                     // const name = label.Name.toLowerCase;
-                    result.label = `You have uploaded a ${label.Name}.`;
+                    found = true;
+                    result.label = `You have submitted a ${label.Name}.`;
                     result.bin = 'Recycling';
                     result.text = 'Place it into the recycling bin and you will get 50 points to your score!';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plastic') {
-                    result.label = `You have uploaded some ${label.Name}.`;
+                    found = true;
+                    result.label = `You have submitted some ${label.Name}.`;
                     result.bin = 'Garbage';
                     result.text = 'Please put it into the garbage bin and use more recycled items, when possible.';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plant') {
-                    result.label = `You have uploaded a ${label.Name}.`;
+                    found = true;
+                    result.label = `You have submitted a ${label.Name}.`;
                     result.bin = 'Organic';
                     result.text = 'Place it into the organics bin and you will get 25 points to your score!';
                     setState({...state, recognition: result});
-                  } else {
+                  }
+                  if (!found) {
                     result.label = `Sorry, we didn't recognize the item.`;
                     result.bin = 'Garbage';
                     result.text = 'Please put it into the garbage bin to get 10 points anyway.';

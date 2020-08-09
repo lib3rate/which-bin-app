@@ -29,6 +29,7 @@ export default function useApplicationData() {
       total += Number(item.sum);
     }
     result.total = total;
+    result.username = data[0].username;
     result.userId = data[0].user_id;
     return result;
   };

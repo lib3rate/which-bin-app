@@ -77,6 +77,10 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
+  username: {
+    marginLeft: 10,
+    color: '#009c63',
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -96,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
   },
   content: {
     flexGrow: 1,
@@ -116,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -188,6 +192,9 @@ export default function PersistentDrawerLeft() {
         // ModalProps={{ onBackdropClick: handleDrawerClose }}
       >
         <div className={classes.drawerHeader}>
+          <h2 className={classes.username}>
+            {props.user.username}
+          </h2>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />

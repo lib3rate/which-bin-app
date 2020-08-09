@@ -24,8 +24,6 @@ export default function feed() {
   // video = document.getElementsByClassName('video')[0];
 
   function startup() {
-    console.log('HERE');
-
     video = document.getElementsByClassName('video')[0];
     // video = useRef('video');
     canvas = document.getElementsByClassName('canvas')[0];
@@ -102,6 +100,6 @@ export default function feed() {
   }
 
   // Run the startup process.
-  
+
   startup();
 };

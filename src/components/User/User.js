@@ -124,6 +124,15 @@ export default function User(props) {
             </Link>
           }
         />
+      <MyButton
+        children={
+          <Link
+            to="/forest"
+            className={classes.link}
+          >The Forest
+          </Link>
+        }
+      />
     </div>
   )
 };

@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
   const { loginWithRedirect } = useAuth0();
+  const { logout } = useAuth0();
 
   return (
     <Container component="main" maxWidth="xs" className={classes.page}>
@@ -98,6 +99,16 @@ export default function SignIn() {
             className={classes.submit}
           >
             <Link to="/users/1" className={classes.link}>Sign in</Link>
+          </MyButton>
+          <MyButton
+            onClick={() => logout()}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <Link to="/users/1" className={classes.link}>Sign out</Link>
           </MyButton>
           {/* <Button
             type="submit"

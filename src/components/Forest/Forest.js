@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import ForestTree from "../Forest/ForestTree";
+import Tooltip from "@material-ui/core/Tooltip";
 
 // const rearrangedScores = (arr) => {
 //   let arr1 = arr.slice(0, arr.length / 2);
@@ -51,13 +52,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "row",
   },
-  treeWName: {
-    maxWidth: 100,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-around",
-  },
+  
   container: {
     display: "flex",
     flexDirection: "column",
@@ -68,7 +63,12 @@ const useStyles = makeStyles({
     minWidth: 700,
     maxWidth: 1500,
   },
- 
+  containerTrees: {
+    maxWidth: 100,
+  },
+  MuiTableContainerRoot: {
+    width: 100,
+  }
 });
 
 export default function Forest(props) {
@@ -101,16 +101,21 @@ export default function Forest(props) {
       
         <section className={classes.forest}>
          {users.map((userBin) => (   
-          <div className={classes.treeWName}>
-            <div className={classes.tree}>
-              <ForestTree
-                treeTotal={userBin.score}
-              />
+            <div className={classes.containerTrees}>
+            <Tooltip
+              title={userBin.username}
+              placement="top"
+            >
+              <TableContainer component={Paper}>
+                
+                  <div className={classes.tree}>
+                    <ForestTree
+                    treeTotal={userBin.score}
+                    />
+                </div>
+              </TableContainer>
+            </Tooltip>
             </div>
-            <div>
-              <h1>{userBin.username}</h1>  
-            </div>
-          </div>
         )
         )}
       </section>

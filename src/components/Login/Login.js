@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 // import Avatar from '@material-ui/core/Avatar';
@@ -12,16 +12,21 @@ import { useAuth0 } from "@auth0/auth0-react";
 // import Box from '@material-ui/core/Box';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 // import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 // import Form from "../Form";
 import MyButton from "../Button";
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    backgroundImage: "url('/images/misty-forest.jpg')"
+    backgroundImage: "url('/images/misty-forest.jpg')",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
+
   // paper: {
   //   marginTop: theme.spacing(8),
   //   display: 'flex',
@@ -41,35 +46,37 @@ const useStyles = makeStyles((theme) => ({
   // },
   submit: {
     // margin: theme.spacing(3, 0, 2),
-    textAlign: "center"
+    // display: 'flex',
+    // alignItems: 'center',
   },
   link: {
-    textDecoration: 'none',
-    color: 'white',
+    textDecoration: "none",
+    color: "white",
   },
   title: {
     fontSize: "8em",
     color: "white",
     fontFamily: "Londrina Outline",
-  }
+  },
+  buttons: {
+    display: "flex",
+    alignItems: "center",
+    margin: "0 0 15em 0 ",
+  },
 }));
 
 export default function SignIn(props) {
-  const {
-    loginWithRedirect,
-    logout,
-    isAuthenticated
-  } = useAuth0();
-  
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+
   const classes = useStyles();
 
-  return ( 
-    <Container component="main"  className={classes.page}>
-      <div >
-      <h1 className={classes.title}> Welcome to ReForest</h1>
+  return (
+    <Container component="main" className={classes.page}>
+      <div>
+        <h1 className={classes.title}> Welcome to ReForest</h1>
 
-      {/* <CssBaseline /> */}
-      {/* <div className={classes.paper}>
+        {/* <CssBaseline /> */}
+        {/* <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -99,21 +106,25 @@ export default function SignIn(props) {
             id="password"
             autoComplete="current-password"
           /> */}
-          { !isAuthenticated && (
-            <MyButton
-              onClick={() => loginWithRedirect()}
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign in
-            </MyButton>
-          ) }
-          { isAuthenticated && (
+        <div className={classes.buttons}>
+          {!isAuthenticated && (
+            <div classname={classes.button}>
+              <MyButton
+                onClick={() => loginWithRedirect()}
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign in
+              </MyButton>
+            </div>
+          )}
+          {isAuthenticated && (
             <>
-              {/* <MyButton
+              <div classname={classes.button}>
+                {/* <MyButton
                 onClick={() => logout()}
                 type="submit"
                 fullWidth
@@ -123,20 +134,25 @@ export default function SignIn(props) {
               >
                 Sign out
               </MyButton> */}
-              <MyButton
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                <Link to="/users/1" className={classes.menuItem}>
-                  Your userpage
-                </Link>
-              </MyButton>
+                <MyButton
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  align="right"
+                >
+                  <Link to="/users/1" className={classes.menuItem}>
+                    Your userpage
+                  </Link>
+                </MyButton>
+              </div>
             </>
-          ) }
-          {/* <Button
+          )}
+        </div>
+      </div>
+
+      {/* <Button
             type="submit"
             fullWidth
             variant="contained"
@@ -145,19 +161,18 @@ export default function SignIn(props) {
           >
             Sign In
           </Button> */}
-          {/* <Grid container> */}
-            {/* <Grid item> */}
-              {/* <Link href="/register" variant="body2">
+      {/* <Grid container> */}
+      {/* <Grid item> */}
+      {/* <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link> */}
-              {/* <Link to="/register" variant="body2"> */}
-                {/* {"Don't have an account? Sign Up"} */}
-              {/* </Link> */}
-            {/* </Grid> */}
-          {/* </Grid> */}
-        {/* </form> */}
+      {/* <Link to="/register" variant="body2"> */}
+      {/* {"Don't have an account? Sign Up"} */}
+      {/* </Link> */}
+      {/* </Grid> */}
+      {/* </Grid> */}
+      {/* </form> */}
       {/* </div> */}
-      </div>
-     </Container>
+    </Container>
   );
 }

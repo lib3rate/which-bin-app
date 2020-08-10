@@ -1,12 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import Tooltip from "@material-ui/core/Tooltip";
+import { makeStyles } from "@material-ui/core/styles";
+
 
 const ForestTree = (props) => {
   const currentScore = props.treeTotal;
   // const currentScore = props.treeTotal < 25 ? 27 : props.treeTotal ;
   // const currentScore = 25
-    
+  const useStyles = makeStyles({
+    tip: {
+      backgroundColor: "purple"
+    }
+
+  });
+  
+  const classes = useStyles();
+  
   let baseRender = 0;
   let baseLeavesRender = 0;
   let almostTreeRender = 0;
@@ -37,7 +47,7 @@ const ForestTree = (props) => {
   }
   
   return (
-    <Tooltip title={props.name} placement="top" >
+    <Tooltip title={props.name} placement="bottom" className={classes.tip}  >
     <StyledTree
       currentScore={currentScore}
       baseRender={baseRender}

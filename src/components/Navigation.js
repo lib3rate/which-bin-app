@@ -18,7 +18,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import clsx from "clsx";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import styled from "styled-components";
+// import styled from "styled-components";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import MyButton from "./Button";
@@ -174,11 +174,11 @@ export default function PersistentDrawerLeft(props) {
     setOpen(false);
   };
 
-  const StyledButton = styled.button`
-  .login {
-    display: ${(props) => props.login}
-  }
-  `;
+  // const StyledButton = styled.button`
+  // .login {
+  //   display: ${(props) => props.login}
+  // }
+  // `;
  
   console.log("props.url: ", props.url)
 
@@ -203,7 +203,7 @@ export default function PersistentDrawerLeft(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap className={classes.title}>
+          <Typography variant="h6" noWrap className={classes.title} unselectable="on">
             ReForest
           </Typography>
         <Toolbar 
@@ -211,10 +211,10 @@ export default function PersistentDrawerLeft(props) {
         >
         
           <Link to="/new" className={classes.menuItem}>
-            Capture a photo
+            Check Waste
           </Link>
           <Link to="/users/1" className={classes.menuItem}>
-            Your userpage
+            Userpage
           </Link>
 
           {/* <img src="/images/tree2.jpg" alt="Logo" className={classes.logo}/> */}
@@ -230,7 +230,7 @@ export default function PersistentDrawerLeft(props) {
             </h4>
           </div>
         ) }
-        { !isAuthenticated && (
+        {/* { !isAuthenticated && (
           <StyledButton
               onClick={() => loginWithRedirect()}
               type="submit"
@@ -243,9 +243,9 @@ export default function PersistentDrawerLeft(props) {
             >
               Sign in
             </StyledButton>
-          ) }
-        { isAuthenticated && (
-          <StyledButton
+          ) } */}
+        {/* { isAuthenticated && ( */}
+          <MyButton
             onClick={() => logout()}
             type="submit"
             fullWidth
@@ -256,8 +256,10 @@ export default function PersistentDrawerLeft(props) {
             // display={!displayTest ? "none" : "" }       
             >
               Sign out
-          </StyledButton>
-        )}
+          </MyButton>
+        {/* )} */}
+
+
       </AppBar>
 
       {/* <ClickAwayListener onClickAway={ handleDrawerClose }> */}

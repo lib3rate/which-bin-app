@@ -9,7 +9,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import PublishIcon from "@material-ui/icons/Publish";
 import Button from "@material-ui/core/Button";
-
+import VideocamIcon from '@material-ui/icons/Videocam';
 import MyButton from "../Button";
 
 import feed from "./../../helpers/capture";
@@ -124,6 +124,9 @@ const useStyles = makeStyles((theme) => ({
   downArrow: {
     color: "white",
   },
+  downArrowPhoto: {
+    opacity: "0"
+  },
   button: {
     borderColor: "black",
     color: "white",
@@ -142,7 +145,7 @@ export default function Upload(props) {
   return (
     <>
       <h1 className={classes.title}>
-        Choose how you want to capture your item
+        Choose how you want to check your waste
       </h1>
       <div className={classes.contentarea}>
         <Accordion defaultCollapsed className={classes.videoAccordion}>
@@ -153,7 +156,8 @@ export default function Upload(props) {
             className={classes.summary}
           >
             <div className={classes.accordianHeader}>
-              <CameraAltIcon className={classes.icon} />
+              <VideocamIcon className={classes.icon} />
+
               <h4>Video Capture</h4>
             </div>
           </AccordionSummary>
@@ -187,7 +191,7 @@ export default function Upload(props) {
         </Accordion>
         <Accordion defaultExpanded className={classes.photoAccordion}>
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon className={classes.downArrow} />}
+            expandIcon={<ExpandMoreIcon className={classes.downArrowPhoto} />}
             aria-controls="panel1c-content"
             id="panel1c-header"
             className={classes.summary}

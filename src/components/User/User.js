@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "1em",
     margin: "0 1em 1em 0",
     [theme.breakpoints.down("sm")]: {
-      margin: "0 0 0 0",
+      margin: "0 1em 1em 0",
       width: "90%",
       padding: "0",
       maxWidth: "50%",
@@ -74,16 +74,16 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     maxWidth: "60%",
-    height: "auto",
+    height: "116px",
   },
   profileWButtons: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: "0 15em 0 -3em ",
+    margin: "0 5em 0 -3em ",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "row",
-      margin: "0 0 0 0",
+      margin: "0 0 3em 0",
       border: "solid 1px white",
       borderRadius: "25px",
     },
@@ -133,15 +133,34 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     "&:hover": {
       backgroundColor: "#4A235A",
+      margin: "0 2em 1em 0",
     },
-    margin: "0 0 1em 0",
+    margin: "0 1em 1em 1em",
   },
   buttons: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     // margin: "0 0 0em 18em",
-    maxWidth: "9em",
+    maxWidth: "auto",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "row"
+    },
   },
+  badgeDesktop: {
+    height: "58px",
+    marginRight: "10em",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+  badgeMobile: {
+    height: "58px",
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      margin: "0 0 1em 0"
+    },
+  }
 }));
 
 export default function User(props) {
@@ -163,17 +182,20 @@ export default function User(props) {
             </h3>
             <img src={user.picture} alt="Avatar" className={classes.avatar} />
             <h4 className={classes.profileTextImage}>
-              This is your tree and your stats
+              Here is your tree and your stats
             </h4>
             <h4 className={classes.profileTextImage}>Your Badges:</h4>
+            <img className={classes.badgeDesktop} src="/images/badge.png"/>
           </div>
         )}
 
-        <section className={classes.buttons}>
+        <section className={classes.mobile}>
           <h4 className={classes.profileTextButton}>
-            This is your tree and your stats
+            Here is your tree and your stats
           </h4>
           <h4 className={classes.profileTextButton}>Your Badges:</h4>
+          <img className={classes.badgeMobile} src="/images/badge.png"/>
+          <div className={classes.buttons}>
           <Button
             className={classes.button}
             variant="outlined"
@@ -182,6 +204,7 @@ export default function User(props) {
                 Add item
               </Link>
             }
+
           />
           <Button
             className={classes.button}
@@ -192,6 +215,7 @@ export default function User(props) {
               </Link>
             }
           />
+          </div>
         </section>
       </div>
       <div className={classes.userTree}>

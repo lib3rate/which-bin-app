@@ -130,7 +130,7 @@ export default function Forest(props) {
 
   return (
     <div className={classes.page}>
-      <h2 className={classes.forestTitle}>This is the Forest</h2>
+      <h2 className={classes.forestTitle}>Forest of user trees</h2>
       <section className={classes.forest}>
         {users.map((userBin) => (
           <ForestTree treeTotal={userBin.score} name={userBin.username} />

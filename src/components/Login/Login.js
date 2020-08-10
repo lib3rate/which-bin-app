@@ -28,26 +28,27 @@ const useStyles = makeStyles((theme) => ({
   //   flexDirection: 'column',
   //   alignItems: 'center',
   // },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-    marginTop: theme.spacing(1),
-  },
+  // avatar: {
+  //   margin: theme.spacing(1),
+  //   backgroundColor: theme.palette.secondary.main,
+  // },
+  // form: {
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   alignItems: 'center',
+  //   width: '100%',
+  //   marginTop: theme.spacing(1),
+  // },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    // margin: theme.spacing(3, 0, 2),
+    textAlign: "center"
   },
   link: {
     textDecoration: 'none',
     color: 'white',
   },
   title: {
-    fontSize: "1000",
+    fontSize: "8em",
     color: "white",
     fontFamily: "Londrina Outline",
   }

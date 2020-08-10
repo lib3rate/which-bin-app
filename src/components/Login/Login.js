@@ -54,16 +54,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  const { loginWithRedirect } = useAuth0();
-  const { logout } = useAuth0();
-  const { user, isAuthenticated } = useAuth0();
+  const {
+    loginWithRedirect,
+    logout,
+    user,
+    isAuthenticated
+  } = useAuth0();
 
   return (
     <Container component="main" maxWidth="xs" className={classes.page}>
       { isAuthenticated && (
         <div>
           {/* <img src={user.picture} alt={user.name} /> */}
-          <h2>{user.name}</h2>
+          <h2>Username: {user.name}</h2>
           <p>{user.email}</p>
         </div>
       ) }
@@ -106,7 +109,7 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
           >
-            <Link to="/users/1" className={classes.link}>Sign in</Link>
+            Sign in
           </MyButton>
           <MyButton
             onClick={() => logout()}
@@ -116,7 +119,7 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
           >
-            <Link to="/users/1" className={classes.link}>Sign out</Link>
+            Sign out
           </MyButton>
           {/* <Button
             type="submit"

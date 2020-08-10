@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 // import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
+// import CssBaseline from '@material-ui/core/CssBaseline';
+// import TextField from '@material-ui/core/TextField';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import Checkbox from '@material-ui/core/Checkbox';
 // import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 // import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
+// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+// import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
@@ -20,14 +20,14 @@ import MyButton from "../Button";
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    // marginTop: 200,
+    backgroundImage: "url('/images/misty-forest.jpg')"
   },
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
+  // paper: {
+  //   marginTop: theme.spacing(8),
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   alignItems: 'center',
+  // },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
@@ -47,7 +47,9 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
   },
   title: {
-    fontSize: "100"
+    fontSize: "1000",
+    color: "white",
+    fontFamily: "Londrina Outline",
   }
 }));
 
@@ -61,10 +63,12 @@ export default function SignIn(props) {
   const classes = useStyles();
 
   return ( 
-    <Container component="main" maxWidth="xs" className={classes.page}>
+    <Container component="main"  className={classes.page}>
+      <div >
       <h1 className={classes.title}> Welcome to ReForest</h1>
-      <CssBaseline />
-      <div className={classes.paper}>
+
+      {/* <CssBaseline /> */}
+      {/* <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -93,7 +97,7 @@ export default function SignIn(props) {
             type="password"
             id="password"
             autoComplete="current-password"
-          />
+          /> */}
           { !isAuthenticated && (
             <MyButton
               onClick={() => loginWithRedirect()}
@@ -108,7 +112,7 @@ export default function SignIn(props) {
           ) }
           { isAuthenticated && (
             <>
-              <MyButton
+              {/* <MyButton
                 onClick={() => logout()}
                 type="submit"
                 fullWidth
@@ -117,7 +121,7 @@ export default function SignIn(props) {
                 className={classes.submit}
               >
                 Sign out
-              </MyButton>
+              </MyButton> */}
               <MyButton
                 type="submit"
                 fullWidth
@@ -141,17 +145,18 @@ export default function SignIn(props) {
             Sign In
           </Button> */}
           {/* <Grid container> */}
-            <Grid item>
+            {/* <Grid item> */}
               {/* <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link> */}
-              <Link to="/register" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
+              {/* <Link to="/register" variant="body2"> */}
+                {/* {"Don't have an account? Sign Up"} */}
+              {/* </Link> */}
+            {/* </Grid> */}
           {/* </Grid> */}
-        </form>
+        {/* </form> */}
+      {/* </div> */}
       </div>
-    </Container>
+     </Container>
   );
 }

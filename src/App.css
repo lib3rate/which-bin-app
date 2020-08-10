@@ -1,11 +1,11 @@
 /* @import "./animations.scss"; */
 
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 body {
-  margin: 1rem;
+  margin: "0 0 0 0";
 }
 
 #root {
@@ -20,6 +20,7 @@ body {
   /* background: linear-gradient(90deg, rgba(132,179,157,1) 57%, rgba(132,204,124,1) 100%); */
   
   /* background: 'black'; */
+  margin: "0 0 0 0";
   min-height: 100vh;
   
 

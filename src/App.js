@@ -46,25 +46,25 @@ export default function App() {
               // login={displaySignout}
               url={false}
             ></Navigation>
-            <Login />
+            <Login />             
           </Route>
           <Route path="/register">
             <Navigation
               user={state.user}
               // login={displaySignout}
-              url={false}
+              url={true}
             ></Navigation>
             <Register />
           </Route>
-          <Route path="/login">
+          {/* <Route path="/login">
             <Navigation
               user={state.user}
               // login={displaySignout}
-              url={false}
+              url={true}
             ></Navigation>
 
-            <Login />
-          </Route>
+            <Login /> */}
+          {/* </Route> */}
           <Route path="/new">
             <Navigation
               user={state.user}

@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   },
   forest: {
     height: 175,
-    margin: 15,
+    margin: "20px 0 50px 0",
     display: "flex",
     flexDirection: "row",
     width: 1000,

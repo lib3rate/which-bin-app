@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     maxWidth: "60%",
     height: "116px",
+    borderRadius: "25px",
   },
   profileWButtons: {
     display: "flex",
@@ -108,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: 20,
+    margin: "0 0 0 3em",
     border: "solid .01em white",
     // boxShadow: '0px 1.5px 1.5px 0px '
   },

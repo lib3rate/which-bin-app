@@ -17,6 +17,7 @@ import feed from "./../../helpers/capture";
 const useStyles = makeStyles((theme) => ({
   title: {
     color: "white",
+    fontFamily: "Averia Serif Libre"
   },
   input: {
     display: "flex",
@@ -105,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
   },
   videoAccordion: {
     boxShadow: "0px 0px 1px 2px rgba(0, 0, 0, 0.2)",
+    margin: "0 0 2em 0"
   },
   photoAccordion: {
     boxShadow: "0px 0px 1px 2px rgba(0, 0, 0, 0.2)",
@@ -125,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   downArrowPhoto: {
-    opacity: "0"
+    color: "white",
   },
   button: {
     borderColor: "black",
@@ -189,7 +191,7 @@ export default function Upload(props) {
             <MyButton onClick={props.onClick}>Submit</MyButton>
           </AccordionActions>
         </Accordion>
-        <Accordion defaultExpanded className={classes.photoAccordion}>
+        <Accordion defaultCollapsed className={classes.photoAccordion}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon className={classes.downArrowPhoto} />}
             aria-controls="panel1c-content"

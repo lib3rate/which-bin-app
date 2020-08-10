@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Tooltip from "@material-ui/core/Tooltip";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  createMuiTheme,
+  MuiThemeProvider,
+  makeStyles } from "@material-ui/core/styles";
 
 
 const ForestTree = (props) => {
@@ -10,13 +13,23 @@ const ForestTree = (props) => {
   // const currentScore = 25
   const useStyles = makeStyles({
     tip: {
-      backgroundColor: "purple"
     }
 
   });
   
+  const theme = createMuiTheme({
+    overrides: {
+      MuiTooltip: {
+        tooltip: {
+          backgroundColor: "#4A235A",
+          border: "solid .01em white",
+        }
+      }
+    }
+  });
+
   const classes = useStyles();
-  
+
   let baseRender = 0;
   let baseLeavesRender = 0;
   let almostTreeRender = 0;
@@ -47,6 +60,8 @@ const ForestTree = (props) => {
   }
   
   return (
+    <MuiThemeProvider theme={theme}>
+
     <Tooltip title={props.name} placement="bottom" className={classes.tip}  >
     <StyledTree
       currentScore={currentScore}
@@ -576,6 +591,7 @@ const ForestTree = (props) => {
       </svg>
     </StyledTree>
       </Tooltip>
+      </MuiThemeProvider>
   );
 };
 

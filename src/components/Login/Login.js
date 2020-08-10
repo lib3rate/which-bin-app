@@ -63,13 +63,6 @@ export default function SignIn() {
 
   return (
     <Container component="main" maxWidth="xs" className={classes.page}>
-      { isAuthenticated && (
-        <div>
-          {/* <img src={user.picture} alt={user.name} /> */}
-          <h2>Username: {user.name}</h2>
-          <p>{user.email}</p>
-        </div>
-      ) }
       {/* <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -101,26 +94,35 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
       />*/}
-          <MyButton
-            onClick={() => loginWithRedirect()}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign in
-          </MyButton>
-          <MyButton
-            onClick={() => logout()}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign out
-          </MyButton>
+          { !isAuthenticated && (
+            <MyButton
+              onClick={() => loginWithRedirect()}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign in
+            </MyButton>
+          ) }
+          { isAuthenticated && (
+            <div>
+              {/* <img src={user.picture} alt={user.name} /> */}
+              <h2>Username: {user.name}</h2>
+              <p>{user.email}</p>
+              <MyButton
+                onClick={() => logout()}
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign out
+              </MyButton>
+            </div>
+          ) }
           {/* <Button
             type="submit"
             fullWidth

@@ -17,59 +17,72 @@ import ListItemText from "@material-ui/core/ListItemText";
 import clsx from "clsx";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import styled from "styled-components";
 
 import MyButton from "./Button";
 import Tree from "./Tree/Tree";
 
 const drawerWidth = 240;
 
+
+const displayTest = false;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     width: "100%",
+
   },
   // username: {
   //   flexGrow: 1,
   //   marginLeft: 20,
   // },
   appBar: {
+    backgroundImage: "url('/images/48-nice-green-gradient.jpg')",
     // backgroundColor: 'black',
     // background: 'linear-gradient(45deg, #008c1c 30%, #67e64e 90%)',
-    background: "linear-gradient(45deg, #738678, 30%, #B2C2B9 90%)",
+    // background: "linear-gradient(45deg, #738678, 30%, #B2C2B9 90%)",
+    // background: "linear-gradient(45deg, black, 30%, #239d60, 66%, lightGreen 90%)",
+    // backgroundColor:"black",
+    opacity: "0.9",
+    // filter: alpha("opacity=50"),
+    color: "white",
+    // background: "none",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     marginBottom: 300,
     height: 90,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: "space-around",
+    },
+    
   },
   logo: {
     height: 100,
     margin: 15,
   },
   title: {
-    fontSize: 32,
+    fontSize: 39,
     flexGrow: 1,
     marginLeft: 20,
     fontFamily: "Cinzel Decorative",
+    maxWidth: 200,
   },
-  // submit: {
-  //   margin: '0 20px 0 0'
-  // },
   link: {
     textDecoration: "none",
     color: "black",
     fontSize: 20,
     fontWeight: 700,
   },
-  buttonLink: {
-    textDecoration: "none",
-    color: "white",
-  },
+  // buttonLink: {
+  //   textDecoration: "none",
+  //   color: "white",
+  // },
   appBarShift: {
     marginLeft: drawerWidth,
     transition: theme.transitions.create(["margin", "width"], {
@@ -82,7 +95,11 @@ const useStyles = makeStyles((theme) => ({
     color: '#009c63',
   },
   menuButton: {
+    // display: "none",
     marginRight: theme.spacing(2),
+    [theme.breakpoints.up('md')]: {
+      display: "none",
+    },
   },
   hide: {
     display: "none",
@@ -101,6 +118,7 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: "space-between",
+
   },
   content: {
     flexGrow: 1,
@@ -118,6 +136,26 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  menuItem: {
+    color: "white",
+    textDecoration: "none",
+    borderBottom: "solid",
+    borderTop: "solid",
+    padding: ".5em",
+    marginLeft: 7,
+    "&:hover": {
+      color: '#4A235A'
+      },
+      [theme.breakpoints.down('sm')]: {
+        display: "none",
+      },
+  },
+  signName: {
+    marginRight: 7,
+  }
+
+  
+
 }));
 
 export default function PersistentDrawerLeft(props) {
@@ -133,7 +171,17 @@ export default function PersistentDrawerLeft(props) {
     setOpen(false);
   };
 
+  const StyledButton = styled.button`
+  .login {
+    display: ${(props) => props.login}
+  }
+  
+  `;
+ 
+  console.log("props.url: ", props.url)
   return (
+    !props.url ? null :
+
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
@@ -142,9 +190,6 @@ export default function PersistentDrawerLeft(props) {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar 
-        // onClose={handleDrawerOpen}
-        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -155,27 +200,46 @@ export default function PersistentDrawerLeft(props) {
           >
             <MenuIcon />
           </IconButton>
+          <Typography variant="h6" noWrap className={classes.title}>
+            ReForest
+          </Typography>
+        <Toolbar 
+        // onClose={handleDrawerOpen}
+        >
+        
+          <Link to="/new" className={classes.menuItem}>
+            Capture a photo
+          </Link>
+          <Link to="/users/1" className={classes.menuItem}>
+            Your userpage
+          </Link>
 
           {/* <img src="/images/tree2.jpg" alt="Logo" className={classes.logo}/> */}
-          <DeleteForeverIcon />
-
-          <Typography variant="h6" noWrap className={classes.title}>
-            Which Bin
-          </Typography>
-        </Toolbar>
-        <MyButton
-          onClick={() => console.log("Logging out")}
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-          marginRight="20px"
-        >
-          <Link to="/login" className={classes.buttonLink}>
-            Sign out
+         
+        
+        <Link to="/forest" className={classes.menuItem}>
+              The Forest
           </Link>
-        </MyButton>
+        </Toolbar>
+          <div className={classes.login}>
+          <h4 className={classes.signName}>
+            Signed in as {props.user.username}
+          </h4>
+        </div>
+          <StyledButton
+            onClick={() => console.log("Logging out")}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            marginRight="20px"
+            // display={!displayTest ? "none" : "" }       
+            >
+            <Link to="/login" className={classes.buttonLink}>
+              Sign out
+            </Link>
+          </StyledButton>
       </AppBar>
 
       {/* <ClickAwayListener onClickAway={ handleDrawerClose }> */}
@@ -226,164 +290,14 @@ export default function PersistentDrawerLeft(props) {
               The Forest
             </Link>
           </MenuItem>
-          {/* <MenuItem button key={'about'}>
-            <Link to="/about" className={classes.link}>About</Link>
-          </MenuItem> */}
+     
         </List>
+  
         <Divider />
       </Drawer>
       {/* </ClickAwayListener> */}
+
     </div>
   );
 }
 
-// const drawerWidth = 1000;
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     display: 'flex',
-//   },
-//   appBar: {
-//     transition: theme.transitions.create(['margin', 'width'], {
-//       easing: theme.transitions.easing.sharp,
-//       duration: theme.transitions.duration.leavingScreen,
-//     }),
-//   },
-//   appBarShift: {
-//     width: `calc(100% - ${drawerWidth}px)`,
-//     marginLeft: drawerWidth,
-//     transition: theme.transitions.create(['margin', 'width'], {
-//       easing: theme.transitions.easing.easeOut,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//   },
-//   menuButton: {
-//     marginRight: theme.spacing(2),
-//   },
-//   hide: {
-//     display: 'none',
-//   },
-//   drawer: {
-//     width: drawerWidth,
-//     flexShrink: 0,
-//   },
-//   drawerPaper: {
-//     width: drawerWidth,
-//   },
-//   drawerHeader: {
-//     display: 'flex',
-//     alignItems: 'center',
-//     padding: theme.spacing(0, 1),
-//     // necessary for content to be below app bar
-//     ...theme.mixins.toolbar,
-//     justifyContent: 'flex-end',
-//   },
-//   content: {
-//     flexGrow: 1,
-//     padding: theme.spacing(3),
-//     transition: theme.transitions.create('margin', {
-//       easing: theme.transitions.easing.sharp,
-//       duration: theme.transitions.duration.leavingScreen,
-//     }),
-//     marginLeft: -drawerWidth,
-//   },
-//   contentShift: {
-//     transition: theme.transitions.create('margin', {
-//       easing: theme.transitions.easing.easeOut,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//     marginLeft: 0,
-//   },
-// }));
-
-// // const useStyles = makeStyles((theme) => ({
-// //   root: {
-// //     width: "100vw",
-// //     flexGrow: 1,
-// //     // minWidth: 1000
-// //   },
-// //   // image: {
-// //   //   maxHeight: 100
-// //   // },
-// //   username: {
-// //     flexGrow: 1,
-// //     marginLeft: 20,
-// //   },
-// //   title: {
-// //     fontSize: 36,
-// //     flexGrow: 1,
-// //     marginLeft: 20,
-// //   },
-// // }));
-
-// export default function Navigation() {
-//   const classes = useStyles();
-//   const theme = useTheme();
-//   const [open, setOpen] = React.useState(false);
-
-//   const handleDrawerOpen = () => {
-//     setOpen(true);
-//   };
-
-//   const handleDrawerClose = () => {
-//     setOpen(false);
-//   };
-
-//   return (
-//     <div className={classes.root}>
-//             <CssBaseline />
-
-//             <AppBar
-//         position="fixed"
-//         className={clsx(classes.appBar, {
-//           [classes.appBarShift]: open,
-//         })}
-//       >        <Toolbar>
-//           <img src="images/tree1.jpg" alt="Logo" style={{height: 100, margin: 10}}/>
-//           <Typography variant="h6" className={classes.title}>
-//             Which bin app
-//           </Typography>
-//           {/* <Typography variant="h6" className={classes.username}>
-//             Username
-//           </Typography> */}
-//            <Drawer
-//         className={classes.drawer}
-//         variant="persistent"
-//         anchor="left"
-//         open={open}
-//         classes={{
-//           paper: classes.drawerPaper,
-//         }}
-//       >
-//         <div className={classes.drawerHeader}>
-//           <IconButton onClick={handleDrawerClose}>
-//             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-//             <MenuIcon />
-//           </IconButton>
-//         </div>
-//         <Divider />
-//         <List>
-//         <MenuItem>
-//           <Link to="/register">Register</Link>
-//         </MenuItem>
-//         <MenuItem>
-//           <Link to="/login">Login</Link>
-//         </MenuItem>
-//         <MenuItem>
-//           <Link to="/new">Capture a photo</Link>
-//         </MenuItem>
-//         <MenuItem>
-//           <Link to="/users/1">Your userpage</Link>
-//         </MenuItem>
-//         <MenuItem>
-//           <Link to="/forest">Forest</Link>
-//         </MenuItem>
-//         </List>
-//         <Divider />
-//       </Drawer>
-//       </Toolbar>
-//       </AppBar>
-//       </div>
-
-//   );
-// }

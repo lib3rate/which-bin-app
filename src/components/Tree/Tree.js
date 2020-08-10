@@ -590,7 +590,7 @@ const Tree = (props) => {
 // base, baseLeaves, almostTree, fullTree
 
 const branchStyle = {
-  fill: "white",
+  fill: "none",
   stroke: "green",
   "stroke-width": "3px",
   "stroke-linejoin": "round",

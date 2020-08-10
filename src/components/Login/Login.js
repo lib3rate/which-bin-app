@@ -13,7 +13,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { useAuth0 } from "@auth0/auth0-react";
 
 // import Form from "../Form";
 import MyButton from "../Button";
@@ -24,7 +23,7 @@ import MyButton from "../Button";
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    marginTop: 200,
+    // marginTop: 200,
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -50,20 +49,21 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     color: 'white',
   },
+  title: {
+    fontSize: "100"
+  }
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
   const classes = useStyles();
-  const {
-    loginWithRedirect,
-    logout,
-    user,
-    isAuthenticated
-  } = useAuth0();
 
-  return (
+  
+
+
+  return ( 
     <Container component="main" maxWidth="xs" className={classes.page}>
-      {/* <CssBaseline />
+      <h1 className={classes.title}> Welcome to ReForest</h1>
+      <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -93,36 +93,17 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
-      />*/}
-          { !isAuthenticated && (
-            <MyButton
-              onClick={() => loginWithRedirect()}
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign in
-            </MyButton>
-          ) }
-          { isAuthenticated && (
-            <div>
-              {/* <img src={user.picture} alt={user.name} /> */}
-              <h2>Username: {user.name}</h2>
-              <p>{user.email}</p>
-              <MyButton
-                onClick={() => logout()}
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Sign out
-              </MyButton>
-            </div>
-          ) }
+          />
+          <MyButton
+            // onClick={() => login()}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            <Link to="/users/1" className={classes.link}>Sign in</Link>
+          </MyButton>
           {/* <Button
             type="submit"
             fullWidth
@@ -133,17 +114,17 @@ export default function SignIn() {
             Sign In
           </Button> */}
           {/* <Grid container> */}
-            {/* <Grid item> */}
+            <Grid item>
               {/* <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link> */}
-              {/* <Link to="/register" variant="body2">
+              <Link to="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           {/* </Grid> */}
-        {/* </form> */}
-      {/* </div> */}
+        </form>
+      </div>
     </Container>
   );
 }

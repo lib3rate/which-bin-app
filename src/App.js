@@ -1,12 +1,8 @@
-import React, { useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
-import './App.css';
+import "./App.css";
 
 import useApplicationData from "./helpers/helpers";
 
@@ -15,7 +11,7 @@ import Login from "./components/Login/Login";
 import New from "./components/New/New";
 import Forest from "./components/Forest/Forest";
 import User from "./components/User/User";
-import Navigation from './components/Navigation';
+import Navigation from "./components/Navigation";
 
 export default function App() {
   const {
@@ -25,39 +21,56 @@ export default function App() {
     convertToObject,
     updateScore,
     ProcessImage,
-    ProcessPhoto
+    ProcessPhoto,
   } = useApplicationData();
 
   useEffect(() => {
-    Promise.all([
-      axios.get("/api/users"),
-      axios.get("/api/user_bins")
-    ]).then(all => {
-      console.log(all[0].data);
-      const user = convertToObject(all[0].data);
-      console.log(user);
-      const userBins = convertToArray(all[1].data);
-      setState(prev => ({ ...prev, user, userBins }));
-    });
+    Promise.all([axios.get("/api/users"), axios.get("/api/user_bins")]).then(
+      (all) => {
+        console.log(all[0].data);
+        const user = convertToObject(all[0].data);
+        console.log(user);
+        const userBins = convertToArray(all[1].data);
+        setState((prev) => ({ ...prev, user, userBins }));
+      }
+    );
   }, []);
 
   return (
     <Router>
       <div>
-        <Navigation
-          user={state.user}
-        />
         <Switch>
           <Route exact path="/">
+            <Navigation
+              user={state.user}
+              // login={displaySignout}
+              url={false}
+            ></Navigation>
             <Login />
           </Route>
           <Route path="/register">
+            <Navigation
+              user={state.user}
+              // login={displaySignout}
+              url={false}
+            ></Navigation>
             <Register />
           </Route>
           <Route path="/login">
+            <Navigation
+              user={state.user}
+              // login={displaySignout}
+              url={false}
+            ></Navigation>
+
             <Login />
           </Route>
           <Route path="/new">
+            <Navigation
+              user={state.user}
+              // login={displaySignout}
+              url={true}
+            ></Navigation>
             <New
               recognition={state.recognition}
               ProcessImage={ProcessImage}
@@ -67,14 +80,20 @@ export default function App() {
             />
           </Route>
           <Route path="/users/:id">
-            <User
+            <Navigation
               user={state.user}
-            />
+              // login={displaySignout}
+              url={true}
+            ></Navigation>
+            <User user={state.user} />
           </Route>
           <Route path="/forest">
-            <Forest 
-              userBins={state.userBins}
-            />
+            <Navigation
+              user={state.user}
+              // login={displaySignout}
+              url={true}
+            ></Navigation>
+            <Forest userBins={state.userBins} />
           </Route>
         </Switch>
       </div>

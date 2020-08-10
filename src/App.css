@@ -11,6 +11,18 @@ body {
 #root {
   display: flex;
   justify-content: center;
+  
+  background-image: url("/images/48-nice-green-gradient.jpg");
+  /* background-color: #008c8c; */
+  
+  /* background: rgb(132,179,157); */
+  
+  /* background: linear-gradient(90deg, rgba(132,179,157,1) 57%, rgba(132,204,124,1) 100%); */
+  
+  /* background: 'black'; */
+  min-height: 100vh;
+  
+
 }
 
 /* @keyframes branches {

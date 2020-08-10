@@ -16,13 +16,13 @@ import MyButton from "../Button";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    // backgroundColor: theme.palette.common.black,
-    backgroundColor: '#4D5D53',
+    backgroundColor: '#4A235A',
     color: theme.palette.common.white,
   },
   body: {
     fontSize: 14,
-    backgroundColor: '#BDBAAE'
+    backgroundColor: '#BB76C2',
+    // border: "solid 2 white",
   },
 }))(TableCell);
 
@@ -46,7 +46,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    margin: 20
+    margin: 20,
+    border: 'solid .01em white',
+    // boxShadow: '0px 1.5px 1.5px 0px '
   },
   table: {
     minWidth: 250,
@@ -64,6 +66,12 @@ const useStyles = makeStyles({
     // alignItems: 'center',
     // height: 300,
   },
+  nameTitle: {
+    color: "white",
+    fontSize: "50",
+    margin: "0 0 3em 0"
+  },
+
 });
 
 export default function User(props) {
@@ -75,16 +83,8 @@ export default function User(props) {
 
   return (
     <div className={classes.page}>
-      { isAuthenticated && (
-        <div>
-          {/* <img src={user.picture} alt={user.name} /> */}
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
-        </div>
-      ) }
-      {/* <h2>[For testing: Requested user ID: {id}]</h2> */}
+      <h2 className={classes.nameTitle}>Welcome {props.user.username}, this is your tree and your stats</h2>
       <div className={classes.userTree}>
-        {/* <img {logo} className="App-logo" alt="logo" /> */}
         <Tree 
           treeTotal={treeTotal}
         />
@@ -93,7 +93,7 @@ export default function User(props) {
           <Table className={classes.table} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>Your waste in numbers</StyledTableCell>
+                <StyledTableCell >Your waste in numbers</StyledTableCell>
                 <StyledTableCell align="right"></StyledTableCell>
               </TableRow>
             </TableHead>
@@ -127,7 +127,7 @@ export default function User(props) {
         </TableContainer>
       </div>
 
-      <MyButton
+      <MyButton variant="outlined"
           children={
             <Link
               to="/new"

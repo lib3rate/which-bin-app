@@ -10,9 +10,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 // import logo from '../../logo.svg'
 import Tree from '../Tree/Tree'
+import Button from '@material-ui/core/Button';
 
 
-import MyButton from "../Button";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -69,8 +69,21 @@ const useStyles = makeStyles({
   nameTitle: {
     color: "white",
     fontSize: "50",
-    margin: "0 0 3em 0"
+    margin: "-1.5em 0 1em 0"
   },
+  button: {
+    borderColor: "black",
+    color: "white",
+    "&:hover": {
+      backgroundColor: "#4A235A"
+    },
+    margin: "0 0 1em 2em"
+  },
+  buttons: {
+    display: "flex",
+    margin: "0 0 0em 18em"
+    
+  }
 
 });
 
@@ -124,8 +137,8 @@ export default function User(props) {
           </Table>
         </TableContainer>
       </div>
-      
-      <MyButton variant="outlined"
+      <div className={classes.buttons}>
+        <Button className={classes.button} variant="outlined"
           children={
             <Link
               to="/new"
@@ -133,16 +146,17 @@ export default function User(props) {
             >Add item
             </Link>
           }
+          />
+        <Button className={classes.button} variant="outlined"
+          children={
+            <Link
+              to="/forest"
+              className={classes.link}
+            >The Forest
+            </Link>
+          }
         />
-      <MyButton
-        children={
-          <Link
-            to="/forest"
-            className={classes.link}
-          >The Forest
-          </Link>
-        }
-      />
+      </div>
     </div>
   )
 };

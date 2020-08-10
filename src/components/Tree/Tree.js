@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const Tree = (props) => {
-  const currentScore = props.treeTotal;
-  // const currentScore = 20;
+  // const currentScore = props.treeTotal;
+  const currentScore = 80;
 
   let startingBaseNumber = 0;
   let startingBaseLeavesNumber = 0;
@@ -41,7 +41,7 @@ const Tree = (props) => {
     height = 250;
     treeDuration = '16s';
 
-  } else if (currentScore >= 100) {
+  } else if (currentScore >= 77) {
     startingFullTreeNumber = 1000;
     endingFullTreeNumber = 0;
     fullTreeRender = 1;

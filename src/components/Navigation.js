@@ -25,8 +25,6 @@ import Tree from "./Tree/Tree";
 
 const drawerWidth = 240;
 
-const displayTest = false;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",

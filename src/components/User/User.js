@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useParams } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,10 +9,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+
 // import logo from '../../logo.svg'
 import Tree from '../Tree/Tree';
-import { useAuth0 } from "@auth0/auth0-react";
-
 import MyButton from "../Button";
 
 const StyledTableCell = withStyles((theme) => ({
@@ -71,19 +71,22 @@ const useStyles = makeStyles({
     fontSize: "50",
     margin: "0 0 3em 0"
   },
-
 });
 
 export default function User(props) {
-  // let { id } = useParams();
   const classes = useStyles();
-  const { user, isAuthenticated } = useAuth0();
+  const {
+    user,
+    isAuthenticated
+  } = useAuth0();
 
   const treeTotal = Number(props.user.total);
 
   return (
     <div className={classes.page}>
-      <h2 className={classes.nameTitle}>Welcome {props.user.username}, this is your tree and your stats</h2>
+    { isAuthenticated && (
+      <h2 className={classes.nameTitle}>Welcome {user.name}, this is your tree and your stats</h2>
+    ) }
       <div className={classes.userTree}>
         <Tree 
           treeTotal={treeTotal}

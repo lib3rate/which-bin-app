@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -24,13 +25,12 @@ import Tree from "./Tree/Tree";
 
 const drawerWidth = 240;
 
-
 const displayTest = false;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     width: "100%",
-
   },
   // username: {
   //   flexGrow: 1,
@@ -60,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       justifyContent: "space-around",
     },
-    
   },
   logo: {
     height: 100,
@@ -118,7 +117,6 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: "space-between",
-
   },
   content: {
     flexGrow: 1,
@@ -153,12 +151,16 @@ const useStyles = makeStyles((theme) => ({
   signName: {
     marginRight: 7,
   }
-
-  
-
 }));
 
 export default function PersistentDrawerLeft(props) {
+  const {
+    loginWithRedirect,
+    logout,
+    user,
+    isAuthenticated
+  } = useAuth0();
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -175,10 +177,10 @@ export default function PersistentDrawerLeft(props) {
   .login {
     display: ${(props) => props.login}
   }
-  
   `;
  
   console.log("props.url: ", props.url)
+
   return (
     !props.url ? null :
 
@@ -215,19 +217,35 @@ export default function PersistentDrawerLeft(props) {
           </Link>
 
           {/* <img src="/images/tree2.jpg" alt="Logo" className={classes.logo}/> */}
-         
         
         <Link to="/forest" className={classes.menuItem}>
               The Forest
           </Link>
         </Toolbar>
+        { isAuthenticated && (
           <div className={classes.login}>
-          <h4 className={classes.signName}>
-            Signed in as {props.user.username}
-          </h4>
-        </div>
+            <h4 className={classes.signName}>
+              Signed in as {user.name}
+            </h4>
+          </div>
+        ) }
+        { !isAuthenticated && (
           <StyledButton
-            onClick={() => console.log("Logging out")}
+              onClick={() => loginWithRedirect()}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              marginRight="20px"
+              // display={!displayTest ? "none" : "" }      
+            >
+              Sign in
+            </StyledButton>
+          ) }
+        { isAuthenticated && (
+          <StyledButton
+            onClick={() => logout()}
             type="submit"
             fullWidth
             variant="contained"
@@ -236,10 +254,9 @@ export default function PersistentDrawerLeft(props) {
             marginRight="20px"
             // display={!displayTest ? "none" : "" }       
             >
-            <Link to="/login" className={classes.buttonLink}>
               Sign out
-            </Link>
           </StyledButton>
+        )}
       </AppBar>
 
       {/* <ClickAwayListener onClickAway={ handleDrawerClose }> */}
@@ -256,9 +273,11 @@ export default function PersistentDrawerLeft(props) {
         // ModalProps={{ onBackdropClick: handleDrawerClose }}
       >
         <div className={classes.drawerHeader}>
+        { isAuthenticated && (
           <h2 className={classes.username}>
-            {props.user.username}
+            {user.name}
           </h2>
+        )}
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />

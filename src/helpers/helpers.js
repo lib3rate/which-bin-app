@@ -148,13 +148,13 @@ export default function useApplicationData() {
                     found = true;
                     result.label = `You have submitted a ${label.Name}.`;
                     result.bin = 'Recycling';
-                    result.text = 'Place it into the recycling bin and you will get 50 points to your score!';
+                    result.text = 'Place it into the recycling bin and you will get 25 points to your score!';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plastic') {
                     found = true;
                     result.label = `You have submitted some ${label.Name}.`;
                     result.bin = 'Garbage';
-                    result.text = 'Please put it into the garbage bin and use more recycled items, when possible.';
+                    result.text = 'Please put it into the garbage bin to get 10 points and use more recycled items, when possible.';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plant') {
                     found = true;
@@ -249,13 +249,13 @@ export default function useApplicationData() {
                     found = true;
                     result.label = `You have submitted a ${label.Name}.`;
                     result.bin = 'Recycling';
-                    result.text = 'Place it into the recycling bin and you will get 50 points to your score!';
+                    result.text = 'Place it into the recycling bin and you will get 25 points to your score!';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plastic') {
                     found = true;
                     result.label = `You have submitted some ${label.Name}.`;
                     result.bin = 'Garbage';
-                    result.text = 'Please put it into the garbage bin and use more recycled items, when possible.';
+                    result.text = 'Please put it into the garbage bin to get 10 points and use more recycled items, when possible.';
                     setState({...state, recognition: result});
                   } else if (label.Name === 'Plant') {
                     found = true;

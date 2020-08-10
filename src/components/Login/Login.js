@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import Avatar from '@material-ui/core/Avatar';
 // import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,10 +17,6 @@ import Container from '@material-ui/core/Container';
 
 // import Form from "../Form";
 import MyButton from "../Button";
-
-// const login = () => {
-//   axios(get request);
-// };
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -55,10 +52,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn(props) {
-  const classes = useStyles();
-
+  const {
+    loginWithRedirect,
+    logout,
+    isAuthenticated
+  } = useAuth0();
   
-
+  const classes = useStyles();
 
   return ( 
     <Container component="main" maxWidth="xs" className={classes.page}>
@@ -94,16 +94,43 @@ export default function SignIn(props) {
             id="password"
             autoComplete="current-password"
           />
-          <MyButton
-            // onClick={() => login()}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            <Link to="/users/1" className={classes.link}>Sign in</Link>
-          </MyButton>
+          { !isAuthenticated && (
+            <MyButton
+              onClick={() => loginWithRedirect()}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign in
+            </MyButton>
+          ) }
+          { isAuthenticated && (
+            <>
+              <MyButton
+                onClick={() => logout()}
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign out
+              </MyButton>
+              <MyButton
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                <Link to="/users/1" className={classes.menuItem}>
+                  Your userpage
+                </Link>
+              </MyButton>
+            </>
+          ) }
           {/* <Button
             type="submit"
             fullWidth

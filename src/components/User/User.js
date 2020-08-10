@@ -15,13 +15,13 @@ import MyButton from "../Button";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    // backgroundColor: theme.palette.common.black,
-    backgroundColor: '#4D5D53',
+    backgroundColor: '#4A235A',
     color: theme.palette.common.white,
   },
   body: {
     fontSize: 14,
-    backgroundColor: '#BDBAAE'
+    backgroundColor: '#BB76C2',
+    // border: "solid 2 white",
   },
 }))(TableCell);
 
@@ -45,7 +45,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    margin: 20
+    margin: 20,
+    border: 'solid .01em white',
+    // boxShadow: '0px 1.5px 1.5px 0px '
   },
   table: {
     minWidth: 250,
@@ -68,9 +70,7 @@ const useStyles = makeStyles({
     fontSize: "50",
     margin: "0 0 3em 0"
   },
-  tableHead: {
-    background: "#4A235A" ,
-  }
+
 });
 
 export default function User(props) {
@@ -80,7 +80,7 @@ export default function User(props) {
 
   return (
     <div className={classes.page}>
-      <h2 className={classes.nameTitle}>Welcome, {props.user.username} this is your tree and your stats</h2>
+      <h2 className={classes.nameTitle}>Welcome {props.user.username}, this is your tree and your stats</h2>
       <div className={classes.userTree}>
         <Tree 
           treeTotal={treeTotal}
@@ -88,7 +88,7 @@ export default function User(props) {
 
         <TableContainer className={classes.container} component={Paper}>
           <Table className={classes.table} aria-label="customized table">
-            <TableHead className={classes.tableHead}>
+            <TableHead>
               <TableRow>
                 <StyledTableCell >Your waste in numbers</StyledTableCell>
                 <StyledTableCell align="right"></StyledTableCell>
@@ -124,7 +124,7 @@ export default function User(props) {
         </TableContainer>
       </div>
 
-      <MyButton
+      <MyButton variant="outlined"
           children={
             <Link
               to="/new"

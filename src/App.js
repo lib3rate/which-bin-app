@@ -44,7 +44,7 @@ export default function App() {
             <Navigation
               user={state.user}
               // login={displaySignout}
-              url={false}
+              url={true}
             ></Navigation>
             <Login />             
           </Route>

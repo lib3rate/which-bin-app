@@ -107,16 +107,29 @@ export default function SignIn(props) {
             </MyButton>
           ) }
           { isAuthenticated && (
-            <MyButton
-              onClick={() => logout()}
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign out
-            </MyButton>
+            <>
+              <MyButton
+                onClick={() => logout()}
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign out
+              </MyButton>
+              <MyButton
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                <Link to="/users/1" className={classes.menuItem}>
+                  Your userpage
+                </Link>
+              </MyButton>
+            </>
           ) }
           {/* <Button
             type="submit"

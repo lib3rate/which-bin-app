@@ -12,6 +12,7 @@ import Paper from "@material-ui/core/Paper";
 // import logo from '../../logo.svg'
 import Tree from "../Tree/Tree";
 import Button from "@material-ui/core/Button";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -20,7 +21,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 14,
-    backgroundColor: "#BB76C2",
+    // backgroundColor: "#BB76C2",
     // border: "solid 2 white",
   },
 }))(TableCell);
@@ -33,12 +34,74 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const useStyles = makeStyles({
-  page: {
-    marginTop: 150,
+const useStyles = makeStyles((theme) => ({
+  profile: {
+    display: "flex",
+    flexDirection: "column",
+    maxWidth: "16em",
+    border: "solid 1px white",
+    borderRadius: "25px",
+    padding: "1em",
+    color: "white",
+    alignItems: "center",
+    padding: "1em",
+    margin: "0 1em 1em 0",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 0 0 0",
+      width: "90%",
+      padding: "0",
+      maxWidth: "50%",
+      border: "none",
+    },
+  },
+  profileTextImage: {
+    textAlign: "center",
+    marginBottom: "1em",
+    margin: "0 0 6px 0",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+  profileTextButton: {
+    display: "none",
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      textAlign: "center",
+      marginBottom: "1em",
+      margin: "0 0 6px 0",
+      color: "white"
+    },
+  },
+  avatar: {
+    maxWidth: "60%",
+    height: "auto",
+  },
+  profileWButtons: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    margin: "0 15em 0 -3em ",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "row",
+      margin: "0 0 0 0",
+      border: "solid 1px white",
+      borderRadius: "25px",
+    },
+  },
+  page: {
+    marginTop: 150,
+    display: "flex",
+    flexDirection: "row",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+  },
+  nameTitle: {
+    color: "white",
+    fontSize: "50",
+    display: "flex",
+    flexDirection: "row",
+    margin: "0 0 2px 0",
   },
   container: {
     width: "50%",
@@ -52,7 +115,7 @@ const useStyles = makeStyles({
   table: {
     minWidth: 250,
     maxWidth: 1500,
-    height: 300,
+    height: 355,
   },
   link: {
     textDecoration: "none",
@@ -65,41 +128,74 @@ const useStyles = makeStyles({
     // alignItems: 'center',
     // height: 300,
   },
-  nameTitle: {
-    color: "white",
-    fontSize: "50",
-    margin: "-1.5em 0 1em 0",
-  },
   button: {
     borderColor: "black",
     color: "white",
     "&:hover": {
       backgroundColor: "#4A235A",
     },
-    margin: "0 0 1em 2em",
+    margin: "0 0 1em 0",
   },
   buttons: {
     display: "flex",
-    margin: "0 0 0em 18em",
+    flexDirection: "column",
+    // margin: "0 0 0em 18em",
+    maxWidth: "9em",
   },
-});
+}));
 
 export default function User(props) {
   const classes = useStyles();
   const { user, isAuthenticated } = useAuth0();
 
   const treeTotal = Number(props.user.total);
-
+  const onClickStop = (event) => {
+    event.stopPropagation();
+  };
   return (
     <div className={classes.page}>
-      {isAuthenticated && (
-        <h2 className={classes.nameTitle}>
-          Welcome {user.name}, this is your tree and your stats
-        </h2>
-      )}
+      <div className={classes.profileWButtons}>
+        {isAuthenticated && (
+          <div className={classes.profile}>
+            <h3 className={classes.nameTitle}>
+              <AccountCircleIcon />
+              {user.name}
+            </h3>
+            <img src={user.picture} alt="Avatar" className={classes.avatar} />
+            <h4 className={classes.profileTextImage}>
+              This is your tree and your stats
+            </h4>
+            <h4 className={classes.profileTextImage}>Your Badges:</h4>
+          </div>
+        )}
+
+        <section className={classes.buttons}>
+          <h4 className={classes.profileTextButton}>
+            This is your tree and your stats
+          </h4>
+          <h4 className={classes.profileTextButton}>Your Badges:</h4>
+          <Button
+            className={classes.button}
+            variant="outlined"
+            children={
+              <Link to="/new" className={classes.link}>
+                Add item
+              </Link>
+            }
+          />
+          <Button
+            className={classes.button}
+            variant="outlined"
+            children={
+              <Link to="/forest" className={classes.link}>
+                The Forest
+              </Link>
+            }
+          />
+        </section>
+      </div>
       <div className={classes.userTree}>
         <Tree treeTotal={treeTotal} />
-
         <TableContainer className={classes.container} component={Paper}>
           <Table className={classes.table} aria-label="customized table">
             <TableHead>
@@ -145,26 +241,6 @@ export default function User(props) {
           </Table>
         </TableContainer>
       </div>
-      <section className={classes.buttons}>
-        <Button
-          className={classes.button}
-          variant="outlined"
-          children={
-            <Link to="/new" className={classes.link}>
-              Add item
-            </Link>
-          }
-        />
-        <Button
-          className={classes.button}
-          variant="outlined"
-          children={
-            <Link to="/forest" className={classes.link}>
-              The Forest
-            </Link>
-          }
-        />
-      </section>
     </div>
   );
 }

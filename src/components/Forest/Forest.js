@@ -61,10 +61,6 @@ const useStyles = makeStyles({
   tree: {
     width: 150,
   },
-  userScores: {
-    display: "flex",
-    flexDirection: "column",
-  },
   userInfo: {
     display: "flex",
     justifyContent: "space-between",
@@ -74,7 +70,9 @@ const useStyles = makeStyles({
   },
   forestAccordion: {
     boxShadow: "0px 0px 1px 2px rgba(0, 0, 0, 0.2)",
-    width: "auto",
+    width: "30em",
+    border: "solid .01em white",
+
   },
   summary: {
     // backgroundImage: 'url("/images/beautiful-color-ui-gradients-backgrounds-bloody-mary.png")',
@@ -109,6 +107,19 @@ const useStyles = makeStyles({
     textDecoration: "none",
     color: "white",
   },
+  userScores: {
+    display: "flex",
+    flexDirection: "column",
+    // alignItems: "center",
+    width: "100%",
+  },
+  forestTitle: {
+    margin: "-1.7em 0 -1em 0 "
+  },
+  downArrow: {
+    color: "white"
+  }
+
 });
 
 export default function Forest(props) {
@@ -119,7 +130,7 @@ export default function Forest(props) {
 
   return (
     <div className={classes.page}>
-      <h2>This is the Forest</h2>
+      <h2 className={classes.forestTitle}>This is the Forest</h2>
       <section className={classes.forest}>
         {users.map((userBin) => (
           <ForestTree treeTotal={userBin.score} name={userBin.username} />
@@ -141,7 +152,7 @@ export default function Forest(props) {
           {/* </TableRow> */}
           {/* </TableHead> */}
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className={classes.forestDetails}>
           {/* <Table className={classes.table} aria-label="customized table"> */}
           {/* <TableBody> */}
           <div className={classes.userScores}>

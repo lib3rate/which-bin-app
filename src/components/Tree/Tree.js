@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const Tree = (props) => {
-  // const currentScore = props.treeTotal;
-  const currentScore = 80;
+  const currentScore = props.treeTotal;
+  // const currentScore = 80;
 
   let startingBaseNumber = 0;
   let startingBaseLeavesNumber = 0;
@@ -18,6 +18,8 @@ const Tree = (props) => {
   let almostTreeRender = 0;
   let fullTreeRender = 0;
   let height = 150;
+
+  
   let treeDuration = '15s';
 
   console.log("currentScore: ", currentScore)

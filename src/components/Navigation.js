@@ -19,6 +19,7 @@ import clsx from "clsx";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import styled from "styled-components";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import MyButton from "./Button";
 import Tree from "./Tree/Tree";
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     [theme.breakpoints.down('sm')]: {
-      justifyContent: "space-around",
+      justifyContent: "center",
     },
   },
   logo: {
@@ -148,6 +149,8 @@ const useStyles = makeStyles((theme) => ({
   },
   signName: {
     marginRight: 7,
+    display: "flex",
+    flexDirection: "row"
   }
 }));
 
@@ -223,7 +226,7 @@ export default function PersistentDrawerLeft(props) {
         { isAuthenticated && (
           <div className={classes.login}>
             <h4 className={classes.signName}>
-              Signed in as {user.name}
+            <AccountCircleIcon/> {user.name}
             </h4>
           </div>
         ) }

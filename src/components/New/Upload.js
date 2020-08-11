@@ -17,7 +17,8 @@ import feed from "./../../helpers/capture";
 const useStyles = makeStyles((theme) => ({
   title: {
     color: "white",
-    fontFamily: "Averia Serif Libre"
+    fontFamily: "Cantarell",
+    fontWeight: 200,
   },
   input: {
     display: "flex",

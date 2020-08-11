@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     paddingBottom: "10px",
-    color: "white",
+    color: "white"
   },
   forest: {
     height: 175,

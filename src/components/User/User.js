@@ -69,12 +69,12 @@ const useStyles = makeStyles((theme) => ({
       textAlign: "center",
       marginBottom: "1em",
       margin: "0 0 6px 0",
-      color: "white"
+      color: "white",
     },
   },
   avatar: {
     maxWidth: "60%",
-    height: "116px",
+    // height: "116px",
     borderRadius: "25px",
   },
   profileWButtons: {
@@ -95,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
+      alignItems: "center"
     },
   },
   nameTitle: {
@@ -112,6 +113,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 0 0 3em",
     border: "solid .01em white",
     // boxShadow: '0px 1.5px 1.5px 0px '
+    [theme.breakpoints.down("sm")]: {
+      width: "80%",
+      margin: "2em 0 2em 0"
+    },
   },
   table: {
     minWidth: 250,
@@ -128,13 +133,18 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     // alignItems: 'center',
     // height: 300,
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      width: "400px",
+      justifyContent: "center",
+      alignItems: "center"
+    },
   },
   button: {
     borderColor: "black",
     color: "white",
     "&:hover": {
       backgroundColor: "#4A235A",
-      margin: "0 2em 1em 0",
     },
     margin: "0 1em 1em 1em",
   },
@@ -144,7 +154,7 @@ const useStyles = makeStyles((theme) => ({
     // margin: "0 0 0em 18em",
     maxWidth: "auto",
     [theme.breakpoints.down("sm")]: {
-      flexDirection: "row"
+      flexDirection: "row",
     },
   },
   badgeDesktop: {
@@ -159,9 +169,9 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
     [theme.breakpoints.down("sm")]: {
       display: "flex",
-      margin: "0 0 1em 0"
+      margin: "0 0 1em 0",
     },
-  }
+  },
 }));
 
 export default function User(props) {
@@ -169,6 +179,7 @@ export default function User(props) {
   const { user, isAuthenticated } = useAuth0();
 
   const treeTotal = Number(props.user.total);
+  const displayBadge = treeTotal >= 77 ? true : false;
   const onClickStop = (event) => {
     event.stopPropagation();
   };
@@ -182,40 +193,51 @@ export default function User(props) {
               {user.name}
             </h3>
             <img src={user.picture} alt="Avatar" className={classes.avatar} />
-            <h4 className={classes.profileTextImage}>
+            {/* <h4 className={classes.profileTextImage}>
               Here is your tree and your stats
-            </h4>
-            <h4 className={classes.profileTextImage}>Your Badges:</h4>
-            <img className={classes.badgeDesktop} src="/images/badge.png"/>
+            </h4> */}
+            {displayBadge && (
+              <div>
+                <h4 className={classes.profileTextImage}>Your Badges:</h4>
+                <img
+                  className={classes.badgeDesktop}
+                  display="none"
+                  src="/images/badge.png"
+                />
+              </div>
+            )}
           </div>
         )}
 
         <section className={classes.mobile}>
-          <h4 className={classes.profileTextButton}>
+          {/* <h4 className={classes.profileTextButton}>
             Here is your tree and your stats
-          </h4>
-          <h4 className={classes.profileTextButton}>Your Badges:</h4>
-          <img className={classes.badgeMobile} src="/images/badge.png"/>
+          </h4> */}
+          {displayBadge && (
+            <div>
+              <h4 className={classes.profileTextButton}>Your Badges:</h4>
+              <img className={classes.badgeMobile} src="/images/badge.png" />
+            </div>
+          )}
           <div className={classes.buttons}>
-          <Button
-            className={classes.button}
-            variant="outlined"
-            children={
-              <Link to="/new" className={classes.link}>
-                Add item
-              </Link>
-            }
-
-          />
-          <Button
-            className={classes.button}
-            variant="outlined"
-            children={
-              <Link to="/forest" className={classes.link}>
-                The Forest
-              </Link>
-            }
-          />
+            <Button
+              className={classes.button}
+              variant="outlined"
+              children={
+                <Link to="/new" className={classes.link}>
+                  Add item
+                </Link>
+              }
+            />
+            <Button
+              className={classes.button}
+              variant="outlined"
+              children={
+                <Link to="/forest" className={classes.link}>
+                  The Forest
+                </Link>
+              }
+            />
           </div>
         </section>
       </div>

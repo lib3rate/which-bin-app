@@ -10,7 +10,11 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
   },
   label: {
-    margin: '100px 0 0 0'
+    margin: '100px 0 0 0',
+    color: "white"
+  },
+  text: {
+    color: "white"
   }
 }));
 
@@ -20,7 +24,7 @@ export default function Result(props) {
   return (
     <>
       <h2 className={classes.label}>{props.recognition.label}</h2>
-      <h2>{props.recognition.text}</h2>
+      <h2 className={classes.text}> {props.recognition.text}</h2>
 
       <MyButton
         onClick={() => props.updateScore(props.recognition.bin)}

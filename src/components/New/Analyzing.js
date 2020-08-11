@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     margin: '100px 0 0 0',
+    color: "white"
   },
   root: {
     display: 'flex',
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   image: {
-    color: "#009c63"
+    color: "#4A235A"
   }
 }));
 

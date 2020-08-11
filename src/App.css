@@ -12,7 +12,7 @@ body {
   display: flex;
   justify-content: center;
   
-  background-image: url("/images/48-nice-green-gradient.jpg");
+  background: url(/images/48-nice-green-gradient.jpg);
   /* background-color: #008c8c; */
   
   /* background: rgb(132,179,157); */

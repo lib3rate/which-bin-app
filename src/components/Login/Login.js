@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 // import Avatar from '@material-ui/core/Avatar';
-// import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 // import TextField from '@material-ui/core/TextField';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -14,19 +14,25 @@ import { useAuth0 } from "@auth0/auth0-react";
 // import Typography from '@material-ui/core/Typography';
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // import Form from "../Form";
-import MyButton from "../Button";
+// import MyButton from "../Button";
+
 
 const useStyles = makeStyles((theme) => ({
   page: {
-    backgroundImage: "url('/images/misty-forest.jpg')",
+    background: "url('/images/forest2.jpg')",
+    width: '220vh',
+    height: '100vh',
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
+    backgroundSize: "cover",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
-
   // paper: {
   //   marginTop: theme.spacing(8),
   //   display: 'flex',
@@ -45,9 +51,8 @@ const useStyles = makeStyles((theme) => ({
   //   marginTop: theme.spacing(1),
   // },
   submit: {
-    // margin: theme.spacing(3, 0, 2),
-    // display: 'flex',
-    // alignItems: 'center',
+    color: "white",
+    borderColor: "white"
   },
   link: {
     textDecoration: "none",
@@ -57,12 +62,20 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "8em",
     color: "white",
     fontFamily: "Londrina Outline",
+    margin: "1em 0 0 0"
   },
   buttons: {
     display: "flex",
-    alignItems: "center",
-    margin: "0 0 15em 0 ",
+    flexDirection: "column",
+    alignItems: "center"
   },
+  arrow: {
+    color: "white",
+  },
+  menuItem: {
+    textDecoration: "none",
+    color: "white"
+  }
 }));
 
 export default function SignIn(props) {
@@ -73,8 +86,9 @@ export default function SignIn(props) {
   return (
     <Container component="main" className={classes.page}>
       <div>
+      {/* <img className={classes.background} src="/images/forest1.jpeg"/> */}
         <h1 className={classes.title}> Welcome to ReForest</h1>
-
+       
         {/* <CssBaseline /> */}
         {/* <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -107,18 +121,19 @@ export default function SignIn(props) {
             autoComplete="current-password"
           /> */}
         <div className={classes.buttons}>
+        <ExpandMoreIcon className={classes.arrow} style={{ fontSize: 60 }}/>
           {!isAuthenticated && (
             <div classname={classes.button}>
-              <MyButton
+              <Button
                 onClick={() => loginWithRedirect()}
                 type="submit"
                 fullWidth
-                variant="contained"
-                color="primary"
+                variant="outlined"
+                // color="primary"
                 className={classes.submit}
               >
                 Sign in
-              </MyButton>
+              </Button>
             </div>
           )}
           {isAuthenticated && (
@@ -134,18 +149,18 @@ export default function SignIn(props) {
               >
                 Sign out
               </MyButton> */}
-                <MyButton
+                <Button
                   type="submit"
                   fullWidth
-                  variant="contained"
-                  color="primary"
+                  variant="outlined"
+                  // color="primary"
                   className={classes.submit}
                   align="right"
                 >
                   <Link to="/users/1" className={classes.menuItem}>
                     Your userpage
                   </Link>
-                </MyButton>
+                </Button>
               </div>
             </>
           )}

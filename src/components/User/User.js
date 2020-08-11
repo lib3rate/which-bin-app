@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
     // height: "116px",
     borderRadius: "25px",
     margin: "0 0 4px 0",
+    border: "solid white 1px"
   },
   profileWButtons: {
     display: "flex",
@@ -108,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "50",
     display: "flex",
     flexDirection: "row",
-    margin: "0 0 3px 0",
+    margin: "0 0 1em 0",
   },
   container: {
     width: "50%",

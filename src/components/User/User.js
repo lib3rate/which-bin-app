@@ -12,7 +12,6 @@ import Paper from "@material-ui/core/Paper";
 // import logo from '../../logo.svg'
 import Tree from "../Tree/Tree";
 import Button from "@material-ui/core/Button";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -61,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   profileTextImage: {
     textAlign: "center",
     marginBottom: "1em",
-    margin: "0 0 6px 0",
+    margin: "8px 0 2px 0",
     [theme.breakpoints.down("sm")]: {
       display: "none",
     },
@@ -88,7 +87,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     margin: "0 5em 0 -3em ",
     [theme.breakpoints.down("sm")]: {
-      flexDirection: "row",
+      // flexDirection: "row",
+      width: "80%",
       margin: "0 0 3em 0",
       border: "solid 1px white",
       borderRadius: "25px",
@@ -143,9 +143,10 @@ const useStyles = makeStyles((theme) => ({
     padding: "1em",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
-      width: "400px",
+      width: "80%",
       justifyContent: "center",
       alignItems: "center",
+      margin: "0 0 2em 0"
     },
   },
   button: {
@@ -161,11 +162,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     // margin: "1px",
     maxWidth: "auto",
-    border: "solid 1px white",
-    borderRadius: "25px",
-    padding: "1em",
+    // border: "solid 1px white",
+    // borderRadius: "25px",
+    // padding: "1em",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "row",
+      display: "none",
     },
   },
   badgeDesktop: {
@@ -185,16 +187,20 @@ const useStyles = makeStyles((theme) => ({
   },
   badges: {
     display: "flex",
-    flexDirection: "row"
-  }
+    flexDirection: "row",
+  },
+  mobile: {
+    display: "flex",
+    flexDirection: "row",
+  },
 }));
 
 export default function User(props) {
   const classes = useStyles();
   const { user, isAuthenticated } = useAuth0();
 
-  // const treeTotal = Number(props.user.total);
-  const treeTotal = 3;
+  const treeTotal = Number(props.user.total);
+  // const treeTotal = 3;
 
   const displayBadge1 = treeTotal >= 77 ? true : false;
   const displayBadge2 = treeTotal >= 200 ? true : false;
@@ -208,12 +214,11 @@ export default function User(props) {
         {isAuthenticated && (
           <section className={classes.profile}>
             <h3 className={classes.nameTitle}>
-              <AccountCircleIcon />
               {user.name}
             </h3>
             <img src={user.picture} alt="Avatar" className={classes.avatar} />
-        
-              <h4 className={classes.profileTextImage}>Your Badges:</h4>
+
+            <h4 className={classes.profileTextImage}>Your Badges:</h4>
             <article className={classes.badges}>
               {!displayBadge1 && (
                 <div>
@@ -239,23 +244,8 @@ export default function User(props) {
                   />
                 </div>
               )}
-              {displayBadge2 && (
-                <div>
-                  <img
-                    className={classes.badgeDesktop}
-                    src="/images/placeholder-badge.png"
-                  />
-                </div>
-              )}
+
               {!displayBadge3 && (
-                <div>
-                  <img
-                    className={classes.badgeDesktop}
-                    src="/images/placeholder-badge.png"
-                  />
-                </div>
-              )}
-              {displayBadge3 && (
                 <div>
                   <img
                     className={classes.badgeDesktop}
@@ -267,14 +257,35 @@ export default function User(props) {
           </section>
         )}
 
+        <h4 className={classes.profileTextButton}>Your Badges:</h4>
         <section className={classes.mobile}>
-          {/* <h4 className={classes.profileTextButton}>
-            Here is your tree and your stats
-          </h4> */}
           {displayBadge1 && (
             <div>
-              <h4 className={classes.profileTextButton}>Your Badges:</h4>
               <img className={classes.badgeMobile} src="/images/badge.png" />
+            </div>
+          )}
+          {!displayBadge1 && (
+            <div>
+              <img
+                className={classes.badgeMobile}
+                src="/images/placeholder-badge.png"
+              />
+            </div>
+          )}
+          {!displayBadge2 && (
+            <div>
+              <img
+                className={classes.badgeMobile}
+                src="/images/placeholder-badge.png"
+              />
+            </div>
+          )}
+          {!displayBadge3 && (
+            <div>
+              <img
+                className={classes.badgeMobile}
+                src="/images/placeholder-badge.png"
+              />
             </div>
           )}
           <div className={classes.buttons}>

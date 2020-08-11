@@ -155,6 +155,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 1em 0 0",
     display: "flex",
     flexDirection: "row",
+    [theme.breakpoints.down('sm')]: {
+      display: "none",
+    },
   },
   // submit: {
   //   maxWidth: "1px",
@@ -263,7 +266,6 @@ export default function PersistentDrawerLeft(props) {
             color="primary"
             className={classes.submit}
             marginRight="20px"
-            style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
             // display={!displayTest ? "none" : "" }       
             >
               Sign out

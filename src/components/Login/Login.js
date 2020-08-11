@@ -13,11 +13,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const useStyles = makeStyles((theme) => ({
   page: {
     background: "url('/images/forest2.jpg')",
-    width: '220vh',
-    height: '100vh',
+    width: '1000px',
+    height: '100%',
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
-    backgroundSize: "cover",
+    backgroundSize: "root",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -25,7 +25,13 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     color: "white",
-    borderColor: "white"
+    borderColor: "white",
+    border: "solid 2px",
+    borderRadius: "10px",
+    opacity: .8,
+    "&:hover": {
+      opacity: 1,
+    },
   },
   link: {
     textDecoration: "none",
@@ -40,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   },
   arrow: {
     color: "white",

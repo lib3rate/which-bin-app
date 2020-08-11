@@ -9,7 +9,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import PublishIcon from "@material-ui/icons/Publish";
 import Button from "@material-ui/core/Button";
-import VideocamIcon from '@material-ui/icons/Videocam';
+import VideocamIcon from "@material-ui/icons/Videocam";
 import MyButton from "../Button";
 
 import feed from "./../../helpers/capture";
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontFamily: "Cantarell",
     fontWeight: 200,
+    margin: "2em 0 3em 0"
   },
   input: {
     display: "flex",
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   message: {
     marginTop: 0,
     color: "white",
-    fontWeight: 200
+    fontWeight: 200,
   },
   output: {
     width: 340,
@@ -108,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
   },
   videoAccordion: {
     boxShadow: "0px 0px 1px 2px rgba(0, 0, 0, 0.2)",
-    margin: "0 0 2em 0"
+    margin: "0 0 2em 0",
   },
   photoAccordion: {
     boxShadow: "0px 0px 1px 2px rgba(0, 0, 0, 0.2)",
@@ -135,8 +136,9 @@ const useStyles = makeStyles((theme) => ({
     borderColor: "black",
     color: "white",
     "&:hover": {
-      backgroundColor: "#4A235A"
-  },  }
+      backgroundColor: "#4A235A",
+    },
+  },
 }));
 
 export default function Upload(props) {
@@ -148,89 +150,93 @@ export default function Upload(props) {
 
   return (
     <>
-      <h1 className={classes.title}>
-        Choose how you want to check your waste
-      </h1>
-      <div className={classes.contentarea}>
-        <Accordion defaultCollapsed className={classes.videoAccordion}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon className={classes.downArrow} />}
-            aria-controls="panel1c-content"
-            id="panel1c-header"
-            className={classes.summary}
-          >
-            <div className={classes.accordianHeader}>
-              <VideocamIcon className={classes.icon} />
+        <h1 className={classes.title}>
+          Choose how you want to check your waste
+        </h1>
+        <div className={classes.contentarea}>
+          <Accordion defaultCollapsed className={classes.videoAccordion}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon className={classes.downArrow} />}
+              aria-controls="panel1c-content"
+              id="panel1c-header"
+              className={classes.summary}
+            >
+              <div className={classes.accordianHeader}>
+                <VideocamIcon className={classes.icon} />
 
-              <h4>Video Capture</h4>
-            </div>
-          </AccordionSummary>
-          <AccordionDetails className={classes.videoCapture}>
-            <div className={classes.camera}>
-              <h3 className={classes.message}>Video Feed</h3>
-              <video className={classes.video} id="video">
-                Video stream not available.
-              </video>
-              <button className={classes.startbutton} id="startbutton">
-                Capture
-              </button>
-            </div>
-            <canvas
-              className={classes.canvas}
-              id="canvas"
-              style={{ display: "none" }}
-            ></canvas>
-            <div className={classes.output}>
-              <h3 className={classes.message}>Image Capture</h3>
-              <img
-                className={classes.photo}
-                id="photo"
-                alt="The screen capture will appear in this box."
-              />
-            </div>
-          </AccordionDetails>
-          <AccordionActions className={classes.accordionActions}>
-            <MyButton onClick={props.onClick}>Submit</MyButton>
-          </AccordionActions>
-        </Accordion>
-        <Accordion defaultCollapsed className={classes.photoAccordion}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon className={classes.downArrowPhoto} />}
-            aria-controls="panel1c-content"
-            id="panel1c-header"
-            className={classes.summary}
-          >
-            <div className={classes.accordianHeader}>
-              <PublishIcon className={classes.icon} />
-              <h4>Upload a photo</h4>
-            </div>
-          </AccordionSummary>
-          <AccordionDetails className={classes.photoUpload}>
-            {/* <div className={classes.input}> */}
-            <label htmlFor="fileToUpload">
-              <Input
-                type="file"
-                name="fileToUpload"
-                id="fileToUpload"
-                accept="image/*"
+                <h4>Video Capture</h4>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails className={classes.videoCapture}>
+              <div className={classes.camera}>
+                <h3 className={classes.message}>Video Feed</h3>
+                <video className={classes.video} id="video">
+                  Video stream not available.
+                </video>
+                <button className={classes.startbutton} id="startbutton">
+                  Capture
+                </button>
+              </div>
+              <canvas
+                className={classes.canvas}
+                id="canvas"
                 style={{ display: "none" }}
-                // className={classes.input}
-                // capture="environment"
-                onChange={props.onChange}
-              />
-              <Button variant="outlined" component="span" className={classes.button}>
-                Upload
-              </Button>
-            </label>
-            {/* </div> */}
-          </AccordionDetails>
-          {/* <AccordionActions className={classes.accordionActions}>
+              ></canvas>
+              <div className={classes.output}>
+                <h3 className={classes.message}>Image Capture</h3>
+                <img
+                  className={classes.photo}
+                  id="photo"
+                  alt="The screen capture will appear in this box."
+                />
+              </div>
+            </AccordionDetails>
+            <AccordionActions className={classes.accordionActions}>
+              <MyButton onClick={props.onClick}>Submit</MyButton>
+            </AccordionActions>
+          </Accordion>
+          <Accordion defaultCollapsed className={classes.photoAccordion}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon className={classes.downArrowPhoto} />}
+              aria-controls="panel1c-content"
+              id="panel1c-header"
+              className={classes.summary}
+            >
+              <div className={classes.accordianHeader}>
+                <PublishIcon className={classes.icon} />
+                <h4>Upload a photo</h4>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails className={classes.photoUpload}>
+              {/* <div className={classes.input}> */}
+              <label htmlFor="fileToUpload">
+                <Input
+                  type="file"
+                  name="fileToUpload"
+                  id="fileToUpload"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  // className={classes.input}
+                  // capture="environment"
+                  onChange={props.onChange}
+                />
+                <Button
+                  variant="outlined"
+                  component="span"
+                  className={classes.button}
+                >
+                  Upload
+                </Button>
+              </label>
+              {/* </div> */}
+            </AccordionDetails>
+            {/* <AccordionActions className={classes.accordionActions}>
             <MyButton onClick={props.onClick}>
               Submit
             </MyButton>
           </AccordionActions> */}
-        </Accordion>
-      </div>
+          </Accordion>
+        </div>
     </>
   );
 }

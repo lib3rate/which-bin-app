@@ -223,6 +223,7 @@ export default function User(props) {
               {!displayBadge1 && (
                 <div>
                   <img
+                    alt=""
                     className={classes.badgeDesktop}
                     src="/images/placeholder-badge.png"
                   />
@@ -231,6 +232,7 @@ export default function User(props) {
               {displayBadge1 && (
                 <div>
                   <img
+                    alt=""
                     className={classes.badgeDesktop}
                     src="/images/badge.png"
                   />
@@ -239,6 +241,7 @@ export default function User(props) {
               {!displayBadge2 && (
                 <div>
                   <img
+                    alt=""
                     className={classes.badgeDesktop}
                     src="/images/placeholder-badge.png"
                   />
@@ -248,6 +251,7 @@ export default function User(props) {
               {!displayBadge3 && (
                 <div>
                   <img
+                    alt=""
                     className={classes.badgeDesktop}
                     src="/images/placeholder-badge.png"
                   />
@@ -267,6 +271,7 @@ export default function User(props) {
           {!displayBadge1 && (
             <div>
               <img
+                alt=""
                 className={classes.badgeMobile}
                 src="/images/placeholder-badge.png"
               />
@@ -275,6 +280,7 @@ export default function User(props) {
           {!displayBadge2 && (
             <div>
               <img
+                alt=""
                 className={classes.badgeMobile}
                 src="/images/placeholder-badge.png"
               />
@@ -283,6 +289,7 @@ export default function User(props) {
           {!displayBadge3 && (
             <div>
               <img
+                alt=""
                 className={classes.badgeMobile}
                 src="/images/placeholder-badge.png"
               />

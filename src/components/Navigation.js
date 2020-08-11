@@ -230,8 +230,8 @@ export default function PersistentDrawerLeft(props) {
             </h4>
           </div>
         ) }
-        {/* { !isAuthenticated && (
-          <StyledButton
+        { !isAuthenticated && (
+          <MyButton
               onClick={() => loginWithRedirect()}
               type="submit"
               fullWidth
@@ -242,9 +242,9 @@ export default function PersistentDrawerLeft(props) {
               // display={!displayTest ? "none" : "" }      
             >
               Sign in
-            </StyledButton>
-          ) } */}
-        {/* { isAuthenticated && ( */}
+            </MyButton>
+          ) }
+        { isAuthenticated && (
           <MyButton
             onClick={() => logout()}
             type="submit"
@@ -257,8 +257,7 @@ export default function PersistentDrawerLeft(props) {
             >
               Sign out
           </MyButton>
-        {/* )} */}
-
+        ) }
 
       </AppBar>
 

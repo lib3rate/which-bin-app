@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontFamily: "Cantarell",
     fontWeight: 200,
-    margin: "2em 0 3em 0"
+    margin: "3em 0 1em 0"
   },
   input: {
     display: "flex",
@@ -75,7 +75,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     width: 760,
-    paddingBottom: "10px",
+    padding: "4em 0 1em 0",
+    border: "solid 1px white",
+    borderRadius: "25px",
+    margin: "0 0 1em 0"
   },
   photoUpload: {
     background: "linear-gradient(45deg, #BB76C2, 30%, #C9A7CC 90%)",

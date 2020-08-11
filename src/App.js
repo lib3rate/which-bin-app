@@ -7,7 +7,7 @@ import "./App.css";
 
 import useApplicationData from "./helpers/helpers";
 
-import Register from "./components/Register/Register";
+// import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import New from "./components/New/New";
 import Forest from "./components/Forest/Forest";
@@ -38,8 +38,6 @@ export default function App() {
   }, []);
 
   const {
-    loginWithRedirect,
-    logout,
     user,
     isAuthenticated
   } = useAuth0();
@@ -47,13 +45,13 @@ export default function App() {
   return (
     <Router>
       <div>
+        <Navigation
+          user={state.user}
+          // login={displaySignout}
+          url={true}
+        />
         <Switch>
           <Route exact path="/">
-            <Navigation
-              user={state.user}
-              // login={displaySignout}
-              url={true}
-            ></Navigation>
           { !isAuthenticated && (
             <Login />
           ) }
@@ -61,29 +59,13 @@ export default function App() {
             <User user={state.user} />
           ) }
           </Route>
-          <Route path="/register">
-            <Navigation
-              user={state.user}
-              // login={displaySignout}
-              url={true}
-            ></Navigation>
+          {/* <Route path="/register">
             <Register />
-          </Route>
+          </Route> */}
           {/* <Route path="/login">
-            <Navigation
-              user={state.user}
-              // login={displaySignout}
-              url={true}
-            ></Navigation>
-
             <Login /> */}
           {/* </Route> */}
           <Route path="/new">
-            <Navigation
-              user={state.user}
-              // login={displaySignout}
-              url={true}
-            ></Navigation>
             <New
               recognition={state.recognition}
               ProcessImage={ProcessImage}
@@ -93,19 +75,9 @@ export default function App() {
             />
           </Route>
           <Route path="/users/:id">
-            <Navigation
-              user={state.user}
-              // login={displaySignout}
-              url={true}
-            ></Navigation>
             <User user={state.user} />
           </Route>
           <Route path="/forest">
-            <Navigation
-              user={state.user}
-              // login={displaySignout}
-              url={true}
-            ></Navigation>
             <Forest userBins={state.userBins} />
           </Route>
         </Switch>

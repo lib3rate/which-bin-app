@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: "0 5em 0 -3em ",
+    margin: "0 5em 0 -2em ",
     [theme.breakpoints.down("sm")]: {
       // flexDirection: "row",
       width: "80%",
@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "50",
     display: "flex",
     flexDirection: "row",
-    margin: "0 0 1em 0",
+    margin: "7px 0 1em 0",
   },
   container: {
     width: "50%",
@@ -156,16 +156,13 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "#4A235A",
     },
-    margin: "3px",
+    margin: "0 2px 0 2px",
   },
   buttons: {
     display: "flex",
     flexDirection: "row",
-    // margin: "1px",
+    margin: "0 1em 0 0",
     maxWidth: "auto",
-    // border: "solid 1px white",
-    // borderRadius: "25px",
-    // padding: "1em",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "row",
       display: "none",

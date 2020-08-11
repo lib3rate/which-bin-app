@@ -192,7 +192,7 @@ export default function Forest(props) {
           variant="outlined"
           children={
             <Link to="/users/1" className={classes.link}>
-              Your User Page
+              User Page
             </Link>
           }
         />

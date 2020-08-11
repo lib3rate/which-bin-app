@@ -19,11 +19,11 @@ const StyledTableCell = withStyles((theme) => ({
     backgroundColor: "#4A235A",
     color: theme.palette.common.white,
     fontFamily: "Cantarell",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   body: {
     fontSize: 14,
-    fontFamily: "Cantarell"
+    fontFamily: "Cantarell",
     // backgroundColor: "#BB76C2",
     // border: "solid 2 white",
   },
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "60%",
     // height: "116px",
     borderRadius: "25px",
-    margin: "0 0 4px 0"
+    margin: "0 0 4px 0",
   },
   profileWButtons: {
     display: "flex",
@@ -100,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
-      alignItems: "center"
+      alignItems: "center",
     },
   },
   nameTitle: {
@@ -120,13 +120,13 @@ const useStyles = makeStyles((theme) => ({
     // boxShadow: '0px 1.5px 1.5px 0px '
     [theme.breakpoints.down("sm")]: {
       width: "80%",
-      margin: "2em 0 2em 0"
+      margin: "2em 0 2em 0",
     },
   },
   table: {
     minWidth: 250,
     maxWidth: 1500,
-    height: 355,
+    height: "355px",
   },
   link: {
     textDecoration: "none",
@@ -138,11 +138,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     // alignItems: 'center',
     // height: 300,
+    border: "solid 1px white",
+    borderRadius: "25px",
+    padding: "1em",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       width: "400px",
       justifyContent: "center",
-      alignItems: "center"
+      alignItems: "center",
     },
   },
   button: {
@@ -151,20 +154,23 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "#4A235A",
     },
-    margin: "0 1em 1em 1em",
+    margin: "3px",
   },
   buttons: {
     display: "flex",
     flexDirection: "row",
-    // margin: "0 0 0em 18em",
+    // margin: "1px",
     maxWidth: "auto",
+    border: "solid 1px white",
+    borderRadius: "25px",
+    padding: "1em",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "row",
     },
   },
   badgeDesktop: {
     height: "58px",
-    marginRight: "10em",
+    // marginRight: "10em",
     [theme.breakpoints.down("sm")]: {
       display: "none",
     },
@@ -177,14 +183,22 @@ const useStyles = makeStyles((theme) => ({
       margin: "0 0 1em 0",
     },
   },
+  badges: {
+    display: "flex",
+    flexDirection: "row"
+  }
 }));
 
 export default function User(props) {
   const classes = useStyles();
   const { user, isAuthenticated } = useAuth0();
 
-  const treeTotal = Number(props.user.total);
-  const displayBadge = treeTotal >= 77 ? true : false;
+  // const treeTotal = Number(props.user.total);
+  const treeTotal = 3;
+
+  const displayBadge1 = treeTotal >= 77 ? true : false;
+  const displayBadge2 = treeTotal >= 200 ? true : false;
+  const displayBadge3 = treeTotal >= 500 ? true : false;
   const onClickStop = (event) => {
     event.stopPropagation();
   };
@@ -192,33 +206,72 @@ export default function User(props) {
     <div className={classes.page}>
       <div className={classes.profileWButtons}>
         {isAuthenticated && (
-          <div className={classes.profile}>
+          <section className={classes.profile}>
             <h3 className={classes.nameTitle}>
               <AccountCircleIcon />
               {user.name}
             </h3>
             <img src={user.picture} alt="Avatar" className={classes.avatar} />
-            {/* <h4 className={classes.profileTextImage}>
-              Here is your tree and your stats
-            </h4> */}
-            {displayBadge && (
-              <div>
-                <h4 className={classes.profileTextImage}>Your Badges:</h4>
-                <img
-                  className={classes.badgeDesktop}
-                  display="none"
-                  src="/images/badge.png"
-                />
-              </div>
-            )}
-          </div>
+        
+              <h4 className={classes.profileTextImage}>Your Badges:</h4>
+            <article className={classes.badges}>
+              {!displayBadge1 && (
+                <div>
+                  <img
+                    className={classes.badgeDesktop}
+                    src="/images/placeholder-badge.png"
+                  />
+                </div>
+              )}
+              {displayBadge1 && (
+                <div>
+                  <img
+                    className={classes.badgeDesktop}
+                    src="/images/badge.png"
+                  />
+                </div>
+              )}
+              {!displayBadge2 && (
+                <div>
+                  <img
+                    className={classes.badgeDesktop}
+                    src="/images/placeholder-badge.png"
+                  />
+                </div>
+              )}
+              {displayBadge2 && (
+                <div>
+                  <img
+                    className={classes.badgeDesktop}
+                    src="/images/placeholder-badge.png"
+                  />
+                </div>
+              )}
+              {!displayBadge3 && (
+                <div>
+                  <img
+                    className={classes.badgeDesktop}
+                    src="/images/placeholder-badge.png"
+                  />
+                </div>
+              )}
+              {displayBadge3 && (
+                <div>
+                  <img
+                    className={classes.badgeDesktop}
+                    src="/images/placeholder-badge.png"
+                  />
+                </div>
+              )}
+            </article>
+          </section>
         )}
 
         <section className={classes.mobile}>
           {/* <h4 className={classes.profileTextButton}>
             Here is your tree and your stats
           </h4> */}
-          {displayBadge && (
+          {displayBadge1 && (
             <div>
               <h4 className={classes.profileTextButton}>Your Badges:</h4>
               <img className={classes.badgeMobile} src="/images/badge.png" />
@@ -239,7 +292,7 @@ export default function User(props) {
               variant="outlined"
               children={
                 <Link to="/forest" className={classes.link}>
-                  The Forest
+                  Forest
                 </Link>
               }
             />

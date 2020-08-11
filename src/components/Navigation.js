@@ -19,7 +19,6 @@ import clsx from "clsx";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 // import styled from "styled-components";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import MyButton from "./Button";
 import Tree from "./Tree/Tree";
@@ -152,10 +151,17 @@ const useStyles = makeStyles((theme) => ({
       },
   },
   signName: {
-    marginRight: 7,
+    color: "white",
+    margin: "0 1em 0 0",
     display: "flex",
-    flexDirection: "row"
-  }
+    flexDirection: "row",
+  },
+  // submit: {
+  //   maxWidth: "1px",
+  //   maxHeight: "1px",
+  //   minWidth: "1px",
+  //   minheight: "1px"
+  // }
 }));
 
 export default function PersistentDrawerLeft(props) {
@@ -218,7 +224,7 @@ export default function PersistentDrawerLeft(props) {
             Check Waste
           </Link>
           <Link to="/users/1" className={classes.menuItem}>
-            Userpage
+            User Page
           </Link>
 
           {/* <img src="/images/tree2.jpg" alt="Logo" className={classes.logo}/> */}
@@ -228,11 +234,11 @@ export default function PersistentDrawerLeft(props) {
           </Link>
         </Toolbar>
         { isAuthenticated && (
-          <div className={classes.login}>
+          <Typography className={classes.login}>
             <h4 className={classes.signName}>
-            <AccountCircleIcon/> {user.name}
+             {user.name}
             </h4>
-          </div>
+          </Typography>
         ) }
         { !isAuthenticated && (
           <MyButton
@@ -257,6 +263,7 @@ export default function PersistentDrawerLeft(props) {
             color="primary"
             className={classes.submit}
             marginRight="20px"
+            style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
             // display={!displayTest ? "none" : "" }       
             >
               Sign out

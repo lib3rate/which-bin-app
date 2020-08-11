@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     width: "100%",
+    fontFamily: "Cantarell"
   },
   // username: {
   //   flexGrow: 1,

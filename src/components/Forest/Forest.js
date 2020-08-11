@@ -42,7 +42,8 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     paddingBottom: "10px",
-    color: "white"
+    color: "white",
+    fontFamily: "Cantarell"
   },
   forest: {
     height: 175,
@@ -114,7 +115,8 @@ const useStyles = makeStyles({
     width: "100%",
   },
   forestTitle: {
-    margin: "-1.7em 0 -1em 0 "
+    margin: "-1em 0 -1em 0",
+    fontSize: "30px"
   },
   downArrow: {
     color: "white"
@@ -130,7 +132,7 @@ export default function Forest(props) {
 
   return (
     <div className={classes.page}>
-      <h2 className={classes.forestTitle}>Forest of user trees</h2>
+      <h2 className={classes.forestTitle}>The Forest</h2>
       <section className={classes.forest}>
         {users.map((userBin) => (
           <ForestTree treeTotal={userBin.score} name={userBin.username} />

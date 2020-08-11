@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: "1em",
     margin: "0 1em 1em 0",
+    fontFamily: "Cantarell",
     [theme.breakpoints.down("sm")]: {
       margin: "0 1em 1em 0",
       width: "90%",
@@ -76,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "60%",
     // height: "116px",
     borderRadius: "25px",
+    margin: "0 0 4px 0"
   },
   profileWButtons: {
     display: "flex",
@@ -103,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "50",
     display: "flex",
     flexDirection: "row",
-    margin: "0 0 2px 0",
+    margin: "0 0 3px 0",
   },
   container: {
     width: "50%",

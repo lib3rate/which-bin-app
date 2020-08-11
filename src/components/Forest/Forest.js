@@ -116,7 +116,8 @@ const useStyles = makeStyles({
   },
   forestTitle: {
     margin: "-1em 0 -1em 0",
-    fontSize: "30px"
+    fontSize: "35px",
+    fontWeight: 200
   },
   downArrow: {
     color: "white"

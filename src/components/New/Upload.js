@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
   message: {
     marginTop: 0,
     color: "white",
+    fontWeight: 200
   },
   output: {
     width: 340,

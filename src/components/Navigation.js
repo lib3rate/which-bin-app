@@ -66,11 +66,14 @@ const useStyles = makeStyles((theme) => ({
     margin: 15,
   },
   title: {
-    fontSize: 39,
-    flexGrow: 1,
-    marginLeft: 20,
+    textDecoration: "none",
+    color: "white",
+    fontSize: 60,
     fontFamily: "Cinzel Decorative",
-    maxWidth: 200,
+    opacity: 0.7,
+    "&:hover": {
+      opacity: 1,
+    },
   },
   link: {
     textDecoration: "none",
@@ -204,9 +207,9 @@ export default function PersistentDrawerLeft(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap className={classes.title} unselectable="on">
-            ReForest
-          </Typography>
+          <Link to="/" className={classes.title}>
+            <p>ReForest</p>
+          </Link>
         <Toolbar 
         // onClose={handleDrawerOpen}
         >

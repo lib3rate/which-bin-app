@@ -134,44 +134,10 @@ export default function useApplicationData() {
             else {
               console.log(data);
 
-              const result = {
-                label: '',
-                bin: '',
-                text: ''
-              }
               setTimeout(() => {
-                let found = false;
-
-                for (let label of data.Labels) {
-                  if (label.Name === 'Glass' || label.Name === 'Cardboard' || label.Name === 'Can') {
-                    // const name = label.Name.toLowerCase;
-                    found = true;
-                    result.label = `You have submitted a ${label.Name}.`;
-                    result.bin = 'Recycling';
-                    result.text = 'Place it into the recycling bin and you will get 25 points to your score!';
-                    setState({...state, recognition: result});
-                  } else if (label.Name === 'Plastic') {
-                    found = true;
-                    result.label = `You have submitted some ${label.Name}.`;
-                    result.bin = 'Garbage';
-                    result.text = 'Please put it into the garbage bin to get 10 points and use more recycled items, when possible.';
-                    setState({...state, recognition: result});
-                  } else if (label.Name === 'Plant') {
-                    found = true;
-                    result.label = `You have submitted a ${label.Name}.`;
-                    result.bin = 'Organic';
-                    result.text = 'Place it into the organics bin and you will get 25 points to your score!';
-                    setState({...state, recognition: result});
-                  }
-                  if (!found) {
-                    result.label = `Sorry, we didn't recognize the item.`;
-                    result.bin = 'Garbage';
-                    result.text = 'Please put it into the garbage bin to get 10 points anyway.';
-                    setState({...state, recognition: result});
-                  }
-                }
+                getLabels(data);
                 resolve()
-              }, 750)
+              }, 400)
             }
           });
         };
@@ -180,23 +146,6 @@ export default function useApplicationData() {
     })
   };
   
-  //Provides anonymous log on to AWS services
-  function AnonLog() {
-    
-    // Configure the credentials provider to use your identity pool
-    AWS.config.region = 'us-east-1'; // Region
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: 'us-east-1:ef7bd933-2344-4091-abac-aaca08dd6ba3',
-    });
-    // Make the call to obtain credentials
-    AWS.config.credentials.get(function () {
-      // Credentials will be available when this function is called.
-      var accessKeyId = AWS.config.credentials.accessKeyId;
-      var secretAccessKey = AWS.config.credentials.secretAccessKey;
-      var sessionToken = AWS.config.credentials.sessionToken;
-    });
-  };
-
   function ProcessPhoto() {
     return new Promise((resolve, reject) => {
   
@@ -235,51 +184,79 @@ export default function useApplicationData() {
             else {
               console.log(data);
 
-              const result = {
-                label: '',
-                bin: '',
-                text: ''
-              }
               setTimeout(() => {
-                let found = false;
-
-                for (let label of data.Labels) {
-                  if (label.Name === 'Glass' || label.Name === 'Cardboard' || label.Name === 'Can') {
-                    // const name = label.Name.toLowerCase;
-                    found = true;
-                    result.label = `You have submitted a ${label.Name}.`;
-                    result.bin = 'Recycling';
-                    result.text = 'Place it into the recycling bin and you will get 25 points to your score!';
-                    setState({...state, recognition: result});
-                  } else if (label.Name === 'Plastic') {
-                    found = true;
-                    result.label = `You have submitted some ${label.Name}.`;
-                    result.bin = 'Garbage';
-                    result.text = 'Please put it into the garbage bin to get 10 points and use more recycled items, when possible.';
-                    setState({...state, recognition: result});
-                  } else if (label.Name === 'Plant') {
-                    found = true;
-                    result.label = `You have submitted a ${label.Name}.`;
-                    result.bin = 'Organic';
-                    result.text = 'Place it into the organics bin and you will get 25 points to your score!';
-                    setState({...state, recognition: result});
-                  }
-                  if (!found) {
-                    result.label = `Sorry, we didn't recognize the item.`;
-                    result.bin = 'Garbage';
-                    result.text = 'Please put it into the garbage bin to get 10 points anyway.';
-                    setState({...state, recognition: result});
-                  }
-                }
+                getLabels(data);
                 resolve()
-              }, 750)
+              }, 400)
             }
           });
         };
       })(file);
       reader.readAsArrayBuffer(file);
     })
-  }
+  };
+
+  //Provides anonymous log on to AWS services
+  function AnonLog() {
+  
+    // Configure the credentials provider to use your identity pool
+    AWS.config.region = 'us-east-1'; // Region
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:ef7bd933-2344-4091-abac-aaca08dd6ba3',
+    });
+    // Make the call to obtain credentials
+    AWS.config.credentials.get(function () {
+      // Credentials will be available when this function is called.
+      var accessKeyId = AWS.config.credentials.accessKeyId;
+      var secretAccessKey = AWS.config.credentials.secretAccessKey;
+      var sessionToken = AWS.config.credentials.sessionToken;
+    });
+  };
+
+  function getLabels(data) {
+    const result = {
+      label: '',
+      bin: '',
+      text: ''
+    };
+
+    let found = false;
+
+    for (let label of data.Labels) {
+      if (label.Name === 'Can') {
+        // const name = label.Name.toLowerCase;
+        found = true;
+        result.label = `You have submitted a ${label.Name}.`;
+        result.bin = 'Recycling';
+        result.text = 'Place it into the recycling bin and you will get 25 points to your score!';
+        setState({...state, recognition: result});
+      } else if (label.Name === 'Glass' || label.Name === 'Cardboard') {
+        found = true;
+        result.label = `You have submitted some ${label.Name}.`;
+        result.bin = 'Recycling';
+        result.text = 'Place it into the recycling bin and you will get 25 points to your score!';
+        setState({...state, recognition: result});
+      } else if (label.Name === 'Coffee Cup') {
+        found = true;
+        result.label = `You have submitted a ${label.Name}.`;
+        result.bin = 'Garbage';
+        result.text = 'Please put it into the garbage bin to get 10 points and use more recycled items, when possible.';
+        setState({...state, recognition: result});
+      } else if (label.Name === 'Plant') {
+        found = true;
+        result.label = `You have submitted a ${label.Name}.`;
+        result.bin = 'Organic';
+        result.text = 'Place it into the organics bin and you will get 25 points to your score!';
+        setState({...state, recognition: result});
+      }
+      if (!found) {
+        result.label = `Sorry, we didn't recognize the item.`;
+        result.bin = 'Garbage';
+        result.text = 'Please put it into the garbage bin to get 10 points anyway.';
+        setState({...state, recognition: result});
+      }
+    }
+  };
 
   return {
     state,

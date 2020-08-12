@@ -201,8 +201,10 @@ export default function useApplicationData() {
   
     // Configure the credentials provider to use your identity pool
     AWS.config.region = 'us-east-1'; // Region
+    // AWS.config.region = process.env.AWS_CONFIG_REGION; // Region
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
         IdentityPoolId: 'us-east-1:ef7bd933-2344-4091-abac-aaca08dd6ba3',
+        // IdentityPoolId: process.env.AWS_IDENTIY_POOL_ID,
     });
     // Make the call to obtain credentials
     AWS.config.credentials.get(function () {

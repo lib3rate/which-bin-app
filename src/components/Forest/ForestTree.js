@@ -37,14 +37,14 @@ const ForestTree = (props) => {
 
   console.log("currentScore: ", currentScore)
 
-  if (currentScore < 24 || currentScore === 0) {
+  if (currentScore <= 24) {
     baseRender = 1;
     baseLeavesRender = 0;
     almostTreeRender = 0;
     fullTreeRender = 0;
   } else if (currentScore >= 25 && currentScore < 49) {
-    almostTreeRender = 0;
     baseLeavesRender = 1;
+    almostTreeRender = 0;
     baseRender = 0;
     fullTreeRender = 0;
   } else if (currentScore >= 50 && currentScore < 59 ) {
@@ -603,7 +603,8 @@ const branchStyle = {
   "stroke-width": "3px",
   "stroke-linejoin": "round",
   "stroke-linecap": "round",
-  maxWidth: 100
+  maxWidth: 100,
+  opacity: 0
   // "stroke-dasharray": 1000,
   // "stroke-dashoffset": 1000,
 };
@@ -620,7 +621,7 @@ const StyledTree = styled.svg`
   }
   #baseLeaves {
     ${{ ...branchStyle }}
-    opacity: $${(props) => props.baseLeavesRender};
+    opacity: ${(props) => props.baseLeavesRender};
   }
   #base {
     ${{ ...branchStyle }}

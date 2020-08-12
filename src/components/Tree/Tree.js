@@ -22,7 +22,7 @@ const Tree = (props) => {
   
   let treeDuration = '15s';
 
-  console.log("currentScore: ", currentScore)
+  // console.log("currentScore: ", currentScore)
 
   if (currentScore < 24 || currentScore === 0) {
     startingBaseNumber = 1000;

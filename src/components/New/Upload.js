@@ -92,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
   videoCapture: {
     background: "linear-gradient(45deg, #BB76C2, 30%, #C9A7CC 90%)",
+    // background: "#f1c2f2",
     // maxWidth: "400px",
     display: "flex",
     flexDirection: "column",

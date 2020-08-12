@@ -35,6 +35,9 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
+
+
+
 const useStyles = makeStyles({
   page: {
     margin: "1em 0 1em 0",
@@ -135,15 +138,20 @@ export default function Forest(props) {
   const classes = useStyles();
   // console.log("props.userBins: >>>>>>>>>>>>>>>>>>>>>>>>>>>>", props.userBins);
   const users = props.userBins;
-  users.sort((a, b) => b.score - a.score);
+  
 
+  users.sort((a, b) => b.score - a.score);
+  
+  const rearranged = users.map(user => user);
+  rearranged.sort((a, b) => b.user_id - a.user_id);
+  
   return (
     <div>
     <h2 className={classes.forestTitle}>The Forest</h2>
     <div className={classes.page}>
       
       <section className={classes.forest}>
-        {users.map((userBin) => (
+        {rearranged.map((userBin) => (
           <ForestTree treeTotal={userBin.score} name={userBin.username} />
         ))}
       </section>

@@ -200,7 +200,7 @@ export default function User(props) {
   const treeTotal = Number(props.user.total);
   // const treeTotal = 3;
 
-  const displayBadge1 = treeTotal >= 77 ? true : false;
+  const displayBadge1 = treeTotal >= 60 ? true : false;
   const displayBadge2 = treeTotal >= 200 ? true : false;
   const displayBadge3 = treeTotal >= 500 ? true : false;
   const onClickStop = (event) => {

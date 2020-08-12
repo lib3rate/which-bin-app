@@ -47,12 +47,12 @@ const ForestTree = (props) => {
     baseLeavesRender = 1;
     baseRender = 0;
     fullTreeRender = 0;
-  } else if (currentScore >= 50 && currentScore < 76 ) {
+  } else if (currentScore >= 50 && currentScore < 59 ) {
     almostTreeRender = 1;
     baseLeavesRender = 0;
     baseRender = 0;
     fullTreeRender = 0;
-  } else if (currentScore >= 77) {
+  } else if (currentScore >= 60) {
     fullTreeRender = 1;
     almostTreeRender = 0;
     baseLeavesRender = 0;

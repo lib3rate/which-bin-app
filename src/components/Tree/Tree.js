@@ -36,14 +36,14 @@ const Tree = (props) => {
     height = 175;
     treeDuration = '15s';
     
-  } else if (currentScore >= 50 && currentScore < 76 ) {
+  } else if (currentScore >= 50 && currentScore < 59 ) {
     startingAlmostTreeNumber = 1000;
     endingAlmostTreeNumber = 0;
     almostTreeRender = 1;
     height = 250;
     treeDuration = '16s';
 
-  } else if (currentScore >= 77) {
+  } else if (currentScore >= 60) {
     startingFullTreeNumber = 1000;
     endingFullTreeNumber = 0;
     fullTreeRender = 1;

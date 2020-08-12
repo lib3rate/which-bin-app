@@ -223,7 +223,7 @@ export default function useApplicationData() {
     let found = false;
 
     for (let label of data.Labels) {
-      if (label.Name === 'Can') {
+      if (label.Name === 'Can' || label.Name === 'Bottle') {
         // const name = label.Name.toLowerCase;
         found = true;
         result.label = `You have submitted a ${label.Name}.`;

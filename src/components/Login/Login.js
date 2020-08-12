@@ -13,8 +13,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const useStyles = makeStyles((theme) => ({
   page: {
     background: "url('/images/forest2.jpg')",
-    width: '1000px',
-    height: '100%',
+    width: '100vh',
+    height: '100vh',
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
     backgroundSize: "root",

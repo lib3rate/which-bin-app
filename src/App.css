@@ -13,6 +13,8 @@ body {
   justify-content: center;
   
   background: url(/images/48-nice-green-gradient.jpg);
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
   /* background-color: #008c8c; */
   
   /* background: rgb(132,179,157); */
@@ -22,7 +24,6 @@ body {
   /* background: 'black'; */
   margin: "0 0 0 0";
   min-height: 100vh;
-  
 
 }
 

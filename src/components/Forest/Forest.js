@@ -117,11 +117,12 @@ const useStyles = makeStyles({
     width: "100%",
   },
   forestTitle: {
-    margin: "4em 0 1em 0",
+    margin: "4em 0 0 0",
     fontSize: "35px",
     fontWeight: 200,
     color: "white",
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily: "Cantarell",
 
   },
   downArrow: {

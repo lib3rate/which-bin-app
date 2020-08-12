@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontFamily: "Cantarell",
     fontWeight: 200,
-    margin: "3em 0 1em 0"
+    margin: "3em 0 1em 0",
   },
   input: {
     display: "flex",

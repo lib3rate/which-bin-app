@@ -37,13 +37,16 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   page: {
-    marginTop: 150,
+    margin: "1em 0 1em 0",
+    padding: "0 1em 0 1em",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     paddingBottom: "10px",
     color: "white",
-    fontFamily: "Cantarell"
+    fontFamily: "Cantarell",
+    border: "solid 1px white",
+    borderRadius: "25px",
   },
   forest: {
     height: 175,
@@ -73,7 +76,7 @@ const useStyles = makeStyles({
     boxShadow: "0px 0px 1px 2px rgba(0, 0, 0, 0.2)",
     width: "30em",
     border: "solid .01em white",
-
+    margin: "0 0 1em 0"
   },
   summary: {
     // backgroundImage: 'url("/images/beautiful-color-ui-gradients-backgrounds-bloody-mary.png")',
@@ -93,7 +96,6 @@ const useStyles = makeStyles({
   },
   button: {
     borderColor: "black",
-    color: "red",
     "&:hover": {
       backgroundColor: "#4A235A",
     },
@@ -102,7 +104,7 @@ const useStyles = makeStyles({
   buttons: {
     display: "flex",
     margin: "2em 0 0 0",
-    // color: "red"
+    display: "none"
   },
   link: {
     textDecoration: "none",
@@ -115,9 +117,12 @@ const useStyles = makeStyles({
     width: "100%",
   },
   forestTitle: {
-    margin: "-1em 0 -1em 0",
+    margin: "4em 0 1em 0",
     fontSize: "35px",
-    fontWeight: 200
+    fontWeight: 200,
+    color: "white",
+    textAlign: "center"
+
   },
   downArrow: {
     color: "white"
@@ -132,8 +137,10 @@ export default function Forest(props) {
   users.sort((a, b) => b.score - a.score);
 
   return (
+    <div>
+    <h2 className={classes.forestTitle}>The Forest</h2>
     <div className={classes.page}>
-      <h2 className={classes.forestTitle}>The Forest</h2>
+      
       <section className={classes.forest}>
         {users.map((userBin) => (
           <ForestTree treeTotal={userBin.score} name={userBin.username} />
@@ -197,6 +204,7 @@ export default function Forest(props) {
           }
         />
       </section>
+    </div>
     </div>
   );
 }

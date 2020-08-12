@@ -9,15 +9,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import Form from "../Form";
 // import MyButton from "../Button";
 
-
 const useStyles = makeStyles((theme) => ({
   page: {
     background: "url('/images/forest2.jpg')",
-    width: '100vh',
-    height: '100vh',
+    width: "2000px",
+    height: "700px",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
-    backgroundSize: "root",
+    // backgroundSize: "root",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

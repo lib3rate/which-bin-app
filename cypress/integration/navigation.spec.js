@@ -1,33 +1,5 @@
 describe("Navigation", () => {
-  it("should navigate to the userpage", () => {
-    cy.visit("/");
-  
-    cy.get('form')
-      .contains("Sign in")
-      .click();
-
-    cy.contains("Your waste in numbers")
-      .should("exist");
-  });
-
-  it("should navigate to the Forest page", () => {
-    cy.visit("/");
-  
-    cy.get('form')
-      .contains("Sign in")
-      .click();
-
-    cy.contains("Your waste in numbers")
-      .should("exist");
-
-    cy.contains('The Forest')
-      .click({force: true});
-
-    cy.contains("This is the Forest")
-      .should("exist");
-  });
-
-  it("should navigate to the register page", () => {
+  xit("should navigate to the register page", () => {
     cy.visit("/");
   
     cy.get('form')
@@ -40,8 +12,8 @@ describe("Navigation", () => {
     cy.contains("Already have an account? Sign in")
       .should("exist");
   });
-
-  it("should navigate to the login page after signing out", () => {
+  
+  xit("should navigate to the userpage after signing in", () => {
     cy.visit("/");
   
     cy.get('form')
@@ -50,16 +22,69 @@ describe("Navigation", () => {
 
     cy.contains("Your waste in numbers")
       .should("exist");
+  });
+
+  it("should navigate to the user page using the navigation bar", () => {
+    cy.visit("/");
+  
+    cy.contains("User Page")
+      .click();
+
+    cy.contains("Your waste in numbers")
+      .should("exist");
+  });
+
+  it("should navigate to the Forest page from the user page", () => {
+    cy.visit("/");
+  
+    cy.contains("User Page")
+      .click();
+
+    cy.contains("Your waste in numbers")
+      .should("exist");
+
+    cy.contains('Forest')
+      // .click({force: true});
+      .click();
+
+    cy.contains("The Forest")
+      .should("exist");
+  });
+
+  xit("should navigate to the landing page after signing out", () => {
+    cy.visit("/");
+  
+    cy.contains("User Page")
+      .click();
+
+    cy.contains("Your waste in numbers")
+      .should("exist");
 
     cy.contains("Sign out")
       .click();
 
-    cy.get('form')
-      .contains("Sign in")
+    cy.contains("Welcome to ReForest")
       .should("exist");
   });
 
-  it("should navigate to the capture a new photo page using the drawer", () => {
+  it("should navigate to the landing page after clicking on the title", () => {
+    cy.visit("/");
+  
+    cy.contains("User Page")
+      .click();
+
+    cy.contains("Your waste in numbers")
+      .should("exist");
+
+    cy.get('header')
+      .contains("ReForest")
+      .click();
+
+    cy.contains("Welcome to ReForest")
+      .should("exist");
+  });
+
+  xit("should navigate to the capture a new photo page using the drawer on mobile", () => {
     cy.visit("/");
   
     cy.get('form')
@@ -80,11 +105,10 @@ describe("Navigation", () => {
       .should("exist");
   });
 
-  it("should upload a file on the capture a new photo page", () => {
+  it("should upload a file on the Check Waste page", () => {
     cy.visit("/");
   
-    cy.get('form')
-      .contains("Sign in")
+    cy.contains("User Page")
       .click();
 
     cy.contains("Your waste in numbers")
@@ -93,7 +117,7 @@ describe("Navigation", () => {
     cy.contains('Add item')
       .click();
 
-    cy.contains("Or upload a file")
+    cy.contains("Upload a photo")
       .should("exist");
 
     cy.fixture('/images/boxes.jpg').then(fileContent => {

@@ -4,18 +4,18 @@
 ## Description:
 ReForest helps users determine which bin (recycling, organics or garbage) they should discard their waste into through machine learning image recognition. The user will receive points for recycling and organic material and less points for garbage items. This encourages them to consume more recyclable and compostable items. The user scores are linked to an animated svg tree, which grows larger as their points increase. The users can compete with others in the leaderboard and see a forest of a variety of other user trees.
 
-See gifs and images of the final product further down
+See gifs and images of the final product further down.
 
-This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitry Petrov](https://github.com/lib3rate), and [Julian Bustos](https://github.com/julimancan)  and published as part of our learnings at [Lighthouse Labs.](https://www.lighthouselabs.ca/)
+This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitry Petrov](https://github.com/lib3rate), and [Julian Bustos](https://github.com/julimancan) and published as part of our learnings at [Lighthouse Labs.](https://www.lighthouselabs.ca/).
 
 ## Features:
-- Users can login using their google account through Auth0
-- Users can check thier waste by capturing or uploading a photo of thier items. The image recognition will notify them which bin they should discard their waste
-- Users will receive more points for recyclable and organic items and fewer points for garbage items
-- On the user page, they can see a tree as a representation of their score as well as a table with the categories of trash
-- As their score increases the tree will grow (animate)
-- The Forest page displays numerous trees at different stages of growth, these represent all the other user trees
-- Users can compete in the leaderboard with others for the highest score (and the tallest tree!)
+- Users can login using their google account through Auth0.
+- Users can check thier waste by capturing or uploading a photo of thier items. The image recognition will notify them which bin they should discard their waste.
+- Users will receive more points for recyclable and organic items and fewer points for garbage items.
+- On the user page, they can see a tree as a representation of their score as well as a table with the categories of trash.
+- As their score increases the tree will grow (animate).
+- The Forest page displays numerous trees at different stages of growth, these represent all the other user trees.
+- Users can compete in the leaderboard with others for the highest score (and the tallest tree!).
 
 ## Stack:
 - Machine learning - AWS
@@ -26,23 +26,23 @@ This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitr
 - Testing - Cypress
 
 ## Dependencies:
-- Auth0/auth0-react": "^1.0.0",
-- Material-ui/core": "^4.11.0",
-- Material-ui/icons": "^4.9.1",
-- Material-ui/styles": "^4.10.0",
-- Testing-library/jest-dom": "^4.2.4",
-- Testing-library/react": "^9.5.0",
-- Testing-library/user-event": "^7.2.1",
-- Aws-sdk": "^2.725.0",
-- Axios": "^0.19.2",
-- Material-ui-icons": "^1.0.0-beta.36",
-- React": "^16.13.1",
-- React-dom": "^16.13.1",
-- React-router-dom": "^5.2.0",
-- React-scripts": "3.4.1",
-- React-tooltip": "^4.2.8",
-- Styled-components": "^5.1.1",
-- "cypress": "^4.12.1"
+- Auth0/auth0-react: "1.0.0"
+- Material-ui/core: "4.11.0"
+- Material-ui/icons: "4.9.1"
+- Material-ui/styles: "4.10.0"
+- Testing-library/jest-dom: "4.2.4"
+- Testing-library/react: "9.5.0"
+- Testing-library/user-event: "7.2.1"
+- Aws-sdk: "2.725.0"
+- Axios: "0.19.2"
+- Material-ui-icons: "1.0.0-beta.36"
+- React: "16.13.1"
+- React-dom: "16.13.1"
+- React-router-dom: "5.2.0"
+- React-scripts": "3.4.1"
+- React-tooltip: "4.2.8"
+- Styled-components: "5.1.1"
+- cypress: "4.12.1"
 
 ## Final Product:
 #### ReForest Home Page
@@ -56,7 +56,7 @@ This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitr
 !["Captures an image from a camera feed to recognize an item"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Euni.gif)
 
 #### Forest page shows all the different user trees and their scores on the leaderboard. Hovering over each of the trees indicates which user it belongs to.
-["View of the leaderboard with Tooltips"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Forest.gif)
+!["View of the leaderboard with Tooltips"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Forest.gif)
 
 
 
@@ -68,5 +68,5 @@ This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitr
 ## Getting Started:
 Install all dependencies (using the `npm install` command).
 Be sure to install the server as well at https://github.com/lib3rate/which-bin-api and have it running in the background.
-Run the local server using the 'npm start' command in your terminal of choice.
+Run the local server using the `npm start` command in your terminal of choice.
 Direct your browser to http://localhost/3002.

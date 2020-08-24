@@ -45,15 +45,18 @@ This project was created by Dmitry Petrov, Julian Bustos and Jehanne Hodge and p
 - "cypress": "^4.12.1"
 
 ## Final Product:
+
+!["Home Page of ReForest"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/ReForest-Home.JPG)
+
 #### Uploading an image of a banana, the image recognition indicates the item should go in the organics bin. Upon trashing the item, the user is taken to their page and the tree grows to the second stage.
 !["Uploads an image of a waste item"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Upload.gif)
 
 
 #### Capturing a can, the image recognition indicates the item should be thrown in the recycling bin. Upon trashing the item, the user is taken to their page and the tree grows to it's final stage. The user also receive a badge for growing their first tree!
-[gif here]
+!["Captures an image from a camera feed to recognize an item"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Euni.gif)
 
 #### Forest page shows all the different user trees and their scores on the leaderboard. Hovering over each of the trees indicates which user it belongs to.
-[screenshot of forest page hover over one of the trees and have leaderboard opened]
+["View of the leaderboard with Tooltips"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Forest.gif)
 
 
 

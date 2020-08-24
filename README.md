@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# 🌳 ReForest 🌳
 
-In the project directory, you can run:
+## Description:
+ReForest helps users determine which bin (recycling, organics or garbage) they should discard their waste into through machine learning image recognition. The user will receive points for recycling and organic material and less points for garbage items. This encourages them to consume more recyclable and compostable items. The user scores are linked to an animated svg tree, which grows larger as their points increase. The users can compete with others in the leaderboard and see a forest of a variety of other user trees.
 
-### `npm start`
+See gifs and images of the final product further down
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project was created by Dmitry Petrov, Julian Bustos and Jehanne Hodge and published as part of our learnings at [Lighthouse Labs.](https://www.lighthouselabs.ca/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Features:
+- Users can login using their google account through Auth0
+- Users can check thier waste by capturing or uploading a photo of thier items. The image recognition will notify them which bin they should discard their waste
+- Users will receive more points for recyclable and organic items and fewer points for garbage items
+- On the user page, they can see a tree as a representation of their score as well as a table with the categories of trash
+- As their score increases the tree will grow (animate)
+- The Forest page displays numerous trees at different stages of growth, these represent all the other user trees
+- Users can compete in the leaderboard with others for the highest score (and the tallest tree!)
 
-### `npm test`
+## Stack:
+- Machine learning - AWS
+- Front-end - React
+- Routes - React router, Express
+- Database - PosgreSQL
+- Styles - Material UI
+- Testing - Cypress
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Dependencies:
+- Auth0/auth0-react": "^1.0.0",
+- Material-ui/core": "^4.11.0",
+- Material-ui/icons": "^4.9.1",
+- Material-ui/styles": "^4.10.0",
+- Testing-library/jest-dom": "^4.2.4",
+- Testing-library/react": "^9.5.0",
+- Testing-library/user-event": "^7.2.1",
+- Aws-sdk": "^2.725.0",
+- Axios": "^0.19.2",
+- Material-ui-icons": "^1.0.0-beta.36",
+- React": "^16.13.1",
+- React-dom": "^16.13.1",
+- React-router-dom": "^5.2.0",
+- React-scripts": "3.4.1",
+- React-tooltip": "^4.2.8",
+- Styled-components": "^5.1.1",
+- "cypress": "^4.12.1"
 
-### `npm run build`
+## Final Product:
+#### Uploading an image of a banana, the image recognition indicates the item should go in the organics bin. Upon trashing the item, the user is taken to their page and the tree grows to the second stage.
+[gif here]
+#### Capturing a can, the image recognition indicates the item should be thrown in the recycling bin. Upon trashing the item, the user is taken to their page and the tree grows to it's final stage. The user also receive a badge for growing their first tree!
+[gif here]
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Forest page shows all the different user trees and their scores on the leaderboard. Hovering over each of the trees indicates which user it belongs to.
+[screenshot of forest page hover over one of the trees and have leaderboard opened]
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Additional:
+- Mobile-first design
+- User friendly loading animation while the image recognition is running
+- When the tree has reach maximum height and score, the user receives a badge for growing their first tree (visible in their user profile). In addtion, they receive an email through sendgrid indicating that they have grown their first tree and reached the highest score for that tree
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Getting Started:
+Install all dependencies (using the 'npm install' command).
+Be sure to install the server as well at https://github.com/lib3rate/which-bin-api and have it running in the background.
+Run the local server using the 'npm start' command in your terminal of choice.
+Direct your browser to http://localhost/3002.

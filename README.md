@@ -4,9 +4,20 @@
 ## Description:
 ReForest helps users determine which bin (recycling, organics or garbage) they should discard their waste into through machine learning image recognition. The user will receive points for recycling and organic material and less points for garbage items. This encourages them to consume more recyclable and compostable items. The user scores are linked to an animated svg tree, which grows larger as their points increase. The users can compete with others in the leaderboard and see a forest of a variety of other user trees.
 
-See gifs and images of the final product further down.
-
 This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitry Petrov](https://github.com/lib3rate), and [Julian Bustos](https://github.com/julimancan) and published as part of our learnings at [Lighthouse Labs.](https://www.lighthouselabs.ca/).
+
+## Final Product:
+#### ReForest Home Page
+!["Home Page of ReForest"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/ReForest-Home.JPG)
+
+#### Uploading an image of a banana, the image recognition indicates the item should go in the organics bin. Upon trashing the item, the user is taken to their page and the tree grows to the second stage.
+!["Uploads an image of a waste item"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Upload.gif)
+
+#### Capturing a can, the image recognition indicates the item should be thrown in the recycling bin. Upon trashing the item, the user is taken to their page and the tree grows to it's final stage. The user also receive a badge for growing their first tree!
+!["Captures an image from a camera feed to recognize an item"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Euni.gif)
+
+#### Forest page shows all the different user trees and their scores on the leaderboard. Hovering over each of the trees indicates which user it belongs to.
+!["View of the leaderboard with Tooltips"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Forest.gif)
 
 ## Features:
 - Users can login using their google account through Auth0.
@@ -16,6 +27,17 @@ This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitr
 - As their score increases the tree will grow (animate).
 - The Forest page displays numerous trees at different stages of growth, these represent all the other user trees.
 - Users can compete in the leaderboard with others for the highest score (and the tallest tree!).
+
+## Additional:
+- Mobile-first design.
+- User friendly loading animation while the image recognition is running.
+- When the tree has reach maximum height and score, the user receives a badge for growing their first tree (visible in their user profile). In addtion, they receive an email.through sendgrid indicating that they have grown their first tree and reached the highest score for that tree.
+
+## Getting Started:
+Install all dependencies (using the `npm install` command).
+Be sure to install the server as well at https://github.com/lib3rate/which-bin-api and have it running in the background.
+Run the local server using the `npm start` command in your terminal of choice.
+Direct your browser to http://localhost/3002.
 
 ## Stack:
 - Machine learning - AWS
@@ -43,30 +65,3 @@ This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitr
 - React-tooltip: "4.2.8"
 - Styled-components: "5.1.1"
 - cypress: "4.12.1"
-
-## Final Product:
-#### ReForest Home Page
-!["Home Page of ReForest"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/ReForest-Home.JPG)
-
-#### Uploading an image of a banana, the image recognition indicates the item should go in the organics bin. Upon trashing the item, the user is taken to their page and the tree grows to the second stage.
-!["Uploads an image of a waste item"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Upload.gif)
-
-
-#### Capturing a can, the image recognition indicates the item should be thrown in the recycling bin. Upon trashing the item, the user is taken to their page and the tree grows to it's final stage. The user also receive a badge for growing their first tree!
-!["Captures an image from a camera feed to recognize an item"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Euni.gif)
-
-#### Forest page shows all the different user trees and their scores on the leaderboard. Hovering over each of the trees indicates which user it belongs to.
-!["View of the leaderboard with Tooltips"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/Forest.gif)
-
-
-
-## Additional:
-- Mobile-first design.
-- User friendly loading animation while the image recognition is running.
-- When the tree has reach maximum height and score, the user receives a badge for growing their first tree (visible in their user profile). In addtion, they receive an email.through sendgrid indicating that they have grown their first tree and reached the highest score for that tree.
-
-## Getting Started:
-Install all dependencies (using the `npm install` command).
-Be sure to install the server as well at https://github.com/lib3rate/which-bin-api and have it running in the background.
-Run the local server using the `npm start` command in your terminal of choice.
-Direct your browser to http://localhost/3002.

@@ -6,7 +6,7 @@ ReForest helps users determine which bin (recycling, organics or garbage) they s
 
 See gifs and images of the final product further down
 
-This project was created by Dmitry Petrov, Julian Bustos and Jehanne Hodge and published as part of our learnings at [Lighthouse Labs.](https://www.lighthouselabs.ca/)
+This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitry Petrov](https://github.com/lib3rate), and [Julian Bustos](https://github.com/julimancan)  and published as part of our learnings at [Lighthouse Labs.](https://www.lighthouselabs.ca/)
 
 ## Features:
 - Users can login using their google account through Auth0
@@ -45,7 +45,7 @@ This project was created by Dmitry Petrov, Julian Bustos and Jehanne Hodge and p
 - "cypress": "^4.12.1"
 
 ## Final Product:
-
+#### ReForest Home Page
 !["Home Page of ReForest"](https://github.com/lib3rate/which-bin-app/blob/master/public/images/ReadME/ReForest-Home.JPG)
 
 #### Uploading an image of a banana, the image recognition indicates the item should go in the organics bin. Upon trashing the item, the user is taken to their page and the tree grows to the second stage.
@@ -61,12 +61,12 @@ This project was created by Dmitry Petrov, Julian Bustos and Jehanne Hodge and p
 
 
 ## Additional:
-- Mobile-first design
-- User friendly loading animation while the image recognition is running
-- When the tree has reach maximum height and score, the user receives a badge for growing their first tree (visible in their user profile). In addtion, they receive an email through sendgrid indicating that they have grown their first tree and reached the highest score for that tree
+- Mobile-first design.
+- User friendly loading animation while the image recognition is running.
+- When the tree has reach maximum height and score, the user receives a badge for growing their first tree (visible in their user profile). In addtion, they receive an email.through sendgrid indicating that they have grown their first tree and reached the highest score for that tree.
 
 ## Getting Started:
-Install all dependencies (using the 'npm install' command).
+Install all dependencies (using the `npm install` command).
 Be sure to install the server as well at https://github.com/lib3rate/which-bin-api and have it running in the background.
 Run the local server using the 'npm start' command in your terminal of choice.
 Direct your browser to http://localhost/3002.

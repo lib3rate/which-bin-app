@@ -4,7 +4,7 @@
 ## Description:
 ReForest helps users determine which bin (recycling, organics or garbage) they should discard their waste into through machine learning image recognition. The user will receive points for recycling and organic material and less points for garbage items. This encourages them to consume more recyclable and compostable items. The user scores are linked to an animated svg tree, which grows larger as their points increase. The users can compete with others in the leaderboard and see a forest of a variety of other user trees.
 
-This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitry Petrov](https://github.com/lib3rate), and [Julian Bustos](https://github.com/julimancan) and published as part of our learnings at [Lighthouse Labs.](https://www.lighthouselabs.ca/).
+This project was created by [Jehanne Hodge](https://github.com/JehanneH), [Dmitry Petrov](https://github.com/lib3rate), and [Julian Bustos](https://github.com/julimancan) and published as part of our learnings at [Lighthouse Labs](https://www.lighthouselabs.ca/).
 
 ## Final Product:
 #### ReForest Home Page
@@ -42,7 +42,7 @@ Direct your browser to http://localhost/3002.
 ## Stack:
 - Machine learning - AWS
 - Front-end - React
-- Routes - React router, Express
+- Routes - React Router, Express
 - Database - PosgreSQL
 - Styles - Material UI
 - Testing - Cypress
@@ -64,4 +64,4 @@ Direct your browser to http://localhost/3002.
 - React-scripts": "3.4.1"
 - React-tooltip: "4.2.8"
 - Styled-components: "5.1.1"
-- cypress: "4.12.1"
+- Cypress: "4.12.1"

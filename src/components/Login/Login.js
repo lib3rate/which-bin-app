@@ -102,7 +102,7 @@ export default function SignIn(props) {
         <div className={classes.buttons}>
         <ExpandMoreIcon className={classes.arrow} style={{ fontSize: 60 }}/>
           {!isAuthenticated && (
-            <div classname={classes.button}>
+            <div className={classes.button}>
               <Button
                 onClick={() => loginWithRedirect()}
                 type="submit"

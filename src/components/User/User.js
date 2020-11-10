@@ -197,7 +197,8 @@ export default function User(props) {
   const classes = useStyles();
   const { user, isAuthenticated } = useAuth0();
 
-  console.log(user);
+  console.log(`Auth0 user name on the user page is ${user.name}`);
+  console.log(`Auth0 user nickname on the user page is ${user.nickname}`);
 
   const treeTotal = Number(props.user.total);
   // const treeTotal = 3;

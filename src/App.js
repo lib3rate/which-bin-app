@@ -42,6 +42,8 @@ export default function App() {
     isAuthenticated
   } = useAuth0();
 
+  console.log(`Auth0 user on the login page is ${user}`);
+
   return (
     <Router>
       <div>

@@ -28,9 +28,9 @@ export default function App() {
   useEffect(() => {
     Promise.all([axios.get("/api/users"), axios.get("/api/user_bins")]).then(
       (all) => {
-        console.log(all[0].data);
+        // console.log(all[0].data);
         const user = convertToObject(all[0].data);
-        console.log(user);
+        // console.log(user);
         const userBins = convertToArray(all[1].data);
         setState((prev) => ({ ...prev, user, userBins }));
       }
@@ -58,7 +58,10 @@ export default function App() {
             <Login />
           ) }
           { isAuthenticated && (
-            <User user={state.user} />
+            <User
+              user={state.user}
+              users={state.userBins}
+            />
           ) }
           </Route>
           {/* <Route path="/register">

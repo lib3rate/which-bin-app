@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -199,6 +200,31 @@ export default function User(props) {
 
   console.log(`Auth0 user name on the user page is ${user.name}`);
   console.log(`Auth0 user nickname on the user page is ${user.nickname}`);
+  console.log(props.users);
+
+  const findUser = name => {
+    let foundUser = false;
+    const users = props.users;
+    for (let user of users) {
+      if (user.username === name) {
+        foundUser = true;
+        break;
+      };
+    };
+    return foundUser;
+  };
+
+  console.log(`Has the user been found in the database? ${findUser(user.name)}`)
+
+  // useEffect(() => {
+  //   axios.put("/api/users")
+  //     .then(() => {
+  //       console.log(all[0].data);
+  //       const user = convertToObject(all[0].data);
+  //       console.log(user);
+  //       setState((prev) => ({ ...prev, user }));
+  //     });
+  // }, []);
 
   const treeTotal = Number(props.user.total);
   // const treeTotal = 3;

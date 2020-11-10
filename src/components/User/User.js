@@ -214,7 +214,19 @@ export default function User(props) {
     return foundUser;
   };
 
-  console.log(`Has the user been found in the database? ${findUser(user.name)}`)
+  console.log(`Has the user been found in the database? ${findUser(user.name)}`);
+
+  if (!findUser(user.name)) {
+    const user = {
+      username: user.name,
+      email: user.email,
+      password: 1234
+    };
+    axios.put("/api/users", {user});
+    setState((prev) => ({ ...prev, user }));
+    // const userBins = convertToArray(all[1].data);
+    // setState((prev) => ({ ...prev, user, userBins }));
+  };
 
   // useEffect(() => {
   //   axios.put("/api/users")

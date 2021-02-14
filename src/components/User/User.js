@@ -14,6 +14,8 @@ import Paper from "@material-ui/core/Paper";
 import Tree from "../Tree/Tree";
 import Button from "@material-ui/core/Button";
 
+import useApplicationData from "../../helpers/helpers";
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: "#4A235A",
@@ -195,6 +197,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function User(props) {
+  const {
+    state,
+    setState,
+  } = useApplicationData();
+
   const classes = useStyles();
   const { user, isAuthenticated } = useAuth0();
 
@@ -216,17 +223,17 @@ export default function User(props) {
 
   console.log(`Has the user been found in the database? ${findUser(user.name)}`);
 
-  if (!findUser(user.name)) {
-    const user = {
-      username: user.name,
-      email: user.email,
-      password: 1234
-    };
-    axios.put("/api/users", {user});
-    setState((prev) => ({ ...prev, user }));
-    // const userBins = convertToArray(all[1].data);
-    // setState((prev) => ({ ...prev, user, userBins }));
-  };
+  // if (!findUser(user.name)) {
+  //   const user = {
+  //     username: user.name,
+  //     email: user.email,
+  //     password: 1234
+  //   };
+  //   axios.put("/api/users", {user});
+  //   setState((prev) => ({ ...prev, user }));
+  //   // const userBins = convertToArray(all[1].data);
+  //   // setState((prev) => ({ ...prev, user, userBins }));
+  // };
 
   // useEffect(() => {
   //   axios.put("/api/users")
